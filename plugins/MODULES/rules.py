@@ -17,7 +17,7 @@ from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton, CallbackQ
 import logging
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.ERROR)
-from info import IMDB
+from info import IMDB, BOT_TOKEN, API_ID, API_HASH
 
 
 
@@ -27,12 +27,12 @@ from info import IMDB
 
 
 
-Muhammed = Client(
-    "Pyrogram Bot",
-    bot_token = os.environ["BOT_TOKEN"],
-    api_id = int(os.environ["API_ID"]),
-    api_hash = os.environ["API_HASH"]
-)
+# Muhammed = Client(
+#     "Pyrogram Bot",
+#     bot_token = os.environ["BOT_TOKEN"],
+#     api_id = int(os.environ["API_ID"]),
+#     api_hash = os.environ["API_HASH"]
+#)
 
 ALL_PIC = [
  "https://telegra.ph/file/d6693066f82ed4079c528.jpg",
