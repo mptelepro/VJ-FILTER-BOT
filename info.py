@@ -125,6 +125,7 @@ if HAS_SSL:
 else:
     URL = "https://azanwebsite.onrender.com/".format(FQDN)
 
+OPENAI = environ.get('OPENAI', '0')
 
 
 LOG_STR = "Current Cusomized Configurations are:-\n"
