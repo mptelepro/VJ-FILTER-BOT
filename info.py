@@ -31,8 +31,8 @@ SP = (environ.get('SP', 'https://telegra.ph/file/db018384d5d139f3844ed.jpg https
 
 # Admins, Channels & Users
 ADMIN = int(environ.get('ADMINS'))
-ADMINS = [int(admin) if id_pattern.search(admin) else admin for admin in environ.get('ADMINS', '').split()]
-CHANNELS = [int(ch) if id_pattern.search(ch) else ch for ch in environ.get('CHANNELS', '').split()]
+ADMINS = [int(admin) if id_pattern.search(admin) else admin for admin in environ.get('ADMINS', '1291970954').split()]
+CHANNELS = [int(ch) if id_pattern.search(ch) else ch for ch in environ.get('CHANNELS', '-1001595013671').split()]
 auth_users = [int(user) if id_pattern.search(user) else user for user in environ.get('AUTH_USERS', '').split()]
 AUTH_USERS = (auth_users + ADMINS) if auth_users else []
 PREMIUM_USER = [int(user) if id_pattern.search(user) else user for user in environ.get('PREMIUM_USER', '').split()]
@@ -53,8 +53,8 @@ UPLOAD_CHANNEL = int(upload_channel) if upload_channel and id_pattern.search(upl
 
 
 # MongoDB information
-DATABASE_URI = environ.get('DATABASE_URI', "")
-DATABASE_NAME = environ.get('DATABASE_NAME', "")
+DATABASE_URI = environ.get('DATABASE_URI', "mongodb+srv://Zebhamol:Zebhamol@cluster0.eousx.mongodb.net/?retryWrites=true&w=majority")
+DATABASE_NAME = environ.get('DATABASE_NAME', "Cluster0")
 COLLECTION_NAME = environ.get('COLLECTION_NAME', 'Telegram_files')
 
 # Others
@@ -76,7 +76,7 @@ UPDATE = environ.get('UPDATE', 'https://t.me/nasrani_update')
 IS_UPDATE = bool(environ.get('IS_UPDATE', True))
 MAIN_CHANNEL = environ.get('MAIN_CHANNEL', 'https://t.me/+r_y-yTPhXkQwMzdl')
 MSG_ALRT = environ.get('MSG_ALRT', 'Wʜᴀᴛ Aʀᴇ Yᴏᴜ Lᴏᴏᴋɪɴɢ Aᴛ ?')
-LOG_CHANNEL = int(environ.get('LOG_CHANNEL', ''))
+LOG_CHANNEL = int(environ.get('LOG_CHANNEL', '-1001371670080'))
 SUPPORT_CHAT = environ.get('SUPPORT_CHAT', '+r_y-yTPhXkQwMzdl')
 P_TTI_SHOW_OFF = is_enabled((environ.get('P_TTI_SHOW_OFF', "False")), False)
 IMDB = is_enabled((environ.get('IMDB', "True")), True)
@@ -123,6 +123,63 @@ SOON_CHANNEL = int(soon_channel) if soon_channel and id_pattern.search(soon_chan
 HRK_APP_NAME = environ.get('HRK_APP_NAME', 'mybots')
 HRK_API = environ.get('HRK_API', '0')
 OPENAI = environ.get('OPENAI', '0')
+SUPPORT_CHAT = environ.get('SUPPORT_CHAT', '0')
+
+
+
+# Online Stream and Download
+NO_PORT = bool(environ.get('NO_PORT', False))
+APP_NAME = None
+if 'DYNO' in environ:
+    ON_HEROKU = True
+    APP_NAME = environ.get('APP_NAME')
+else:
+    ON_HEROKU = False
+BIND_ADRESS = str(getenv('WEB_SERVER_BIND_ADDRESS', '0.0.0.0'))
+FQDN = str(getenv('FQDN', BIND_ADRESS)) if not ON_HEROKU or getenv('FQDN') else APP_NAME+'.herokuapp.com'
+URL = "https://azanwebsite.onrender.com".format(FQDN) if ON_HEROKU or NO_PORT else \
+    "https://azanwebsite.onrender.com/".format(FQDN, PORT)
+SLEEP_THRESHOLD = int(environ.get('SLEEP_THRESHOLD', '60'))
+WORKERS = int(environ.get('WORKERS', '4'))
+SESSION_NAME = str(environ.get('SESSION_NAME', 'LazyBot'))
+MULTI_CLIENT = False
+name = str(environ.get('name', 'LazyPrincess'))
+PING_INTERVAL = int(environ.get("PING_INTERVAL", "1200"))  # 20 minutes
+if 'DYNO' in environ:
+    ON_HEROKU = True
+    APP_NAME = str(getenv('APP_NAME'))
+
+else:
+    ON_HEROKU = False
+HAS_SSL=bool(getenv('HAS_SSL',False))
+if HAS_SSL:
+    URL = "https://azanwebsite.onrender.com/".format(FQDN)
+else:
+    URL = "https://azanwebsite.onrender.com/".format(FQDN)
+
+# UPLOAD_CHANNEL = environ.get('UPLOAD_CHANNEL',"https://t.me/batchfiles_store")
+#redict
+MAIN_CHANNEL = environ.get('MAIN_CHANNEL',"https://t.me/nasrani_update")
+FILE_FORWARD = environ.get('FILE_FORWARD',"https://t.me/+7oxSIxY4X0c2ZGVl")
+MSG_ALRT = environ.get('MSG_ALRT', '𝑪𝑯𝑬𝑪𝑲 & 𝑻𝑹𝒀 𝑨𝑳𝑳 𝑴𝒀 𝑭𝑬𝑨𝑻𝑼𝑹𝑬𝑺')
+FILE_CHANNEL = int(environ.get('FILE_CHANNEL', 0))
+
+BR_IMDB_TEMPLATE = environ.get("IMDB_TEMPLATE", f"{script.BR_TEMPLATE_TXT}")
+BATCH_LINK = environ.get('BATCH_LINK',"https://t.me/nasrani_update")
+PRINT = environ.get('PRINT',"https://t.me/+IpB01WFvsNplZDI9")
+
+#mute_login
+
+login_channel = environ.get('LOGIN_CHANNEL' "-1001351202807")
+LOGIN_CHANNEL = int(login_channel) if login_channel and id_pattern.search(login_channel) else None
+pm = environ.get('PM')
+PM = int(pm) if pm and id_pattern.search(pm) else None
+soon_channel = environ.get('SOON_CHANNEL')
+SOON_CHANNEL = int(soon_channel) if soon_channel and id_pattern.search(soon_channel) else None
+
+
+# heroku
+
 SUPPORT_CHAT = environ.get('SUPPORT_CHAT', '0')
 
 
