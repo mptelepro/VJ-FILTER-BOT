@@ -211,8 +211,8 @@ async def document(bot, message):
     documentid= message.reply_to_message.text
     chat_id = message.chat.id
     buttons = [[
-        InlineKeyboardButton('🚀 Fast Download / Watch Online🖥️', callback_data=f'generate_stream_link:{videoid}'),
-        InlineKeyboardButton('Gʟᴏʙᴀʟ Fɪʟᴛᴇʀs', callback_data=f'generate_stream_link:{videoid}')
+        InlineKeyboardButton('🖥️𝐂𝐡𝐫𝐨𝐦𝐞 𝐃𝐨𝐰𝐧𝐥𝐨𝐚𝐝🖥️', callback_data=f'generate_stream_link:{videoid}')
+        
     ]]            
     kf = await bot.send_cached_media(
         chat_id=chat_id,
@@ -227,7 +227,7 @@ async def document(bot, message):
     documentid= message.reply_to_message.text
     chat_id = message.chat.id
 #    await txt.delete()
-    m = await message.reply_text("**♻ 𝙲𝚘𝚗𝚟𝚎𝚛𝚝 𝚈𝚘𝚞𝚛 𝙵𝚒𝚕𝚎. ♻**......\n\n[░░░░░░░░░░] 00%")
+#    m = await message.reply_text("**♻ 𝙲𝚘𝚗𝚟𝚎𝚛𝚝 𝚈𝚘𝚞𝚛 𝙵𝚒𝚕𝚎. ♻**......\n\n[░░░░░░░░░░] 00%")
 #    await m.edit("**♻ 𝙲𝚘𝚗𝚟𝚎𝚛𝚝  𝙵𝚒𝚕𝚎... ♻**......\n\n[▇▇░░░░░░░░] 20%")
 #    await m.edit("**♻ 𝙲𝚘𝚗𝚟𝚎𝚛𝚝  𝙵𝚒𝚕𝚎... ♻**......\n\n[▇▇▇▇░░░░░░] 40%")
 #    await m.edit("**♻ 𝙲𝚘𝚗𝚟𝚎𝚛𝚝  𝙵𝚒𝚕𝚎... ♻**......\n\n[▇▇▇▇▇░░░░░] 50%")
@@ -235,19 +235,20 @@ async def document(bot, message):
 #    await m.edit("**♻ 𝙲𝚘𝚗𝚟𝚎𝚛𝚝  𝙵𝚒𝚕𝚎... ♻**......\n\n[▇▇▇▇▇▇▇▇░░] 80%")
 #    await m.edit("**♻ 𝙲𝚘𝚗𝚟𝚎𝚛𝚝  𝙵𝚒𝚕𝚎... ♻**......\n\n[▇▇▇▇▇▇▇▇▇▇] 100%")
 #    await m.edit("📤Uploading....")
-    await m.edit("📤Uploading.....")
+#    await m.edit("📤Uploading.....")
     fileName = {quote_plus(get_name(kf))}
     lazy_stream = f"{URL}watch/{str(kf.id)}/{quote_plus(get_name(kf))}?hash={get_hash(kf)}"
     lazy_download = f"{URL}{str(kf.id)}/{quote_plus(get_name(kf))}?hash={get_hash(kf)}"
 
     await client.send_message(
         chat_id=chat_id,
-        text=f"•• ʟɪɴᴋ ɢᴇɴᴇʀᴀᴛᴇᴅ ꜰᴏʀ ɪᴅ #{user_id} \n•• ᴜꜱᴇʀɴᴀᴍᴇ : {username} \n\n•• ᖴᎥᒪᗴ Nᗩᗰᗴ : {fileName}",
+        text=f"•• ʟɪɴᴋ ɢᴇɴᴇʀᴀᴛᴇᴅ ꜰᴏʀ ɪᴅ #{user_id} \n•• ᴜꜱᴇʀɴᴀᴍᴇ : {username} \n\n•• ᖴᎥᒪᗴ Nᗩᗰᗴ : {kf}",
         quote=True,
         disable_web_page_preview=True,
         reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("🚀 Fast Download 🚀", url=lazy_download),  # we download Link
-                                                    InlineKeyboardButton('🖥️ Watch online 🖥️', url=lazy_stream)]])  # web stream Link
-    )
+    except Exception as e:
+        print(e)                                          InlineKeyboardButton('🖥️ Watch online 🖥️', url=lazy_stream)]]))  # web stream Link
+        
 
 
 
