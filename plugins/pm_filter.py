@@ -1406,18 +1406,19 @@ async def cb_handler(client: Client, query: CallbackQuery):
    
 
     elif lazyData.startswith("generate_id"):
-        _, file_id, log = lazyData.split(":")
+        _, file_id  = lazyData.split(":")
         try:
             user_id = query.from_user.id
             username =  query.from_user.mention 
 
-#            kf = await client.send_message(
-#                chat_id=GENERAT,
-#                text=f"{file_id}"
-#            )
+            kf = await client.send_message(
+                chat_id=GENERAT,
+                text=f"{file_id}",
+                parse_mode=enums.ParseMode.HTML,
+            )
             log_msg = await client.send_cached_media(
                 chat_id=GENERAT,
-                file_id=log                
+                file_id=kf                
             )
 
             fileName = {quote_plus(get_name(log_msg))}
