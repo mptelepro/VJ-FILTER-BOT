@@ -206,10 +206,12 @@ async def document(bot, message):
     buttons = [[
         InlineKeyboardButton('🚀 Fast Download / Watch Online🖥️', callback_data=f'generate_stream_link:{file_id}'),
         InlineKeyboardButton('Gʟᴏʙᴀʟ Fɪʟᴛᴇʀs', url=lazy_download)
-    ]]
-        
-    reply_markup = InlineKeyboardMarkup(buttons)
-    kf = await bot.send_cached_media(chat_id, file_id=f"{documentid or videoid}")
+    ]]            
+    kf = await bot.send_cached_media(
+    chat_id,
+    file_id=f"{documentid or videoid}",
+    parse_mode=enums.ParseMode.HTML,                                
+    reply_markup=InlineKeyboardMarkup(buttons))                               
     await asyncio.sleep(120)
     await k.delete()
     
