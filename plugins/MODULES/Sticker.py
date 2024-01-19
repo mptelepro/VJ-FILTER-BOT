@@ -1,7 +1,7 @@
 import imghdr, os
 from asyncio import gather
 from traceback import format_exc
-from pyrogram import filters, Client
+from pyrogram import filters, Client, enums
 from pyrogram.types import *
 from pyrogram.errors import *
 # from utils.files import *
@@ -203,6 +203,16 @@ async def document(bot, message):
     videoid= message.reply_to_message.text
     documentid= message.reply_to_message.text
     chat_id = message.chat.id
+    kf = await bot.send_cached_media(chat_id, file_id=f"{documentid or videoid}")
+    await asyncio.sleep(120)
+    await k.delete()
+    fileName = {quote_plus(get_name(log_msg))}
+    lazy_stream = f"{URL}watch/{str(log_msg.id)}/{quote_plus(get_name(log_msg))}?hash={get_hash(log_msg)}"
+    lazy_download = f"{URL}{str(log_msg.id)}/{quote_plus(get_name(log_msg))}?hash={get_hash(log_msg)}"
+
+    videoid= message.reply_to_message.text
+    documentid= message.reply_to_message.text
+    chat_id = message.chat.id
 #    await txt.delete()
     m = await message.reply_text("**♻ 𝙲𝚘𝚗𝚟𝚎𝚛𝚝 𝚈𝚘𝚞𝚛 𝙵𝚒𝚕𝚎. ♻**......\n\n[░░░░░░░░░░] 00%")
 #    await m.edit("**♻ 𝙲𝚘𝚗𝚟𝚎𝚛𝚝  𝙵𝚒𝚕𝚎... ♻**......\n\n[▇▇░░░░░░░░] 20%")
@@ -213,9 +223,19 @@ async def document(bot, message):
 #    await m.edit("**♻ 𝙲𝚘𝚗𝚟𝚎𝚛𝚝  𝙵𝚒𝚕𝚎... ♻**......\n\n[▇▇▇▇▇▇▇▇▇▇] 100%")
 #    await m.edit("📤Uploading....")
     await m.edit("📤Uploading.....")
-    k = await bot.send_cached_media(chat_id, file_id=f"{documentid or videoid}")
-    await asyncio.sleep(120)
-    await k.delete()
+    buttons = [[
+        InlineKeyboardButton('⟸ Bᴀᴄᴋ', url=lazy_download),
+        InlineKeyboardButton('Gʟᴏʙᴀʟ Fɪʟᴛᴇʀs', url=lazy_download)
+    ]]
+        
+    reply_markup = InlineKeyboardMarkup(buttons)
+    await kf.reply_text(
+        text=f"•• ʟɪɴᴋ ɢᴇɴᴇʀᴀᴛᴇᴅ ꜰᴏʀ ɪᴅ #{user_id} \n•• ᴜꜱᴇʀɴᴀᴍᴇ : {username} \n\n•• ᖴᎥᒪᗴ Nᗩᗰᗴ : {fileName}",
+        quote=True,
+        disable_web_page_preview=True,
+        reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("🚀 Fast Download 🚀", url=lazy_download),  # we download Link
+                                                    InlineKeyboardButton('🖥️ Watch online 🖥️', url=lazy_stream)]])  # web stream Link
+    )
 
 
 
