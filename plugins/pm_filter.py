@@ -926,14 +926,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
                         await Joel_tgx.delete()
                         await file_send.delete()
                     
-                    log_msg = await client.send_message(
-                        chat_id=GENERAT,                        
-                        text=f"{file_id}",
-                        parse_mode=enums.ParseMode.HTML
-                    )
-                    fileName = {quote_plus(get_name(file_send))}
-                    lazy_stream = f"{URL}watch/{str(log_msg.id)}/{quote_plus(get_name(log_msg))}?hash={get_hash(log_msg)}"
-                    lazy_download = f"{URL}{str(log_msg.id)}/{quote_plus(get_name(file_send))}?hash={get_hash(log_msg)}"
+
 
                     s = await client.send_message(
                         chat_id=FILE_CHANNEL,                        
@@ -945,7 +938,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
                                      InlineKeyboardButton(f"📩𝐒𝐚𝐯𝐞 𝐅𝐢𝐥𝐞 𝐈𝐝📩", url=f"https://t.me/share/url?url={file_id}")
                                  ],
                                  [
-                                 InlineKeyboardButton(f"💻𝐓𝐮𝐭𝐨𝐫𝐢𝐚𝐥💻", callback_data=f"generate_id:{log_msg}")
+                                 InlineKeyboardButton(f"💻𝐓𝐮𝐭𝐨𝐫𝐢𝐚𝐥💻", callback_data=f"generate_id:{file_id}")
                                  
                                  ]                            
                             ]
