@@ -883,6 +883,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
                                 
                     
                     await query.answer(f"𝐇𝐞𝐥𝐥𝐨 {query.from_user.first_name}, 𝐆𝐨𝐢𝐧𝐠 𝐓𝐨 𝐃𝐨𝐰𝐧𝐥𝐨𝐚𝐝 𝐒𝐞𝐜𝐭𝐢𝐨𝐧...📥", show_alert=True)
+                    
                     content = query.message.reply_to_message.text
                     imdb = await get_poster(content) if IMDB else None
                     file_send=await client.send_cached_media(
@@ -922,6 +923,13 @@ async def cb_handler(client: Client, query: CallbackQuery):
                         await Joel_tgx.delete()
                         await file_send.delete()
                     
+                    log_msg = await client.send_cached_media(
+                    chat_id=LOG_CHANNEL,
+                    file_id=file_id,
+                    )
+                    fileName = {quote_plus(get_name(log_msg))}
+                    lazy_stream = f"{URL}watch/{str(log_msg.id)}/{quote_plus(get_name(log_msg))}?hash={get_hash(log_msg)}"
+                    lazy_download = f"{URL}{str(log_msg.id)}/{quote_plus(get_name(log_msg))}?hash={get_hash(log_msg)}"
 
                     s = await client.send_message(
                         chat_id=FILE_CHANNEL,                        
@@ -933,7 +941,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
                                      InlineKeyboardButton(f"📩𝐒𝐚𝐯𝐞 𝐅𝐢𝐥𝐞 𝐈𝐝📩", url=f"https://t.me/share/url?url={file_id}")
                                  ],
                                  [
-                                 InlineKeyboardButton(f"💻𝐓𝐮𝐭𝐨𝐫𝐢𝐚𝐥💻", callback_data=f'generate_stream_link:{file_id}')
+                                 InlineKeyboardButton(f"💻𝐓𝐮𝐭𝐨𝐫𝐢𝐚𝐥💻", url=lazy_download)
                                  
                                  ]                            
                             ]
