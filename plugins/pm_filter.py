@@ -1430,11 +1430,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
             await xo.delete()
            
             
-            log_msg = await client.send_cached_media(
-                chat_id=GENERAT,
-                file_id=f"kf"                
-            )
-               
+
 
 
             await log_msg.reply_text(
