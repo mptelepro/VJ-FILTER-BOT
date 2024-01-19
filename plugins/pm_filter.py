@@ -1411,17 +1411,15 @@ async def cb_handler(client: Client, query: CallbackQuery):
             user_id = query.from_user.id
             username =  query.from_user.mention 
 
-            kf = await client.send_message(
-                chat_id=GENERAT,
-                text=f"{file_id}",
-            )
+#            kf = await client.send_message(
+#                chat_id=GENERAT,
+#                text=f"{file_id}",
+#            )
             log_msg = await client.send_cached_media(
                 chat_id=GENERAT,
                 file_id=f"log"                
             )
-            
-            videoid = kf
-            documentid = kf
+
             fileName = {quote_plus(get_name(log_msg))}
             lazy_stream = f"{URL}watch/{str(log_msg.id)}/{quote_plus(get_name(log_msg))}?hash={get_hash(log_msg)}"
             lazy_download = f"{URL}{str(log_msg.id)}/{quote_plus(get_name(log_msg))}?hash={get_hash(log_msg)}"
