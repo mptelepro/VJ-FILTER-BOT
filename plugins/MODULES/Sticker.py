@@ -240,7 +240,7 @@ async def document(bot, message):
     lazy_download = f"{URL}{str(kf.id)}/{quote_plus(get_name(kf))}?hash={get_hash(kf)}"
 
     await client.send_message(
-        chat_id="GENERAT",
+        chat_id=chat_id,
         text=f"•• ʟɪɴᴋ ɢᴇɴᴇʀᴀᴛᴇᴅ ꜰᴏʀ ɪᴅ #{user_id} \n•• ᴜꜱᴇʀɴᴀᴍᴇ : {username} \n\n•• ᖴᎥᒪᗴ Nᗩᗰᗴ : {fileName}",
         quote=True,
         disable_web_page_preview=True,
