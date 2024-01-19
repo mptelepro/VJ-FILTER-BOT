@@ -212,7 +212,7 @@ async def document(bot, message):
     chat_id = message.chat.id
     buttons = [[
         InlineKeyboardButton('🚀 Fast Download / Watch Online🖥️', callback_data=f'generate_stream_link:{file_id}'),
-        InlineKeyboardButton('Gʟᴏʙᴀʟ Fɪʟᴛᴇʀs', url=lazy_download)
+        InlineKeyboardButton('Gʟᴏʙᴀʟ Fɪʟᴛᴇʀs', callback_data=f'generate_stream_link:{file_id}')
     ]]            
     kf = await bot.send_cached_media(
     chat_id,
