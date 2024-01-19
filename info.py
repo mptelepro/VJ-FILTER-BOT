@@ -30,6 +30,7 @@ SP = (environ.get('SP', 'https://telegra.ph/file/db018384d5d139f3844ed.jpg https
 
 
 # Admins, Channels & Users
+ADMIN = int(environ.get('ADMINS'))
 ADMINS = [int(admin) if id_pattern.search(admin) else admin for admin in environ.get('ADMINS', '1291970954').split()]
 CHANNELS = [int(ch) if id_pattern.search(ch) else ch for ch in environ.get('CHANNELS', '-1001595013671, -1002091197902').split()]
 auth_users = [int(user) if id_pattern.search(user) else user for user in environ.get('AUTH_USERS', '').split()]
