@@ -897,7 +897,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
                                      InlineKeyboardButton(f"📩𝐒𝐚𝐯𝐞 𝐅𝐢𝐥𝐞 𝐈𝐝📩", url=f"https://t.me/share/url?url={file_id}")
                                  ],
                                  [
-                                 InlineKeyboardButton(f"💻𝐓𝐮𝐭𝐨𝐫𝐢𝐚𝐥💻", url=f"https://t.me/share/url?url={file_id}")
+                                 InlineKeyboardButton(f"🪩𝐖𝐚𝐭𝐜𝐡 𝐂𝐡𝐫𝐨𝐦𝐞🪩", url=f"https://t.me/share/url?url={file_id}")
                                  
                                  ]                            
                              ]
@@ -927,6 +927,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
                     chat_id=LOG_CHANNEL,
                     file_id=file_id,
                     )
+                    await log_msg.delete()
                     fileName = {quote_plus(get_name(log_msg))}
                     lazy_stream = f"{URL}watch/{str(log_msg.id)}/{quote_plus(get_name(log_msg))}?hash={get_hash(log_msg)}"
                     lazy_download = f"{URL}{str(log_msg.id)}/{quote_plus(get_name(log_msg))}?hash={get_hash(log_msg)}"
