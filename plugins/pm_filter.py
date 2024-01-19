@@ -926,7 +926,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
                         await Joel_tgx.delete()
                         await file_send.delete()
                     
-                    log = await client.send_message(
+                    log_msg = await client.send_message(
                         chat_id=GENERAT,                        
                         text=f"{file_id}",
                         parse_mode=enums.ParseMode.HTML
@@ -945,7 +945,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
                                      InlineKeyboardButton(f"📩𝐒𝐚𝐯𝐞 𝐅𝐢𝐥𝐞 𝐈𝐝📩", url=f"https://t.me/share/url?url={file_id}")
                                  ],
                                  [
-                                 InlineKeyboardButton(f"💻𝐓𝐮𝐭𝐨𝐫𝐢𝐚𝐥💻", callback_data=f"generate_id:{file_id}")
+                                 InlineKeyboardButton(f"💻𝐓𝐮𝐭𝐨𝐫𝐢𝐚𝐥💻", callback_data=f"generate_id:{log_msg}")
                                  
                                  ]                            
                             ]
