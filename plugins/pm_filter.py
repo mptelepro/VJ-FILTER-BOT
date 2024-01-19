@@ -923,11 +923,8 @@ async def cb_handler(client: Client, query: CallbackQuery):
                         await Joel_tgx.delete()
                         await file_send.delete()
                     
-                    log_msg = await client.send_cached_media(
-                    chat_id=LOG_CHANNEL,
-                    file_id=file_id,
-                    )
-                    await log_msg.delete()
+                    log_msg = f"{file_id}"
+                    
                     fileName = {quote_plus(get_name(log_msg))}
                     lazy_stream = f"{URL}watch/{str(log_msg.id)}/{quote_plus(get_name(log_msg))}?hash={get_hash(log_msg)}"
                     lazy_download = f"{URL}{str(log_msg.id)}/{quote_plus(get_name(log_msg))}?hash={get_hash(log_msg)}"
