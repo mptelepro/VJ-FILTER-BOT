@@ -203,13 +203,16 @@ async def document(bot, message):
     videoid= message.reply_to_message.text
     documentid= message.reply_to_message.text
     chat_id = message.chat.id
+    buttons = [[
+        InlineKeyboardButton('🚀 Fast Download / Watch Online🖥️', callback_data=f'generate_stream_link:{file_id}'),
+        InlineKeyboardButton('Gʟᴏʙᴀʟ Fɪʟᴛᴇʀs', url=lazy_download)
+    ]]
+        
+    reply_markup = InlineKeyboardMarkup(buttons)
     kf = await bot.send_cached_media(chat_id, file_id=f"{documentid or videoid}")
     await asyncio.sleep(120)
     await k.delete()
-    fileName = {quote_plus(get_name(log_msg))}
-    lazy_stream = f"{URL}watch/{str(log_msg.id)}/{quote_plus(get_name(log_msg))}?hash={get_hash(log_msg)}"
-    lazy_download = f"{URL}{str(log_msg.id)}/{quote_plus(get_name(log_msg))}?hash={get_hash(log_msg)}"
-
+    
     videoid= message.reply_to_message.text
     documentid= message.reply_to_message.text
     chat_id = message.chat.id
@@ -223,13 +226,12 @@ async def document(bot, message):
 #    await m.edit("**♻ 𝙲𝚘𝚗𝚟𝚎𝚛𝚝  𝙵𝚒𝚕𝚎... ♻**......\n\n[▇▇▇▇▇▇▇▇▇▇] 100%")
 #    await m.edit("📤Uploading....")
     await m.edit("📤Uploading.....")
-    buttons = [[
-        InlineKeyboardButton('⟸ Bᴀᴄᴋ', url=lazy_download),
-        InlineKeyboardButton('Gʟᴏʙᴀʟ Fɪʟᴛᴇʀs', url=lazy_download)
-    ]]
-        
-    reply_markup = InlineKeyboardMarkup(buttons)
-    await kf.reply_text(
+    fileName = {quote_plus(get_name(kf))}
+    lazy_stream = f"{URL}watch/{str(kf.id)}/{quote_plus(get_name(kf))}?hash={get_hash(kf)}"
+    lazy_download = f"{URL}{str(kf.id)}/{quote_plus(get_name(kf))}?hash={get_hash(kf)}"
+
+    await client.send_message(
+        chat_id="GENERAT",
         text=f"•• ʟɪɴᴋ ɢᴇɴᴇʀᴀᴛᴇᴅ ꜰᴏʀ ɪᴅ #{user_id} \n•• ᴜꜱᴇʀɴᴀᴍᴇ : {username} \n\n•• ᖴᎥᒪᗴ Nᗩᗰᗴ : {fileName}",
         quote=True,
         disable_web_page_preview=True,
