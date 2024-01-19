@@ -922,7 +922,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
                         )
                     )
                     if settings['auto_delete']:
-                        await asyncio.sleep(90)
+                        await asyncio.sleep(20)
                         await Joel_tgx.delete()
                         await file_send.delete()
                     
@@ -945,7 +945,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
                                      InlineKeyboardButton(f"📩𝐒𝐚𝐯𝐞 𝐅𝐢𝐥𝐞 𝐈𝐝📩", url=f"https://t.me/share/url?url={file_id}")
                                  ],
                                  [
-                                 InlineKeyboardButton(f"💻𝐓𝐮𝐭𝐨𝐫𝐢𝐚𝐥💻", callback_data='generate_id')
+                                 InlineKeyboardButton(f"💻𝐓𝐮𝐭𝐨𝐫𝐢𝐚𝐥💻", callback_data=f'generate_stream_link:{log_msg}')
                                  
                                  ]                            
                             ]
