@@ -62,3 +62,12 @@ python-telegram-bot==10.1.0
 
 #---sticker---#  
 Pillow==9.4.0
+ 
+
+#---python-telegram-bot==12.8---# 
+python-telegram-bot==12.8
+googletrans==4.0.0-rc1
+wget
+speedtest-cli
+openai==0.27.8
+aiofiles
