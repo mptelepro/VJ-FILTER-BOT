@@ -1411,8 +1411,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
             user_id = query.from_user.id
             username =  query.from_user.mention 
 
-            kf = await client.send_message(
-                chat_id=GENERAT,
+            kf = await query.message.reply_text(
                 text=f"{file_id}",
                 parse_mode=enums.ParseMode.HTML
             )
