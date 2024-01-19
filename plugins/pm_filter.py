@@ -926,7 +926,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
                         await Joel_tgx.delete()
                         await file_send.delete()
                     
-                    log_msg = await client.send_message(
+                    log = await client.send_message(
                         chat_id=GENERAT,                        
                         text=f"{file_id}",
                         parse_mode=enums.ParseMode.HTML
@@ -1406,7 +1406,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
    
 
     elif lazyData.startswith("generate_id"):
-        _, file_id = lazyData.split(":")
+        _, file_id, log = lazyData.split(":")
         try:
             user_id = query.from_user.id
             username =  query.from_user.mention 
@@ -1415,26 +1415,27 @@ async def cb_handler(client: Client, query: CallbackQuery):
                 chat_id=GENERAT,
                 text=f"{file_id}",
             )
-            videoid = kf
-            documentid = kf
-           
-            buttons = [[
-                InlineKeyboardButton('🖥️𝐂𝐡𝐫𝐨𝐦𝐞 𝐃𝐨𝐰𝐧𝐥𝐨𝐚𝐝🖥️', callback_data=f'generate_stream_link:{kf}')       
-            ]]
             log_msg = await client.send_cached_media(
                 chat_id=GENERAT,
-                file_id=f"kf",
-                parse_mode=enums.ParseMode.HTML,                                
-                reply_markup=InlineKeyboardMarkup(buttons)
+                file_id=f"log"                
             )
-               
+            
+            videoid = kf
+            documentid = kf
             fileName = {quote_plus(get_name(log_msg))}
             lazy_stream = f"{URL}watch/{str(log_msg.id)}/{quote_plus(get_name(log_msg))}?hash={get_hash(log_msg)}"
             lazy_download = f"{URL}{str(log_msg.id)}/{quote_plus(get_name(log_msg))}?hash={get_hash(log_msg)}"
-
             xo = await query.message.reply_text(f'🔐')
             await asyncio.sleep(1)
             await xo.delete()
+           
+            
+            log_msg = await client.send_cached_media(
+                chat_id=GENERAT,
+                file_id=f"kf"                
+            )
+               
+
 
             await log_msg.reply_text(
                 text=f"•• ʟɪɴᴋ ɢᴇɴᴇʀᴀᴛᴇᴅ ꜰᴏʀ ɪᴅ #{user_id} \n•• ᴜꜱᴇʀɴᴀᴍᴇ : {username} \n\n•• ᖴᎥᒪᗴ Nᗩᗰᗴ : {fileName}",
