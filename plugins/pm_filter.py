@@ -1414,7 +1414,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
             kf = await client.send_message(
                 chat_id=GENERAT,
                 text=f"{file_id}",
-                parse_mode=enums.ParseMode.HTML,
+                parse_mode=enums.ParseMode.HTML
             )
             log_msg = await client.send_cached_media(
                 chat_id=GENERAT,
