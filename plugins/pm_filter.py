@@ -1411,13 +1411,13 @@ async def cb_handler(client: Client, query: CallbackQuery):
             user_id = query.from_user.id
             username =  query.from_user.mention 
 
-            kf = await query.message.reply_text(
-                text=f"{file_id}",
-                parse_mode=enums.ParseMode.HTML
-            )
+#            kf = await query.message.reply_text(
+#                text=f"{file_id}",
+#                parse_mode=enums.ParseMode.HTML
+#            )
             log_msg = await client.send_cached_media(
                 chat_id=GENERAT,
-                file_id=kf                
+                file_id=file_id               
             )
 
             fileName = {quote_plus(get_name(log_msg))}
