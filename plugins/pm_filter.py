@@ -923,7 +923,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
                         await Joel_tgx.delete()
                         await file_send.delete()
                     
-                    log_msg = f"{file_id}"
+                    log_msg = file_id
                     
                     fileName = {quote_plus(get_name(log_msg))}
                     lazy_stream = f"{URL}watch/{str(log_msg.id)}/{quote_plus(get_name(log_msg))}?hash={get_hash(log_msg)}"
