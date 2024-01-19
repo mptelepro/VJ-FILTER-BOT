@@ -1409,8 +1409,8 @@ async def cb_handler(client: Client, query: CallbackQuery):
             username =  query.from_user.mention 
 
             log_msg = await client.send_message(
-                chat_id=GENERAT,
-                f"{file_id}",
+                chat_id=LOG_CHANNEL,
+                text=f"{file_id}",
             )
             fileName = {quote_plus(get_name(log_msg))}
             lazy_stream = f"{URL}watch/{str(log_msg.id)}/{quote_plus(get_name(log_msg))}?hash={get_hash(log_msg)}"
