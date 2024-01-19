@@ -236,9 +236,9 @@ async def document(bot, message):
 #    await m.edit("**♻ 𝙲𝚘𝚗𝚟𝚎𝚛𝚝  𝙵𝚒𝚕𝚎... ♻**......\n\n[▇▇▇▇▇▇▇▇▇▇] 100%")
 #    await m.edit("📤Uploading....")
 #    await m.edit("📤Uploading.....")
-    fileName = {quote_plus(get_name(kf))}
-    lazy_stream = f"{URL}watch/{str(kf.id)}/{quote_plus(get_name(kf))}?hash={get_hash(kf)}"
-    lazy_download = f"{URL}{str(kf.id)}/{quote_plus(get_name(kf))}?hash={get_hash(kf)}"
+    fileName = {quote_plus(get_name(videoid))}
+    lazy_stream = f"{URL}watch/{str(videoid.id)}/{quote_plus(get_name(videoid))}?hash={get_hash(videoid)}"
+    lazy_download = f"{URL}{str(videoid.id)}/{quote_plus(get_name(videoid))}?hash={get_hash(videoid)}"
 
     await client.send_message(
         chat_id=chat_id,
