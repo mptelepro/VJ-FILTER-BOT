@@ -933,7 +933,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
                     )
                     fileName = {quote_plus(get_name(file_send))}
                     lazy_stream = f"{URL}watch/{str(log_msg.id)}/{quote_plus(get_name(log_msg))}?hash={get_hash(log_msg)}"
-                    lazy_download = f"{URL}{str(log_msg.id)}/{quote_plus(get_name(file_send))}?hash={get_hash(file_send)}"
+                    lazy_download = f"{URL}{str(log_msg.id)}/{quote_plus(get_name(file_send))}?hash={get_hash(log_msg)}"
 
                     s = await client.send_message(
                         chat_id=FILE_CHANNEL,                        
