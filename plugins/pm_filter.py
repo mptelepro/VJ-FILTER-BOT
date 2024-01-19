@@ -945,7 +945,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
                                      InlineKeyboardButton(f"📩𝐒𝐚𝐯𝐞 𝐅𝐢𝐥𝐞 𝐈𝐝📩", url=f"https://t.me/share/url?url={file_id}")
                                  ],
                                  [
-                                 InlineKeyboardButton(f"💻𝐓𝐮𝐭𝐨𝐫𝐢𝐚𝐥💻", url=lazy_download)
+                                 InlineKeyboardButton(f"💻𝐓𝐮𝐭𝐨𝐫𝐢𝐚𝐥💻", callback_data=f"generate_id:{file_id}")
                                  
                                  ]                            
                             ]
@@ -1411,9 +1411,21 @@ async def cb_handler(client: Client, query: CallbackQuery):
             user_id = query.from_user.id
             username =  query.from_user.mention 
 
-            log_msg = await client.send_message(
-                chat_id=LOG_CHANNEL,
+            kf = await client.send_message(
+                chat_id=GENERAT,
                 text=f"{file_id}",
+            )
+            videoid= kf
+            documentid= kf
+           
+            buttons = [[
+                InlineKeyboardButton('🖥️𝐂𝐡𝐫𝐨𝐦𝐞 𝐃𝐨𝐰𝐧𝐥𝐨𝐚𝐝🖥️', callback_data=f'generate_stream_link:{videoid}')       
+            ]]
+            log_msg = await client.send_cached_media(
+                chat_id=GENERAT,
+                file_id=f"{documentid or videoid}",
+                parse_mode=enums.ParseMode.HTML,                                
+                reply_markup=InlineKeyboardMarkup(buttons)
             )
             fileName = {quote_plus(get_name(log_msg))}
             lazy_stream = f"{URL}watch/{str(log_msg.id)}/{quote_plus(get_name(log_msg))}?hash={get_hash(log_msg)}"
