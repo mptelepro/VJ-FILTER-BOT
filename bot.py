@@ -44,6 +44,18 @@ from lazybot import LazyPrincessBot
 from util.keepalive import ping_server
 from lazybot.clients import initialize_clients
 
+# rename thumbnail
+
+from plugins.helpers.config import *
+import os
+
+class Bot(Client):
+    if not os.path.isdir(DOWNLOAD_LOCATION):
+        os.makedirs(DOWNLOAD_LOCATION)
+# rename thumbnail
+
+
+
 
 ppath = "plugins/*.py"
 files = glob.glob(ppath)
