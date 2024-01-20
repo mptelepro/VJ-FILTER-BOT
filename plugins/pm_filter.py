@@ -1350,6 +1350,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
                 parse_mode=enums.ParseMode.HTML
             )
             
+           
             buttons = [[
                 InlineKeyboardButton("🚫𝐂𝐨𝐦𝐢𝐧𝐠 𝐒𝐨𝐨𝐧...🚫", url = "https://t.me/batchfiles_store")
             ], [
@@ -1384,6 +1385,8 @@ async def cb_handler(client: Client, query: CallbackQuery):
             sticker=sticker,            
             reply_markup=reply_markup                       
             )
+            await k.delete()
+           
             os.remove(sticker)
             os.remove(image)
             
