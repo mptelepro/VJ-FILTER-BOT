@@ -11,7 +11,7 @@ async def send_message_in_chunks(client, chat_id, text):
     for i in range(0, len(text), max_length):
         await client.send_message(chat_id, text[i:i+max_length])
 
-@Client.on_message(filters.command('ai'))
+@Client.on_message(filters.chat(-1001203428484) & filters.command('openai'))
 async def ai_answer(client, message):
     if AI == True: 
         user_id = message.from_user.id
@@ -29,7 +29,7 @@ async def ai_answer(client, message):
                     max_tokens=1200,  # Increase the value of max_tokens to allow for longer responses
                     temperature=0.6
                 )
-                footer_credit = "<b><a href='https://t.me/vj_bot_disscussion'>• ʀᴇᴘᴏʀᴛ ɪꜱꜱᴜᴇ •</a>══<a href='https://t.me/kingvj01'>• ᴄᴏɴᴛᴀᴄᴛ ᴍᴀꜱᴛᴇʀ •</a></b>"
+                footer_credit = "<b><a href='https://t.me/NASRANI_SUPPORT'>• ʀᴇᴘᴏʀᴛ ɪꜱꜱᴜᴇ •</a>══<a href='https://t.me/kinzanoufal'>• ᴄᴏɴᴛᴀᴄᴛ ᴍᴀꜱᴛᴇʀ •</a></b>"
                 ai_response = response.choices[0].message.content.strip()
                 await msg.delete()
                 await send_message_in_chunks(client, message.chat.id, f"**ʜᴇʀᴇ ɪs ʏᴏᴜʀ ᴀɴsᴡᴇʀ ʀᴇʟᴀᴛᴇᴅ ᴛᴏ ʏᴏᴜʀ ǫᴜᴇʀʏ** 👇\n\n{ai_response}\n\n{footer_credit}")
