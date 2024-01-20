@@ -1364,8 +1364,9 @@ async def cb_handler(client: Client, query: CallbackQuery):
                 parse_mode=enums.ParseMode.HTML,
                 reply_to_message_id=query.message.id
             )
+            name_format = f"okda"
             image = await m.download(file_name=f"{name_format}.jpg")
-                    
+                     
             im = Image.open(image).convert("RGB")
             im.save(f"{name_format}.webp", "webp")
             sticker = f"{name_format}.webp"
