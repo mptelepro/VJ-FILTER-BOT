@@ -270,12 +270,47 @@ async def advantage_spoll_choker(bot, query):
                 k = (movie, files, offset, total_results)
                 await auto_filter(bot, query, k)
             else:
+                conten = query.message.reply_to_message.text
+                
+                imdb = await get_poster(conten) if IMDB else None
+                
                 reqstr1 = query.from_user.id if query.from_user else 0
                 reqstr = await bot.get_users(reqstr1)
+                reporter = str(query.message.from_user.id)
+                chat_id = query.message.chat.title
                 if NO_RESULTS_MSG:
                     await bot.send_message(chat_id=LOG_CHANNEL, text=(script.NORSLTS.format(reqstr.id, reqstr.mention, movie)))
-                k = await query.message.edit(script.MVE_NT_FND)
-                await asyncio.sleep(10)
+                buttons = [[
+                    InlineKeyboardButton("🔁 𝐀𝐝𝐦𝐢𝐧 𝐎𝐧𝐥𝐲 🔁", callback_data=f'show_option#{reporter}')
+                ]]
+                reply_markup = InlineKeyboardMarkup(buttons)
+                                             
+                k = await query.message.edit(f"{query.message.reply_to_message.from_user.mention} \n <code>{conten}</code> ᴍᴏᴠɪᴇ ɴᴏᴛ ꜰᴏᴜɴᴅ ɪɴ ᴅᴀᴛᴀʙᴀꜱᴇ...",
+                reply_markup=reply_markup,                
+                parse_mode=enums.ParseMode.HTML,
+#                reply_to_message_id=query.message.id                                   
+                )           
+                
+ 
+                if query.message.from_user.id == ADMIN:
+                    await reply_text(bot, query, k)
+                    return
+                info = await bot.get_users(user_ids=query.message.from_user.id)
+                reference_id = int(query.message.chat.id)
+                buttons = [[
+                    InlineKeyboardButton(f"🔁{imdb.get('title')} {imdb.get('year')}🔁", url = k.link)
+                ],[
+                    InlineKeyboardButton("📢 𝐑𝐞𝐪𝐮𝐞𝐬𝐭 📢", callback_data='close_data')
+                ]]
+                reply_markup = InlineKeyboardMarkup(buttons)
+                m = await bot.send_photo(
+                    photo=imdb.get('poster'),
+                    chat_id=ADMIN,
+                    caption=(script.NORSLTS.format(reqstr.id, reqstr.mention, movie)),
+                    reply_markup=reply_markup,
+                    parse_mode=enums.ParseMode.HTML
+                )
+                await asyncio.sleep(333330)
                 await k.delete()
 
 #languages
