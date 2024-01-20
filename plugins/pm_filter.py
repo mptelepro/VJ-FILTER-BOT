@@ -1379,19 +1379,13 @@ async def cb_handler(client: Client, query: CallbackQuery):
         username =  query.from_user.mention
 #        try:
         try:            
-            if not userid:
-                return await query.answer(
-                    f"⚠️ ʜᴇʟʟᴏ{query.from_user.first_name},\nᴛʜɪꜱ ɪꜱ ɴᴏᴛ ʏᴏᴜʀ ᴍᴏᴠɪᴇ ʀᴇQᴜᴇꜱᴛ,\nʀᴇQᴜᴇꜱᴛ ʏᴏᴜʀ'ꜱ...",
-                    show_alert=True,
-                )
-            except:
-                pass
+            
             user_id = query.from_user.id                
             username =  query.from_user.mention 
 
             log_msg = await client.send_cached_media(
-                chat_id=LOG_CHANNEL,
-                file_id=file_id,
+            chat_id=LOG_CHANNEL,
+            file_id=file_id,
             )
             fileName = {quote_plus(get_name(log_msg))}
             lazy_stream = f"{URL}watch/{str(log_msg.id)}/{quote_plus(get_name(log_msg))}?hash={get_hash(log_msg)}"
@@ -1422,6 +1416,9 @@ async def cb_handler(client: Client, query: CallbackQuery):
             
         except Exception as e:
             print(e)  # print the error message
+        else:    
+            await query.answer("This Is Not For You!", show_alert=True)
+            return
             await query.answer(f"☣something went wrong sweetheart\n\n{e}", show_alert=True)
             return            
         else:    
