@@ -1375,10 +1375,11 @@ async def cb_handler(client: Client, query: CallbackQuery):
 
     elif lazyData.startswith("generate_stream_link"):
         _, file_id = lazyData.split(":")
-        userid = query.message.reply_to_message.from_user.id
-        
+        useridd = query.from_user.id if query.from_user else None
+        user_id = query.from_user.id
+        username =  query.from_user.mention
 #        try:
-        if int(userid) not in [query.from_user.id, 0]:
+        if int(useridd) not in [query.from_user.id, 0]:
             return
             await query.answer("This Is Not For You!", show_alert=True)
             try:
