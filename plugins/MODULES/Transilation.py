@@ -38,7 +38,7 @@ for language in LANGUAGES:
 
 
 
-@Client.on_message(filters.command(["mll"]) & (filters.text | filters.caption))
+@Client.on_message(filters.command(["ml"]) & (filters.text | filters.caption))
 async def get_message(_, message):
     
     text = message.reply_to_message.text
