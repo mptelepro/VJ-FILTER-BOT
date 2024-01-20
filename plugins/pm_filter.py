@@ -1395,7 +1395,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
             await asyncio.sleep(1)
             await xo.delete()
    
-            await log_msg.reply_text(
+            hm = await log_msg.reply_text(
                 text=f"•• ʟɪɴᴋ ɢᴇɴᴇʀᴀᴛᴇᴅ ꜰᴏʀ ɪᴅ #{user_id} \n•• ᴜꜱᴇʀɴᴀᴍᴇ : {username} \n\n•• ᖴᎥᒪᗴ Nᗩᗰᗴ : {fileName}",
                 quote=True,
                 disable_web_page_preview=True,
@@ -1403,7 +1403,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
                                                     ],[ # we download Link
                                                     InlineKeyboardButton('🖥️ Watch online 🖥️', url=lazy_stream)]])  # web stream Link
             )
-            await query.message.reply_text(
+            k = await query.message.reply_text(
                 text="•• ʟɪɴᴋ ɢᴇɴᴇʀᴀᴛᴇᴅ ☠︎⚔",
                 quote=True,
                 disable_web_page_preview=True,
@@ -1411,6 +1411,9 @@ async def cb_handler(client: Client, query: CallbackQuery):
                                                     ],[
                                                     InlineKeyboardButton('🖥️ Watch online 🖥️', url=lazy_stream)]])  # web stream Link
             )
+            await asyncio.sleep(90)
+            await hm.delete()
+            await k.delete()
 
 
             
