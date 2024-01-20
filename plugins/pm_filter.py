@@ -1417,7 +1417,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
                                                 ],[
                                                 InlineKeyboardButton('🖥️ Watch online 🖥️', url=lazy_stream)]])  # web stream Link
         )
-
+    
 
             
 #        except Exception as e:
