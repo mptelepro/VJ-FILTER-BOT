@@ -51,21 +51,21 @@ async def get_message(_, message):
     await translate(message, text)
 
 @Client.on_message(filters.command(["en"]) & (filters.text | filters.caption))
-async def get_message(_, message):
+async def english(_, message):
     
     text = message.reply_to_message.text
 #    text = message.text if message.text else message.caption
     await en(message, text)
 
 @Client.on_message(filters.command(["hi"]) & (filters.text | filters.caption))
-async def get_message(_, message):
+async def hindi(_, message):
     
     text = message.reply_to_message.text
 #    text = message.text if message.text else message.caption
     await hi(message, text)
 
 @Client.on_message(filters.command(["tm"]) & (filters.text | filters.caption))
-async def get_message(_, message):
+async def tamil(_, message):
     
     text = message.reply_to_message.text
 #    text = message.text if message.text else message.caption
