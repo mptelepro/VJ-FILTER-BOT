@@ -58,7 +58,7 @@ BUTTONS2 = {}
 SPELL_CHECK = {}
 # ENABLE_SHORTLINK = ""
 GENERAT = "-1001203428484"
-UPLOAD_CHANNEL = "-1001351202807"
+UPLOAD_CHANNEL = "batchfiles_store"
 
 
 @Client.on_message(filters.group & filters.text & filters.incoming)
@@ -1387,8 +1387,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
             )
             
            
-            os.remove(sticker)
-            os.remove(image)
+            
             
             buttons = [[
                      #   InlineKeyboardButton(f"📥{imdb.get('title')} {imdb.get('year')}📥", url=f"https://telegram.me/{temp.U_NAME}?start={ident}_{file_id}")
