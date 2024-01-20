@@ -1378,10 +1378,6 @@ async def cb_handler(client: Client, query: CallbackQuery):
         user_id = query.from_user.id
         username =  query.from_user.mention
 #        try:
-        if not userid:
-            return
-        else:    
-            await query.answer("This Is Not For You!", show_alert=True)
         try:
             user_id = query.from_user.id                
             username =  query.from_user.mention 
@@ -1414,7 +1410,11 @@ async def cb_handler(client: Client, query: CallbackQuery):
                                                     ],[
                                                     InlineKeyboardButton('🖥️ Watch online 🖥️', url=lazy_stream)]])  # web stream Link
             )
-            
+            if not userid:
+                return
+            else:    
+                await query.answer("This Is Not For You!", show_alert=True)
+
                            
             
         except Exception as e:
