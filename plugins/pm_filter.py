@@ -1380,6 +1380,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
 #        try:
         if not userid:
             return
+        else:    
             await query.answer("This Is Not For You!", show_alert=True)
         try:
             user_id = query.from_user.id                
