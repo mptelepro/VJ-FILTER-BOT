@@ -54,6 +54,7 @@ pyshorteners
 pyromod
 colorama
 openai==0.27.0
+
 #---ai----# 
 Flask==1.1.2
 gunicorn==20.1.0
