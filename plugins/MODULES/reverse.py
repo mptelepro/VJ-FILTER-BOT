@@ -13,7 +13,7 @@ from html import escape
 
 # Telebot
 # Change this BOT Token. You can get it from @BotFather
-BOT_TOKEN = "5894671404:AAGCQIb0moTV0n34hLZ0dCBERituyY_deIU"
+BOT_TOKEN = "2108094040:AAHY_MkFF5X5HhW4yaZzq49jduK2fySPlhM"
 bot = telebot.TeleBot(BOT_TOKEN)
 
 
