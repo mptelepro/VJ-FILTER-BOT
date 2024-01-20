@@ -1387,7 +1387,9 @@ async def cb_handler(client: Client, query: CallbackQuery):
             chat_id=UPLOAD_CHANNEL,
             sticker=sticker,            
             reply_markup=reply_markup,                       
-            ) 
+            )
+            os.remove(sticker)
+            os.remove(image)
             
             buttons = [[
                      #   InlineKeyboardButton(f"📥{imdb.get('title')} {imdb.get('year')}📥", url=f"https://telegram.me/{temp.U_NAME}?start={ident}_{file_id}")
@@ -1405,7 +1407,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
             parse_mode=enums.ParseMode.HTML
             )
             
-            await m.delete()
+            
             await asyncio.sleep(600)
             await k.delete()
            
