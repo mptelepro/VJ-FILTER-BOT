@@ -899,7 +899,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
                                      InlineKeyboardButton(f"📩𝐒𝐚𝐯𝐞 𝐅𝐢𝐥𝐞 𝐈𝐝📩", url=f"https://t.me/share/url?url={file_id}")
                                  ],
                                  [
-                                 InlineKeyboardButton(f"💻𝐓𝐮𝐭𝐨𝐫𝐢𝐚𝐥💻", url=f"https://t.me/share/url?url={file_id}")
+                                 InlineKeyboardButton(f"💻𝐂𝐡𝐫𝐨𝐦𝐞 𝐃𝐨𝐰𝐧𝐥𝐨𝐚𝐝💻", callback_data=f"generate_stream_link:{file_id}")
                                  
                                  ]                            
                              ]
@@ -936,7 +936,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
                                      InlineKeyboardButton(f"📩𝐒𝐚𝐯𝐞 𝐅𝐢𝐥𝐞 𝐈𝐝📩", url=f"https://t.me/share/url?url={file_id}")
                                  ],
                                  [
-                                 InlineKeyboardButton(f"💻𝐓𝐮𝐭𝐨𝐫𝐢𝐚𝐥💻", url=(BATCH_LINK))
+                                 InlineKeyboardButton(f"💻𝐒𝐞𝐧𝐝 𝐅𝐢𝐥𝐞 𝐈𝐃💻", url=(BATCH_LINK))
                                  
                                  ]                            
                             ]
@@ -1395,14 +1395,16 @@ async def cb_handler(client: Client, query: CallbackQuery):
                 text=f"•• ʟɪɴᴋ ɢᴇɴᴇʀᴀᴛᴇᴅ ꜰᴏʀ ɪᴅ #{user_id} \n•• ᴜꜱᴇʀɴᴀᴍᴇ : {username} \n\n•• ᖴᎥᒪᗴ Nᗩᗰᗴ : {fileName}",
                 quote=True,
                 disable_web_page_preview=True,
-                reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("🚀 Fast Download 🚀", url=lazy_download),  # we download Link
+                reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("🚀 Fast Download 🚀", url=lazy_download)
+                                                    ],[ # we download Link
                                                     InlineKeyboardButton('🖥️ Watch online 🖥️', url=lazy_stream)]])  # web stream Link
             )
             await query.message.reply_text(
                 text="•• ʟɪɴᴋ ɢᴇɴᴇʀᴀᴛᴇᴅ ☠︎⚔",
                 quote=True,
                 disable_web_page_preview=True,
-                reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("🚀 Fast Download 🚀", url=lazy_download),  # we download Link
+                reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("🚀 Fast Download 🚀", url=lazy_download)  # we download Link
+                                                    ],[
                                                     InlineKeyboardButton('🖥️ Watch online 🖥️', url=lazy_stream)]])  # web stream Link
             )
         except Exception as e:
