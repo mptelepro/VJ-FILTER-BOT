@@ -92,9 +92,9 @@ def getImg(photo_info, message):
 
 @bot.message_handler(commands=["reverse"])
 def reverse_image(message):
-   
-    if message.reply_to_message.content_type == "photo":
-        try:   
+    try:   
+        if message.reply_to_message.content_type == "photo":
+        
             photo_info = bot.get_file(message.photo[0].file_id)
 	    getImg(photo_info, message)
 
