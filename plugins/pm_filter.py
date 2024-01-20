@@ -1417,8 +1417,9 @@ async def cb_handler(client: Client, query: CallbackQuery):
         except Exception as e:
             print(e)  # print the error message
         else:    
-            await query.answer("This Is Not For You!", show_alert=True)
+            await query.answer("🔍𝐂𝐡𝐞𝐜𝐤 𝐋𝐢𝐧𝐤🔎", show_alert=True)
             return
+        elif
             await query.answer(f"☣something went wrong sweetheart\n\n{e}", show_alert=True)
             return            
              
