@@ -1407,6 +1407,10 @@ async def cb_handler(client: Client, query: CallbackQuery):
                                                     ],[
                                                     InlineKeyboardButton('🖥️ Watch online 🖥️', url=lazy_stream)]])  # web stream Link
                 )
+                return
+            else:
+                await query.answer(f"Hᴇʏ {query.from_user.first_name}, Tʜɪs Is Nᴏᴛ Yᴏᴜʀ Mᴏᴠɪᴇ Rᴇǫᴜᴇsᴛ. Rᴇǫᴜᴇsᴛ Yᴏᴜʀ's !", show_alert=True)
+
               
             
         except Exception as e:
@@ -1415,6 +1419,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
             return
         else:
             await query.answer(f"Hᴇʏ {query.from_user.first_name}, Tʜɪs Is Nᴏᴛ Yᴏᴜʀ Mᴏᴠɪᴇ Rᴇǫᴜᴇsᴛ. Rᴇǫᴜᴇsᴛ Yᴏᴜʀ's !", show_alert=True)
+        return
     # don't change anything without contacting me @creatorrio
 
     # don't change anything without contacting me @creatorrio
