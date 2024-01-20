@@ -1611,6 +1611,46 @@ async def cb_handler(client: Client, query: CallbackQuery):
         else:
             await query.answer("Yᴏᴜ ᴅᴏɴ'ᴛ ʜᴀᴠᴇ sᴜғғɪᴄɪᴀɴᴛ ʀɪɢᴛs ᴛᴏ ᴅᴏ ᴛʜɪs !", show_alert=True)
 
+   
+
+    elif query.data == "soon":
+        if query.from_user.id in ADMINS:
+            buttons = [[
+                InlineKeyboardButton('⌛️𝐂𝐨𝐦𝐢𝐧𝐠 𝐒𝐨𝐨𝐧...⌛️', callback_data="done")                            
+            ]]
+            reply_markup = InlineKeyboardMarkup(buttons)
+            k=await query.message.edit_text(
+                text=f"🕺𝐃𝐕𝐃, 𝐎𝐓𝐓 𝐂𝐨𝐦𝐢𝐧𝐠 𝐒𝐨𝐨𝐧...🕺",
+                reply_markup=reply_markup,
+                parse_mode=enums.ParseMode.HTML
+            )
+            await query.answer(MSG_ALRT)            
+        else:
+            await query.answer("Yᴏᴜ ᴅᴏɴ'ᴛ ʜᴀᴠᴇ sᴜғғɪᴄɪᴀɴᴛ ʀɪɢᴛs ᴛᴏ ᴅᴏ ᴛʜɪs !", show_alert=True)
+
+
+    elif query.data == "done":
+#        search = query.message.text
+#        imdb = await get_poster(search) if IMDB else None
+#        await query.answer(f"🏷 𝐓𝐢𝐭𝐥𝐞 : {search} \n 📆 𝐑𝐞𝐥𝐞𝐚𝐬𝐞 𝐈𝐧𝐟𝐨 : {imdb.get('year')} \n 📀 𝐑𝐮𝐧𝐓𝐢𝐦𝐞 : {imdb.get('runtime')} \n ☀️ 𝐋𝐚𝐧𝐠𝐮𝐚𝐠𝐞𝐬 : {imdb.get('languages')} \n\n 🍿{query.message.chat.title}🍿", show_alert=True)
+
+        if query.from_user.id in ADMINS:
+            buttons = [[
+                InlineKeyboardButton('✅ 𝐔𝐩𝐥𝐨𝐚𝐝𝐞𝐝 ✅', url="https://t.me/nasrani_update")                            
+            ]]
+            reply_markup = InlineKeyboardMarkup(buttons)
+            k=await query.message.edit_text(
+                text=f"✅ 𝐔𝐩𝐥𝐨𝐚𝐝𝐞𝐝 𝐒𝐮𝐜𝐜𝐞𝐬𝐬𝐟𝐮𝐥𝐥𝐲 ✅",
+                reply_markup=reply_markup,
+                parse_mode=enums.ParseMode.HTML
+            )
+            await query.answer(MSG_ALRT)            
+          
+
+   
+
+   
+
     elif lazyData.startswith("generate_stream_link"):
         _, file_id = lazyData.split(":")
         user_id = query.from_user.id
