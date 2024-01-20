@@ -20,6 +20,10 @@ from pyrogram.errors.exceptions.bad_request_400 import PeerIdInvalid
 ADMINS = int(os.environ.get("ADMINS"))
 DATABASE = os.environ.get("DATABASE_URL")
 DEFAULT_LANGUAGE = os.environ.get("DEFAULT_LANGUAGE", "ml")
+EN_LANGUAGE = os.environ.get("EN_LANGUAGE", "en")
+HI_LANGUAGE = os.environ.get("HI_LANGUAGE", "hi")
+TM_LANGUAGE = os.environ.get("TM_LANGUAGE", "ta")
+
 
 
 class Katabase:
@@ -64,6 +68,25 @@ class Katabase:
         user = await self.col.find_one({'id': int(id)})
         if user:
             return user.get("language", DEFAULT_LANGUAGE)
+
+    async def en_lang(self, id):
+        user = await self.col.find_one({'id': int(id)})
+        if user:
+            return user.get("language", EN_LANGUAGE)
+
+
+    async def hi_lang(self, id):
+        user = await self.col.find_one({'id': int(id)})
+        if user:
+            return user.get("language", HI_LANGUAGE)
+
+
+    async def tm_lang(self, id):
+        user = await self.col.find_one({'id': int(id)})
+        if user:
+            return user.get("language", TM_LANGUAGE)
+  
+
 
     async def update_lang(self, id, language):
         await self.col.update_one(
