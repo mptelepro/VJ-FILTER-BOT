@@ -1385,7 +1385,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
             sticker=sticker,            
             reply_markup=reply_markup                       
             )
-            await k.delete()
+            
            
             os.remove(sticker)
             os.remove(image)
@@ -1407,7 +1407,8 @@ async def cb_handler(client: Client, query: CallbackQuery):
             )
             
             
-            await asyncio.sleep(600)
+            await m.delete()
+            await asyncio.sleep(10)
             await k.delete()
            
 
