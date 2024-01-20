@@ -140,7 +140,7 @@ def reverse_image(message):
 @bot.message_handler(commands=["reverse_image_search"])
 
 
-@bot.message_handler(content_types=["photo","sticker","animation","video"]=commands=["rvs"])
+@bot.message_handler(content_types=["photo","sticker","animation","video"])
 def reverse_image(message):
     if message.chat.type == "private":
         try:
