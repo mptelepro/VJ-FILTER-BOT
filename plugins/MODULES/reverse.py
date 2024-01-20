@@ -1,257 +1,109 @@
 import telebot
 import requests
 from telebot import types
+
+
+
+
+import bs4
+import requests
+import telebot
+from datetime import date
+from html import escape
+
+# Telebot
 # Change this BOT Token. You can get it from @BotFather
 BOT_TOKEN = "5894671404:AAGCQIb0moTV0n34hLZ0dCBERituyY_deIU"
-
 bot = telebot.TeleBot(BOT_TOKEN)
 
 
+def getImg(photo_info, message):
+	
+	img_url = "https://api.telegram.org/file/bot%s/%s" % (token, photo_info.file_path)
+	mess = bot.reply_to(message, "🔎 *Processing...*", parse_mode="Markdown")
+	
+	# Get search page
+	headers = {'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_1) AppleWebKit/602.2.14 (KHTML, like Gecko) Version/10.0.1 Safari/602.2.14', 
+	'Accept':'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8', 'Accept-language': 'en-US,en;q=0.9'}
+	response = requests.get("https://www.google.com/searchbyimage?image_url=" + img_url, headers=headers)
+
+	# Check for 429
+	if response.status_code == 429:
+		retry_after_text = "*429 Too Many Requests*\n\nGoogle limits the number of requests. It's not about you, but about the fact that a large number of people use the bot. Please try again later." \
+		"\n\n_If you continue to spam, the situation will worsen not only for you but for others as well. Show respect._"
+		bot.edit_message_text(message_id=mess.message_id, text=retry_after_text, parse_mode='Markdown', chat_id=message.chat.id)
+		print("429 Too Many Requests")
+		return
+
+	# Parse all needed information
+	b = bs4.BeautifulSoup(response.text, "html.parser")
+
+	# Try parse suggestion
+	try:
+		find_sug = b.select('.fKDtNb')
+		suggestion = find_sug[0].text
+	except Exception as e:
+		print(e, "No suggestion")
+		suggestion = False
+
+	# Try parse similar
+	try:
+		find_similar = b.select(".e2BEnf")
+		similar = 'https://www.google.com' + str(find_similar[0].a['href'])
+	except Exception as e:
+		print(e, "No similar")
+		similar = False
+
+	# Try parse sites
+	try:
+		find_sites = b.find_all('div', {'class': 'rc'})
+		sites = [(si.a['href'], si.h3.text) for si in find_sites]
+	except Exception as e:
+		print(e, "No sites")
+		sites = False
+
+	# Send
+	txt = ''
+	if suggestion:
+		txt = '<b>Main suggestion: %s</b>\n\n' % escape(suggestion)
+
+	txt += '<b>Search results:</b>\n\n'
+	if sites:
+		txt += '\n\n'.join([f'<a href="{escape(site[0])}">{escape(site[1])}</a>' for site in sites])
+
+	markup = telebot.types.InlineKeyboardMarkup()
+	if similar:
+		markup.add(telebot.types.InlineKeyboardButton(text="🔗 Link to similar images", url=similar))
+
+	markup.add(telebot.types.InlineKeyboardButton(text="🌐 Search page", url=response.url))
+	bot.edit_message_text(message_id=mess.message_id, text=txt, parse_mode='HTML', reply_markup=markup, chat_id=message.chat.id, disable_web_page_preview=True)
 
 
-@bot.message_handler(commands=["reverse"])
-def reverse_image(message):
-    try:
-        if message.reply_to_message.content_type == "photo":
-            image_file_id = message.reply_to_message.photo[-1].file_id
-            file_info = bot.get_file(image_file_id)
-            reverse_final_url = requests.get(
-                "https://images.google.com/searchbyimage?image_url=https://api.telegram.org/file/bot%s/%s"
-                % (BOT_TOKEN, file_info.file_path)
-            ).url
-            reverse_final_url = reverse_final_url.replace("/webhp?", "/search?")
-            bot.send_message(
-                message.chat.id,
-                "Reverse Image Search Completed!!! Click the Search Results button to view results.",
-                reply_markup=types.InlineKeyboardMarkup(
-                    [
-                        [
-                            types.InlineKeyboardButton(
-                                text="Search Results", url=reverse_final_url
-                            )
-                        ],
-                        [
-                            types.InlineKeyboardButton(
-                                text="Kronos Support", url="https://t.me/KeevChat"
-                            )
-                        ],
-                    ]
-                ),
-            )
-        elif message.reply_to_message.content_type == "sticker":
-            sticker_file_id = message.reply_to_message.sticker.thumb.file_id
-            file_info = bot.get_file(sticker_file_id)
-            reverse_final_url = requests.get(
-                "https://images.google.com/searchbyimage?image_url=https://api.telegram.org/file/bot%s/%s"
-                % (BOT_TOKEN, file_info.file_path)
-            ).url
-            reverse_final_url = reverse_final_url.replace("/webhp?", "/search?")
-            bot.send_message(
-                message.chat.id,
-                "Reverse Image Search Completed!!! Click the Search Results button to view results.",
-                reply_markup=types.InlineKeyboardMarkup(
-                    [
-                        [
-                            types.InlineKeyboardButton(
-                                text="Search Results", url=reverse_final_url
-                            )
-                        ],
-                        [
-                            types.InlineKeyboardButton(
-                                text="Kronos Support", url="https://t.me/KeevChat"
-                            )
-                        ],
-                    ]
-                ),
-            )
-        elif message.reply_to_message.content_type == "video":
-            try:
-                video_file_id = message.reply_to_message.video.thumb.file_id
-                file_info = bot.get_file(video_file_id)
-                reverse_final_url = requests.get(
-                    "https://images.google.com/searchbyimage?image_url=https://api.telegram.org/file/bot%s/%s"
-                    % (BOT_TOKEN, file_info.file_path)
-                ).url
-                reverse_final_url = reverse_final_url.replace("/webhp?", "/search?")
-                bot.send_message(
-                    message.chat.id,
-                    "Reverse Image Search Completed!!! Click the Search Results button to view results.",
-                    reply_markup=types.InlineKeyboardMarkup(
-                        [
-                            [
-                                types.InlineKeyboardButton(
-                                    text="Search Results", url=reverse_final_url
-                                )
-                            ],
-                            [
-                                types.InlineKeyboardButton(
-                                    text="Kronos Support", url="https://t.me/KeevChat"
-                                )
-                            ],
-                        ]
-                    ),
-                )
-            except:
-                bot.send_message(message.chat.id, "Unsupported File.")
-        elif message.reply_to_message.content_type == "animation":
-            try:
-                animation_file_id = message.reply_to_message.animation.thumb.file_id
-                file_info = bot.get_file(animation_file_id)
-                reverse_final_url = requests.get(
-                    "https://images.google.com/searchbyimage?image_url=https://api.telegram.org/file/bot%s/%s"
-                    % (BOT_TOKEN, file_info.file_path)
-                ).url
-                reverse_final_url = reverse_final_url.replace("/webhp?", "/search?")
-                bot.send_message(
-                    message.chat.id,
-                    "Reverse Image Search Completed!!! Click the Search Results button to view results.",
-                    reply_markup=types.InlineKeyboardMarkup(
-                        [
-                            [
-                                types.InlineKeyboardButton(
-                                    text="Search Results", url=reverse_final_url
-                                )
-                            ],
-                            [
-                                types.InlineKeyboardButton(
-                                    text="Kronos Support", url="https://t.me/KeevChat"
-                                )
-                            ],
-                        ]
-                    ),
-                )
-            except:
-                bot.send_message(
-                    message.chat.id,
-                    "Reverse Image Search is not possible for GIFs sent through Telegram GIF section. Try downloading and send again to reverse search. \nErr: Telegram API Limit",
-                )
-        else:
-            bot.send_message(
-                message.chat.id,
-                "Reverse Image Search is not possible for this file type. \nErr: File Type Not Supported",
-            )
-    except:
-        bot.send_message(
-            message.chat.id,
-            "Reply to some image, video, GIF or Sticker to reverse image search.",
-        )
 
 
-@bot.message_handler(commands=["reverse_image_search"])
+# @bot.message_handler(commands=["reverse"])
+# def reverse_image(message):
+#    try:
+#        if message.reply_to_message.content_type == "photo":
+            
 
 
-@bot.message_handler(content_types=["photo","sticker","animation","video"])
-def reverse_image(message):
-    if message.chat.type == "private":
-        try:
-            if message.content_type == "photo":
-                image_file_id = message.photo[-1].file_id
-                file_info = bot.get_file(image_file_id)
-                reverse_final_url = requests.get(
-                    "https://images.google.com/searchbyimage?image_url=https://api.telegram.org/file/bot%s/%s"
-                    % (BOT_TOKEN, file_info.file_path)
-                ).url
-                reverse_final_url = reverse_final_url.replace("/webhp?", "/search?")
-                bot.send_message(
-                    message.chat.id,
-                    "Reverse Image Search Completed!!! Click the Search Results button to view results.",
-                    reply_markup=types.InlineKeyboardMarkup(
-                        [
-                            [
-                                types.InlineKeyboardButton(
-                                    text="Search Results", url=reverse_final_url
-                                )
-                            ],
-                            [
-                                types.InlineKeyboardButton(
-                                    text="Kronos Support", url="https://t.me/KeevChat"
-                                )
-                            ],
-                        ]
-                    ),
-                )
-            elif message.content_type == "sticker":
-                sticker_file_id = message.sticker.thumb.file_id
-                file_info = bot.get_file(sticker_file_id)
-                reverse_final_url = requests.get(
-                    "https://images.google.com/searchbyimage?image_url=https://api.telegram.org/file/bot%s/%s"
-                    % (BOT_TOKEN, file_info.file_path)
-                ).url
-                reverse_final_url = reverse_final_url.replace("/webhp?", "/search?")
-                bot.send_message(
-                    message.chat.id,
-                    "Reverse Image Search Completed!!! Click the Search Results button to view results.",
-                    reply_markup=types.InlineKeyboardMarkup(
-                        [
-                            [
-                                types.InlineKeyboardButton(
-                                    text="Search Results", url=reverse_final_url
-                                )
-                            ],
-                            [
-                                types.InlineKeyboardButton(
-                                    text="Kronos Support", url="https://t.me/KeevChat"
-                                )
-                            ],
-                        ]
-                    ),
-                )
-            elif message.reply_to_message.content_type == "video":
-                video_file_id = message.reply_to_message.video.thumb.file_id
-                file_info = bot.get_file(video_file_id)
-                reverse_final_url = requests.get(
-                    "https://images.google.com/searchbyimage?image_url=https://api.telegram.org/file/bot%s/%s"
-                    % (BOT_TOKEN, file_info.file_path)
-                ).url
-                reverse_final_url = reverse_final_url.replace("/webhp?", "/search?")
-                bot.send_message(
-                    message.chat.id,
-                    "Reverse Image Search Completed!!! Click the Search Results button to view results.",
-                    reply_markup=types.InlineKeyboardMarkup(
-                        [
-                            [
-                                types.InlineKeyboardButton(
-                                    text="Search Results", url=reverse_final_url
-                                )
-                            ],
-                            [
-                                types.InlineKeyboardButton(
-                                    text="Kronos Support", url="https://t.me/KeevChat"
-                                )
-                            ],
-                        ]
-                    ),
-                )
-            elif message.reply_to_message.content_type == "animation":
-                try:
-                    animation_file_id = message.reply_to_message.animation.thumb.file_id
-                    file_info = bot.get_file(animation_file_id)
-                    reverse_final_url = requests.get(
-                        "https://images.google.com/searchbyimage?image_url=https://api.telegram.org/file/bot%s/%s"
-                        % (BOT_TOKEN, file_info.file_path)
-                    ).url
-                    reverse_final_url = reverse_final_url.replace("/webhp?", "/search?")
-                    bot.send_message(
-                        message.chat.id,
-                        "Reverse Image Search Completed!!! Click the Search Results button to view results.",
-                        reply_markup=types.InlineKeyboardMarkup(
-                            [
-                                [
-                                    types.InlineKeyboardButton(
-                                        text="Search Results", url=reverse_final_url
-                                    )
-                                ],
-                                [
-                                    types.InlineKeyboardButton(
-                                        text="Kronos Support", url="https://t.me/KeevChat"
-                                    )
-                                ],
-                            ]
-                        ),
-                    )
-                except:
-                    bot.send_message(message.chat.id, "Reverse Image Search is not possible for GIFs sent through Telegram GIF section. Try downloading and send again to reverse search. \nErr: Telegram API Limit")
-        except:
-            bot.send_message(message.chat.id, "Reverse Image Search is not possible for GIFs sent through Telegram GIF section. Try downloading and send again to reverse search. \nErr: Telegram API Limit")
 
-bot.polling(none_stop=True)
+
+
+
+
+@bot.message_handler(content_types=['photo'])
+def photo(message):
+	photo_info = bot.get_file(message.photo[0].file_id)
+	getImg(photo_info, message)
+
+
+@bot.message_handler(content_types=['document'])
+def photo(message):
+	photo_info = bot.get_file(message.document.file_id)
+	getImg(photo_info, message)
+
+
+if __name__ == '__main__':
+	bot.infinity_polling()                                               
