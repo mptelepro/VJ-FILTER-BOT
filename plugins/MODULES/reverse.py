@@ -19,7 +19,7 @@ bot = telebot.TeleBot(BOT_TOKEN)
 
 def getImg(photo_info, message):
 	
-	img_url = "https://api.telegram.org/file/bot%s/%s" % (token, photo_info.file_path)
+	img_url = "https://api.telegram.org/file/bot%s/%s" % (BOT_TOKEN, photo_info.file_path)
 	mess = bot.reply_to(message, "🔎 *Processing...*", parse_mode="Markdown")
 	
 	# Get search page
