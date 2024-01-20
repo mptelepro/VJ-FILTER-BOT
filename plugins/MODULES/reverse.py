@@ -16,7 +16,7 @@ def reverse_image(message):
             image_file_id = message.reply_to_message.photo[-1].file_id
             file_info = bot.get_file(image_file_id)
             reverse_final_url = requests.get(
-                "https://images.google.com/searchbyimage?image_url=https://api.telegram.org/file/bot%s/%s"
+                "https://www.google.com/searchbyimage?safe=off&sbisrc=tg&image_url={file_url}"
                 % (bot_token, file_info.file_path)
             ).url
             reverse_final_url = reverse_final_url.replace("/webhp?", "/search?")
