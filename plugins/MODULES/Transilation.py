@@ -110,7 +110,7 @@ async def en(update, text):
     await update.reply_chat_action(enums.ChatAction.TYPING)
     message = await update.reply_text("`Translating...`")
     try:
-        language = await db.get_lang(update.from_user.id)
+        language = await db.en_lang(update.from_user.id)
     except:
         language = EN_LANGUAGE
     translator = Translator()
@@ -145,7 +145,7 @@ async def hi(update, text):
     await update.reply_chat_action(enums.ChatAction.TYPING)
     message = await update.reply_text("`Translating...`")
     try:
-        language = await db.get_lang(update.from_user.id)
+        language = await db.hi_lang(update.from_user.id)
     except:
         language = HI_LANGUAGE
     translator = Translator()
@@ -179,7 +179,7 @@ async def tm(update, text):
     await update.reply_chat_action(enums.ChatAction.TYPING)
     message = await update.reply_text("`Translating...`")
     try:
-        language = await db.get_lang(update.from_user.id)
+        language = await db.tm_lang(update.from_user.id)
     except:
         language = TM_LANGUAGE
     translator = Translator()
