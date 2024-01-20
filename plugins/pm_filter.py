@@ -1388,9 +1388,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
             sticker=sticker,            
             reply_markup=reply_markup,                       
             ) 
-            os.remove(sticker)
-            os.remove(image)
-
+            
             buttons = [[
                      #   InlineKeyboardButton(f"📥{imdb.get('title')} {imdb.get('year')}📥", url=f"https://telegram.me/{temp.U_NAME}?start={ident}_{file_id}")
                 InlineKeyboardButton(f"𝐂𝐨𝐦𝐢𝐧𝐠 𝐒𝐨𝐨𝐧...", callback_data="done")
@@ -1491,8 +1489,49 @@ async def cb_handler(client: Client, query: CallbackQuery):
             sticker=sticker,            
             reply_markup=reply_markup,                       
             )
-            os.remove(sticker)
-            os.remove(image)
+            users = await db.get_all_users()
+        
+            sts = await query.message.reply_text(
+            text='Broadcasting your messages...'
+            )
+#           start_time = time.time()
+            total_users = await db.total_users_count()
+            done = 0
+            blocked = 0
+            deleted = 0
+            failed =0
+
+            success = 0
+            b_msg = sp
+            async for user in users:
+                buttons = [[
+                     #   InlineKeyboardButton(f"📥{imdb.get('title')} {imdb.get('year')}📥", url=f"https://telegram.me/{temp.U_NAME}?start={ident}_{file_id}")                    
+                    InlineKeyboardButton(f"✅ Uᴘʟᴏᴀᴅᴇᴅ ✅", url="https://t.me/nasrani_update")                    
+                ], [
+                    InlineKeyboardButton(f"⚠️𝐃𝐞𝐥𝐞𝐭𝐞 𝐍𝐨𝐰⚠️", callback_data="dl")                
+                ]]
+                reply_markup = InlineKeyboardMarkup(buttons)
+           
+                pti, sh = await broadcast_messages(int(user['id']), b_msg)
+                if pti:
+                    success += 1
+                elif pti == False:
+                    if sh == "Blocked":
+                        blocked+=1
+                    elif sh == "Deleted":
+                        deleted += 1
+                    elif sh == "Error":
+                        failed += 1
+                done += 1
+                await asyncio.sleep(2)
+                if not done % 20:
+                    
+                    sp = await sts.edit(f"Broadcast Completed:\nCompleted in  seconds.\n\nTotal Users {total_users}\nCompleted:")
+                    
+                    await m.delete()
+                    await sp.delete()
+                    await asyncio.sleep(600)
+                    await k.delete()
                                
 
     
