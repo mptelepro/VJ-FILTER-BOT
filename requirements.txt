@@ -74,3 +74,6 @@ googletrans==4.0.0-rc1
 wget
 speedtest-cli
 aiofiles
+
+
+pyTelegramBotAPI==4.14.0
