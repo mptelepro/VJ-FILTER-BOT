@@ -1410,17 +1410,17 @@ async def cb_handler(client: Client, query: CallbackQuery):
                                                     ],[
                                                     InlineKeyboardButton('🖥️ Watch online 🖥️', url=lazy_stream)]])  # web stream Link
             )
-            if not userid:
-                return
-            else:    
-                await query.answer("This Is Not For You!", show_alert=True)
-
+        
+            return
+        else:    
+            await query.answer("This Is Not For You!", show_alert=True)
+            return
                            
             
-        except Exception as e:
-            print(e)  # print the error message
-            await query.answer(f"☣something went wrong sweetheart\n\n{e}", show_alert=True)
-            return
+#        except Exception as e:
+#            print(e)  # print the error message
+#            await query.answer(f"☣something went wrong sweetheart\n\n{e}", show_alert=True)
+#            return
 #        else:
 #            await query.answer(f"Hᴇʏ {query.from_user.first_name}, Tʜɪs Is Nᴏᴛ Yᴏᴜʀ Mᴏᴠɪᴇ Rᴇǫᴜᴇsᴛ. Rᴇǫᴜᴇsᴛ Yᴏᴜʀ's !", show_alert=True)
 #        return
