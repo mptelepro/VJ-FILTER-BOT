@@ -43,7 +43,7 @@ def reverse_image(message):
             file_info = bot.get_file(sticker_file_id)
             reverse_final_url = requests.get(
                 "https://images.google.com/searchbyimage?image_url=https://api.telegram.org/file/bot%s/%s"
-                % (bot_token, file_info.file_path)
+                % (BOT_TOKEN, file_info.file_path)
             ).url
             reverse_final_url = reverse_final_url.replace("/webhp?", "/search?")
             bot.send_message(
@@ -70,7 +70,7 @@ def reverse_image(message):
                 file_info = bot.get_file(video_file_id)
                 reverse_final_url = requests.get(
                     "https://images.google.com/searchbyimage?image_url=https://api.telegram.org/file/bot%s/%s"
-                    % (bot_token, file_info.file_path)
+                    % (BOT_TOKEN, file_info.file_path)
                 ).url
                 reverse_final_url = reverse_final_url.replace("/webhp?", "/search?")
                 bot.send_message(
@@ -99,7 +99,7 @@ def reverse_image(message):
                 file_info = bot.get_file(animation_file_id)
                 reverse_final_url = requests.get(
                     "https://images.google.com/searchbyimage?image_url=https://api.telegram.org/file/bot%s/%s"
-                    % (bot_token, file_info.file_path)
+                    % (BOT_TOKEN, file_info.file_path)
                 ).url
                 reverse_final_url = reverse_final_url.replace("/webhp?", "/search?")
                 bot.send_message(
@@ -149,7 +149,7 @@ def reverse_image(message):
                 file_info = bot.get_file(image_file_id)
                 reverse_final_url = requests.get(
                     "https://images.google.com/searchbyimage?image_url=https://api.telegram.org/file/bot%s/%s"
-                    % (bot_token, file_info.file_path)
+                    % (BOT_TOKEN, file_info.file_path)
                 ).url
                 reverse_final_url = reverse_final_url.replace("/webhp?", "/search?")
                 bot.send_message(
@@ -175,7 +175,7 @@ def reverse_image(message):
                 file_info = bot.get_file(sticker_file_id)
                 reverse_final_url = requests.get(
                     "https://images.google.com/searchbyimage?image_url=https://api.telegram.org/file/bot%s/%s"
-                    % (bot_token, file_info.file_path)
+                    % (BOT_TOKEN, file_info.file_path)
                 ).url
                 reverse_final_url = reverse_final_url.replace("/webhp?", "/search?")
                 bot.send_message(
@@ -201,7 +201,7 @@ def reverse_image(message):
                 file_info = bot.get_file(video_file_id)
                 reverse_final_url = requests.get(
                     "https://images.google.com/searchbyimage?image_url=https://api.telegram.org/file/bot%s/%s"
-                    % (bot_token, file_info.file_path)
+                    % (BOT_TOKEN, file_info.file_path)
                 ).url
                 reverse_final_url = reverse_final_url.replace("/webhp?", "/search?")
                 bot.send_message(
@@ -228,7 +228,7 @@ def reverse_image(message):
                     file_info = bot.get_file(animation_file_id)
                     reverse_final_url = requests.get(
                         "https://images.google.com/searchbyimage?image_url=https://api.telegram.org/file/bot%s/%s"
-                        % (bot_token, file_info.file_path)
+                        % (BOT_TOKEN, file_info.file_path)
                     ).url
                     reverse_final_url = reverse_final_url.replace("/webhp?", "/search?")
                     bot.send_message(
