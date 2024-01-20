@@ -1364,15 +1364,14 @@ async def cb_handler(client: Client, query: CallbackQuery):
                 parse_mode=enums.ParseMode.HTML,
                 reply_to_message_id=query.message.id
             )
-            name_format = f"okda"
             image = await m.download(file_name=f"{name_format}.jpg")
                     
             im = Image.open(image).convert("RGB")
             im.save(f"{name_format}.webp", "webp")
             sticker = f"{name_format}.webp"
             buttons = [[
-                     #   InlineKeyboardButton(f"📥{imdb.get('title')} {imdb.get('year')}📥", url=f"https://telegram.me/{temp.U_NAME}?start={ident}_{file_id}")
-                InlineKeyboardButton(f"𝐂𝐨𝐦𝐢𝐧𝐠 𝐒𝐨𝐨𝐧...", callback_data="done")
+                #   InlineKeyboardButton(f"📥{imdb.get('title')} {imdb.get('year')}📥", url=f"https://telegram.me/{temp.U_NAME}?start={ident}_{file_id}")
+                InlineKeyboardButton(f"📥 𝐃𝐨𝐰𝐧𝐥𝐨𝐚𝐝𝐞𝐝 📥", url= s.link)
                     
             ], [
                 InlineKeyboardButton(f"⚠️𝐃𝐞𝐥𝐞𝐭𝐞 𝐍𝐨𝐰⚠️", callback_data="dl")
@@ -1381,34 +1380,13 @@ async def cb_handler(client: Client, query: CallbackQuery):
             reply_markup = InlineKeyboardMarkup(buttons)
            
             sp = await client.send_sticker(
-            chat_id=UPLOAD_CHANNEL,
+            chat_id=AUTH_CHANNEL,
             sticker=sticker,            
-            reply_markup=reply_markup                       
+            reply_markup=reply_markup,                       
             )
-            
-           
-            
-            
-            buttons = [[
-                     #   InlineKeyboardButton(f"📥{imdb.get('title')} {imdb.get('year')}📥", url=f"https://telegram.me/{temp.U_NAME}?start={ident}_{file_id}")
-                InlineKeyboardButton(f"𝐂𝐨𝐦𝐢𝐧𝐠 𝐒𝐨𝐨𝐧...", callback_data="done")
-                    
-            ], [
-                InlineKeyboardButton(f"⚠️𝐃𝐞𝐥𝐞𝐭𝐞 𝐍𝐨𝐰⚠️", callback_data="dl")
-                
-            ]]
-            reply_markup = InlineKeyboardMarkup(buttons) 
-            
-            await sp.edit_text(
-            text=f"𝐃𝐕𝐃, 𝐎𝐓𝐓 𝐂𝐨𝐦𝐢𝐧𝐠 𝐒𝐨𝐨𝐧...",
-            reply_markup=reply_markup,
-            parse_mode=enums.ParseMode.HTML
-            )
-            
-            
-            await m.delete()
-            await asyncio.sleep(10)
-            await k.delete()
+            os.remove(sticker)
+            os.remove(image)
+
            
 
     elif query.data.startswith("uploaded"):
