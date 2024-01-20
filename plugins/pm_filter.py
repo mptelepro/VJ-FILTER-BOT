@@ -1379,7 +1379,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
         user_id = query.from_user.id
         username =  query.from_user.mention
 #        try:
-        if int(useridd) not in [query.from_user.id, 0]:
+        if not useridd:
             return
             await query.answer("This Is Not For You!", show_alert=True)
             try:
