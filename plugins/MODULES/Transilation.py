@@ -22,6 +22,11 @@ from info import SP
 ADMINS = int(os.environ.get("ADMINS"))
 DATABASE = os.environ.get("DATABASE_URL")
 DEFAULT_LANGUAGE = os.environ.get("DEFAULT_LANGUAGE", "ml")
+EN_LANGUAGE = os.environ.get("EN_LANGUAGE", "en")
+HI_LANGUAGE = os.environ.get("HI_LANGUAGE", "hi")
+TM_LANGUAGE = os.environ.get("TM_LANGUAGE", "tm")
+
+
 
 SETTINGS_TEXT = "Select your language for translating. Current default language is `{}`."
 
@@ -44,6 +49,28 @@ async def get_message(_, message):
     text = message.reply_to_message.text
 #    text = message.text if message.text else message.caption
     await translate(message, text)
+
+@Client.on_message(filters.command(["en"]) & (filters.text | filters.caption))
+async def get_message(_, message):
+    
+    text = message.reply_to_message.text
+#    text = message.text if message.text else message.caption
+    await en(message, text)
+
+@Client.on_message(filters.command(["hi"]) & (filters.text | filters.caption))
+async def get_message(_, message):
+    
+    text = message.reply_to_message.text
+#    text = message.text if message.text else message.caption
+    await hi(message, text)
+
+@Client.on_message(filters.command(["tm"]) & (filters.text | filters.caption))
+async def get_message(_, message):
+    
+    text = message.reply_to_message.text
+#    text = message.text if message.text else message.caption
+    await tm(message, text)
+
 
 
 async def translate(update, text):
@@ -79,6 +106,107 @@ async def translate(update, text):
         await message.edit_text("Something wrong. Contact @TheFayas.")
         return
 
+async def en(update, text):
+    await update.reply_chat_action(enums.ChatAction.TYPING)
+    message = await update.reply_text("`Translating...`")
+    try:
+        language = await db.get_lang(update.from_user.id)
+    except:
+        language = EN_LANGUAGE
+    translator = Translator()
+    try:
+        translate = translator.translate(text, dest=language)
+        translate_text = f"**Translated to {language}**"
+        translate_text += f"\n\n`{translate.text}`"
+        if len(translate_text) < 4096:
+            await message.edit_text(
+                text=translate_text,
+                disable_web_page_preview=True
+            )
+        else:
+            with BytesIO(str.encode(str(translate_text))) as translate_file:
+                translate_file.name = language + ".txt"
+                await update.reply_document(
+                    document=translate_file
+                )
+                await message.delete()
+                try:
+                    os.remove(translate_file)
+                except:
+                    pass
+    except Exception as error:
+        print(error)
+        await message.edit_text("Something wrong. Contact @TheFayas.")
+        return
+	   
+
+
+async def hi(update, text):
+    await update.reply_chat_action(enums.ChatAction.TYPING)
+    message = await update.reply_text("`Translating...`")
+    try:
+        language = await db.get_lang(update.from_user.id)
+    except:
+        language = HI_LANGUAGE
+    translator = Translator()
+    try:
+        translate = translator.translate(text, dest=language)
+        translate_text = f"**Translated to {language}**"
+        translate_text += f"\n\n`{translate.text}`"
+        if len(translate_text) < 4096:
+            await message.edit_text(
+                text=translate_text,
+                disable_web_page_preview=True
+            )
+        else:
+            with BytesIO(str.encode(str(translate_text))) as translate_file:
+                translate_file.name = language + ".txt"
+                await update.reply_document(
+                    document=translate_file
+                )
+                await message.delete()
+                try:
+                    os.remove(translate_file)
+                except:
+                    pass
+    except Exception as error:
+        print(error)
+        await message.edit_text("Something wrong. Contact @TheFayas.")
+        return
+
+
+async def tm(update, text):
+    await update.reply_chat_action(enums.ChatAction.TYPING)
+    message = await update.reply_text("`Translating...`")
+    try:
+        language = await db.get_lang(update.from_user.id)
+    except:
+        language = TM_LANGUAGE
+    translator = Translator()
+    try:
+        translate = translator.translate(text, dest=language)
+        translate_text = f"**Translated to {language}**"
+        translate_text += f"\n\n`{translate.text}`"
+        if len(translate_text) < 4096:
+            await message.edit_text(
+                text=translate_text,
+                disable_web_page_preview=True
+            )
+        else:
+            with BytesIO(str.encode(str(translate_text))) as translate_file:
+                translate_file.name = language + ".txt"
+                await update.reply_document(
+                    document=translate_file
+                )
+                await message.delete()
+                try:
+                    os.remove(translate_file)
+                except:
+                    pass
+    except Exception as error:
+        print(error)
+        await message.edit_text("Something wrong. Contact @TheFayas.")
+        return
 
 
 @Client.on_message(filters.command(["tr"]))
