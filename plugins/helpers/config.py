@@ -21,8 +21,6 @@ API_HASH = environ.get("API_HASH", "")
 BOT_TOKEN = environ.get("BOT_TOKEN", "")
 LOG_CHANNEL = int(environ.get("LOG_CHANNEL", ""))
 ADMINS = int(environ.get("ADMINS", ""))
-DB_URI = environ.get("DB_URI", "")
-DB_NAME = environ.get("DB_NAME", "chatgptvjbot")
 OPENAI_API = environ.get("OPENAI_API", "")
 AI = is_enabled((environ.get("AI","True")), False)
 #open ai
