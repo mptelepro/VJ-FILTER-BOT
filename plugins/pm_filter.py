@@ -58,7 +58,7 @@ BUTTONS2 = {}
 SPELL_CHECK = {}
 # ENABLE_SHORTLINK = ""
 GENERAT = "-1001203428484"
-UPLOAD_CHANNEL ="-1001351202807"
+UPLOAD_CHANNEL = "-1001351202807"
 
 
 @Client.on_message(filters.group & filters.text & filters.incoming)
