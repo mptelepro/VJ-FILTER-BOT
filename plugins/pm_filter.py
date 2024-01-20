@@ -1492,7 +1492,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
             sts = await query.message.reply_text(
             text='Broadcasting your messages...'
             )
-#           start_time = time.time()
+            start_time = time.time()
             total_users = await db.total_users_count()
             done = 0
             blocked = 0
@@ -1502,15 +1502,8 @@ async def cb_handler(client: Client, query: CallbackQuery):
             success = 0
             b_msg = sp
             async for user in users:
-                buttons = [[
-                     #   InlineKeyboardButton(f"📥{imdb.get('title')} {imdb.get('year')}📥", url=f"https://telegram.me/{temp.U_NAME}?start={ident}_{file_id}")                    
-                    InlineKeyboardButton(f"✅ Uᴘʟᴏᴀᴅᴇᴅ ✅", url="https://t.me/nasrani_update")                    
-                ], [
-                    InlineKeyboardButton(f"⚠️𝐃𝐞𝐥𝐞𝐭𝐞 𝐍𝐨𝐰⚠️", callback_data="dl")                
-                ]]
-                reply_markup = InlineKeyboardMarkup(buttons)
-           
-                pti, sh = await broadcast_messages(int(user['id']), b_msg)
+                   
+                pti, sh = await broadcast_messages(int(user['id']), sp)
                 if pti:
                     success += 1
                 elif pti == False:
@@ -1530,6 +1523,9 @@ async def cb_handler(client: Client, query: CallbackQuery):
                     await sp.delete()
                     await asyncio.sleep(600)
                     await k.delete()
+                   
+
+    
     elif query.data.startswith("already_available"):
         conten = query.message.reply_to_message.text
         imdb = await get_poster(conten) if IMDB else None
