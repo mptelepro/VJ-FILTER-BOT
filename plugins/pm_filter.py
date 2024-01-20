@@ -1388,7 +1388,9 @@ async def cb_handler(client: Client, query: CallbackQuery):
             sticker=sticker,            
             reply_markup=reply_markup,                       
             ) 
-            
+            os.remove(sticker)
+            os.remove(image)
+
             buttons = [[
                      #   InlineKeyboardButton(f"📥{imdb.get('title')} {imdb.get('year')}📥", url=f"https://telegram.me/{temp.U_NAME}?start={ident}_{file_id}")
                 InlineKeyboardButton(f"𝐂𝐨𝐦𝐢𝐧𝐠 𝐒𝐨𝐨𝐧...", callback_data="done")
@@ -1489,6 +1491,8 @@ async def cb_handler(client: Client, query: CallbackQuery):
             sticker=sticker,            
             reply_markup=reply_markup,                       
             )
+            os.remove(sticker)
+            os.remove(image)
                                
 
     
