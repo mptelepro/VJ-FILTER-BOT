@@ -22,7 +22,7 @@ BOT_TOKEN = environ.get("BOT_TOKEN", "")
 LOG_CHANNEL = int(environ.get("LOG_CHANNEL", ""))
 ADMINS = int(environ.get("ADMINS", ""))
 OPENAI_API = environ.get("OPENAI_API", "")
-AI = is_enabled((environ.get("AI","True")), False)
+AI = is_enabled((environ.get("AI","True")), True)
 #open ai
 
 API_ID = int(environ.get("API_ID", ""))
