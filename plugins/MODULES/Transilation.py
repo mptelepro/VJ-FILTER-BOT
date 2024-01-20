@@ -24,7 +24,7 @@ DATABASE = os.environ.get("DATABASE_URL")
 DEFAULT_LANGUAGE = os.environ.get("DEFAULT_LANGUAGE", "ml")
 EN_LANGUAGE = os.environ.get("EN_LANGUAGE", "en")
 HI_LANGUAGE = os.environ.get("HI_LANGUAGE", "hi")
-TM_LANGUAGE = os.environ.get("TM_LANGUAGE", "tm")
+TM_LANGUAGE = os.environ.get("TM_LANGUAGE", "ta")
 
 
 
@@ -103,7 +103,7 @@ async def translate(update, text):
                     pass
     except Exception as error:
         print(error)
-        await message.edit_text("Something wrong. Contact @TheFayas.")
+        await message.edit_text("Something wrong. Contact @NASRANI_SUPPORT.")
         return
 
 async def en(update, text):
@@ -136,7 +136,7 @@ async def en(update, text):
                     pass
     except Exception as error:
         print(error)
-        await message.edit_text("Something wrong. Contact @TheFayas.")
+        await message.edit_text("Something wrong. Contact @NASRANI_SUPPORT.")
         return
 	   
 
@@ -171,7 +171,7 @@ async def hi(update, text):
                     pass
     except Exception as error:
         print(error)
-        await message.edit_text("Something wrong. Contact @TheFayas.")
+        await message.edit_text("Something wrong. Contact @NASRANI_SUPPORT.")
         return
 
 
@@ -205,7 +205,7 @@ async def tm(update, text):
                     pass
     except Exception as error:
         print(error)
-        await message.edit_text("Something wrong. Contact @TheFayas.")
+        await message.edit_text("Something wrong. Contact @NASRANI_SUPPORT.")
         return
 
 
