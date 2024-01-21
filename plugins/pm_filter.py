@@ -2009,18 +2009,11 @@ async def cb_handler(client: Client, query: CallbackQuery):
                     ],
                 ]
             ),
-            reply_to_message_id=message.id,)
-        
-        except Exception as e:
-            print("photomarkup error - " + str(e))
-            if "USER_IS_BLOCKED" in str(e):
-                return
-            else:
-                try:
-                    await message.reply_text("Something went wrong!", quote=True)
-                except Exception:
-                    return
+            reply_to_message_id=message.id,        
+        )
+       
 
+    
     elif query.data == "start":
         grp_id = query.message.chat.id
         title = query.message.chat.title
