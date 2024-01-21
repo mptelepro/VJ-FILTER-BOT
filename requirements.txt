@@ -25,7 +25,10 @@ youtube-search-python==1.4.6
 yt-dlp
 youtube-dl
 requests 
-  
+
+
+
+selenium==3.141.0
   
 #---others----# 
 opencv-python-headless==4.7.0.68  
