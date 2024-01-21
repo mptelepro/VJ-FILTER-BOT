@@ -20,7 +20,7 @@ REMOVEBG_API_KEY = 'MJMoiiatXPHcHgFG3D1Wf2aG'
 @bot.message_handler(commands=["reverse"])
 def handle_photo(message):
     try:
-        file_id = message.photo[-1].file_id
+        file_id = message.reply_to_message.photo[-1].file_id
         file_info = bot.get_file(file_id)
         file_url = f"https://api.telegram.org/file/bot{BOT_TOKEN}/{file_info.file_path}"
 
