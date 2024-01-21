@@ -2040,11 +2040,11 @@ async def cb_handler(client: Client, query: CallbackQuery):
             InlineKeyboardButton('𝐒𝐞𝐭𝐭𝐢𝐧𝐠𝐬', callback_data=f"setting")
         ]]
         reply_markup = InlineKeyboardMarkup(buttons)
-        m=await client.edit_message_media(
-            query.message.chat.id, 
-            query.message.id, 
-            InputMediaPhoto(random.choice(PICS))
-        )
+#        m=await client.edit_message_media(
+#            query.message.chat.id, 
+#            query.message.id, 
+#            InputMediaPhoto(random.choice(PICS))
+#        )
         k=await query.message.edit_text(
             text=script.START_TXT.format(query.from_user.mention, temp.U_NAME, temp.B_NAME),
             reply_markup=reply_markup,
@@ -2052,7 +2052,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
         )
         await query.answer(MSG_ALRT)
         await asyncio.sleep(60)
-        await m.delete()
+#        await m.delete()
         await k.delete()
    
 
@@ -2100,11 +2100,11 @@ async def cb_handler(client: Client, query: CallbackQuery):
         buttons = [[
             InlineKeyboardButton('⟸ Bᴀᴄᴋ', callback_data='filters')
         ]]
-        await client.edit_message_media(
-            query.message.chat.id, 
-            query.message.id, 
-            InputMediaPhoto(random.choice(PICS))
-        )
+#        await client.edit_message_media(
+#            query.message.chat.id, 
+#            query.message.id, 
+#            InputMediaPhoto(random.choice(PICS))
+#        )
         reply_markup = InlineKeyboardMarkup(buttons)
         await query.message.edit_text(
             text=script.GFILTER_TXT,
@@ -2127,11 +2127,11 @@ async def cb_handler(client: Client, query: CallbackQuery):
         ]]
         
         reply_markup = InlineKeyboardMarkup(buttons)
-        await client.edit_message_media(
-            query.message.chat.id, 
-            query.message.id, 
-            InputMediaPhoto(random.choice(PICS))
-        )
+#        await client.edit_message_media(
+#            query.message.chat.id, 
+#            query.message.id, 
+#            InputMediaPhoto(random.choice(PICS))
+#        )
         await query.message.edit_text(
             text=script.HELP_TXT.format(query.from_user.mention),
             reply_markup=reply_markup,
@@ -2145,11 +2145,11 @@ async def cb_handler(client: Client, query: CallbackQuery):
             InlineKeyboardButton('Hᴏᴍᴇ', callback_data='start'),
             InlineKeyboardButton('Cʟᴏsᴇ', callback_data='close_data')
         ]]
-        await client.edit_message_media(
-            query.message.chat.id, 
-            query.message.id, 
-            InputMediaPhoto(random.choice(PICS))
-        )
+#        await client.edit_message_media(
+#            query.message.chat.id, 
+#            query.message.id, 
+#            InputMediaPhoto(random.choice(PICS))
+#        )
         reply_markup = InlineKeyboardMarkup(buttons)
         await query.message.edit_text(
             text=script.ABOUT_TXT.format(temp.B_NAME),
