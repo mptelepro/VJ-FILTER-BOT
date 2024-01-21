@@ -86,5 +86,5 @@ urllib3==1.25.3
 
 pytesseract==0.3.7
 carbonsh==0.1.0
-pyppeteer>=1.25.8
+pyppeteer>=0.0.16
 selenium==3.141.0
