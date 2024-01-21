@@ -1,7 +1,7 @@
 class script(object):
     START_TXT = """𝐇𝐞𝐥𝐥𝐨 {},
  𝐓𝐡𝐞 𝐁𝐞𝐬𝐭 𝐀𝐮𝐭𝐨 𝐅𝐢𝐥𝐭𝐞𝐫 𝐒𝐞𝐜𝐮𝐫𝐢𝐭𝐲 𝐆𝐫𝐨𝐮𝐩 𝐌𝐚𝐧𝐚𝐠𝐞𝐦𝐞𝐧𝐭 𝐁𝐨𝐭
-➢ <b>𝐇𝐞𝐥𝐩 𝐓𝐨 𝐌𝗒 𝐅𝐮𝐧𝐜𝐭𝐢𝐨𝐧𝐬</b> <a href='https://telegra.ph/file/2ab4bd4309fc808516bfa.jpg'>.</a>"""
+➢ <b>𝐇𝐞𝐥𝐩 𝐓𝐨 𝐌𝗒 𝐅𝐮𝐧𝐜𝐭𝐢𝐨𝐧𝐬</b> <a href='https://graph.org/file/6602b32023899c4022323.mp4'>.</a>"""
 
     NO_TEXT = """
     Hello {} uplpaded {}"""
