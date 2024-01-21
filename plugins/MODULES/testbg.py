@@ -98,3 +98,12 @@ async def remove_background(bot, update):
             reply_markup=ERROR_BUTTONS
         )
 
+
+
+def removebg_image(file):
+    return requests.post(
+        "https://api.remove.bg/v1.0/removebg",
+        files={"image_file": open(file, "rb")},
+        data={"size": "auto"},
+        headers={"X-Api-Key": REMOVEBG_API}
+        )
