@@ -3178,7 +3178,7 @@ async def advantage_spell_chok(client, msg):
             await asyncio.sleep(30)
             await k.delete()
             return
-        carbon = await make_carbon(f"{message.reply_to_message.text} ഈ മൂവി ആദ്യം ഇറങ്ങിക്കോട്ടെ")
+        carbon = await make_carbon(f"{reqst_gle} ഈ മൂവി ആദ്യം ഇറങ്ങിക്കോട്ടെ")
         movielist += [movie.get('title') for movie in movies]
         movielist += [f"{movie.get('title')} {movie.get('year')}" for movie in movies]
         SPELL_CHECK[mv_id] = movielist
