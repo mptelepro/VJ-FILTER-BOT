@@ -9,7 +9,7 @@ from plugins.helpers.stickerset import *
     
 MAX_STICKERS = (120)  # would be better if we could fetch this limit directly from telegram
 SUPPORTED_TYPES = ["jpeg", "png", "webp"]
-
+BOT_USERNAME 
 
 @Client.on_message(filters.command("get_sticker"))
 async def sticker_image(_, message: Message):
@@ -39,7 +39,7 @@ async def sticker_image(_, message: Message):
 
 @Client.on_message(filters.command("kang"))
 async def kang(client, message: Message):
-    BOT_USERNAME = client.username
+    LazyPrincessBot = client.username
     if not message.reply_to_message:
         return await message.reply_text("Reply to a sticker/image to kang it.")
     if not message.from_user:
@@ -109,7 +109,7 @@ async def kang(client, message: Message):
     # Find an available pack & add the sticker to the pack; create a new pack if needed
     # Would be a good idea to cache the number instead of searching it every single time...
     packnum = 0
-    packname = "f" + str(message.from_user.id) + "_by_" + BOT_USERNAME
+    packname = "f" + str(message.from_user.id) + "_by_" + LazyPrincessBot
     limit = 0
     try:
         while True:
@@ -134,7 +134,7 @@ async def kang(client, message: Message):
                         + "_"
                         + str(message.from_user.id)
                         + "_by_"
-                        + BOT_USERNAME
+                        + LazyPrincessBot
                 )
                 limit += 1
                 continue
@@ -153,7 +153,7 @@ async def kang(client, message: Message):
         )
     except (PeerIdInvalid, UserIsBlocked):
         keyboard = InlineKeyboardMarkup(
-            [[InlineKeyboardButton(text="Start", url=f"t.me/{BOT_USERNAME}")]]
+            [[InlineKeyboardButton(text="Start", url=f"t.me/{LazyPrincessBot}")]]
         )
         await msg.edit(
             "You Need To Start A Private Chat With Me.",
