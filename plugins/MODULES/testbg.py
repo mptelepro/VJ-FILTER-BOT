@@ -10,9 +10,9 @@ load_dotenv()
 # bot = telebot.TeleBot(BOT_TOKEN)
 
 
-bot = Client(
+Bot = Client(
     "rb-Bot",
-    bot_token = os.environ["BOT_TOKEN"]
+    bot = os.environ["BOT_TOKEN"]
 )
 
  
