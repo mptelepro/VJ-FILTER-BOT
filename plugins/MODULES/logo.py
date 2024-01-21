@@ -39,14 +39,13 @@ async def on_off_antiarab(_, message: Message):
 """
     # await _.send_chat_action(message.chat.id, enums.ChatAction.UPLOAD_DOCUMENT)
    # time.sleep(3)
-    await message.reply_photo(photo=photo),
-                 reply_markup=InlineKeyboardMarkup(
-            [
-                [
-                    InlineKeyboardButton(
-                        "•••Telegraph Link•••", url=f"{lol}"
-                    )
-                ]
-            ]
-          ),
+    buttons = [[
+        InlineKeyboardButton("•••Telegraph Link•••", url=f"{lol}")
+        
+    ]]
+    await message.reply_photo(
+        photo=photo,
+        reply_markup=InlineKeyboardMarkup(buttons)
     )
+ 
+                 
