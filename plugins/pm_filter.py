@@ -1971,7 +1971,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
 
    
 
-    try:
+    elif query.data == "okdaa":
         await client.send_message(
             chat_id=message.chat.id,
             text="Select your required mode from below!ㅤㅤ",
