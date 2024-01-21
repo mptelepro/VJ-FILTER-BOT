@@ -1,4 +1,16 @@
 
+# ADD THIS ALL REQUERMENT.PY #
+
+# pyTelegramBotAPI==4.14.0
+# beautifulsoup4~=4.8.2
+# certifi==2019.6.16
+# chardet==3.0.4
+# idna==2.8
+# six==1.12.0
+# urllib3==1.25.3
+ 
+
+
 
 import telebot
 import requests
