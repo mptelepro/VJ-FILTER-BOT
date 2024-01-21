@@ -75,7 +75,8 @@ async def remove_background(bot, update):
     try:
         with open(new_file_name, "wb") as file:
             file.write(new_document.content)
-        await update.reply_chat_action("upload_document")
+        k = await message.reply_text(okda)
+        await k delete()
     except Exception as error:
         await message.edit_text(
            text=error,
@@ -101,9 +102,5 @@ async def remove_background(bot, update):
 
 
 def removebg_image(file):
-    return requests.post(
-        "https://api.remove.bg/v1.0/removebg",
-        files={"image_file": open(file, "rb")},
-        data={"size": "auto"},
-        headers={"X-Api-Key": REMOVEBG_API}
-        )
+    return requests.post('https://api.remove.bg/v1.0/removebg', data={'image_url': file_url}, headers={'X-Api-Key': REMOVEBG_API})
+
