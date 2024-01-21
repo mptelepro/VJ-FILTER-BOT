@@ -34,5 +34,5 @@ async def remove_background(client, message):
             else:
                await client.send_message("Maaf, tidak dapat menghapus background gambar.")
 
-        except Exception as e:
-            await client.send_message("An error occurred while processing the image..")
+    except Exception as e:
+        await client.send_message("An error occurred while processing the image..")
