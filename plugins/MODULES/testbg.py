@@ -1,9 +1,9 @@
 import os
 import requests
 from dotenv import load_dotenv
-from pyrogram import Client, filters
+from pyrogram import Client, filters, enums
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
-
+from info import BOT_TOKEN, API_ID, API_HASH
 
 load_dotenv()
 
@@ -13,12 +13,6 @@ REMOVEBG_API = "MJMoiiatXPHcHgFG3D1Wf2aG"
 # REMOVEBG_API = os.environ.get("REMOVEBG_API", "")
 UNSCREEN_API = os.environ.get("UNSCREEN_API", "")
 
-Bot = Client(
-    "Remove Background Bot",
-    bot_token=os.environ.get("BOT_TOKEN"),
-    api_id=int(os.environ.get("API_ID")),
-    api_hash=os.environ.get("API_HASH")
-)
 
 
 @Client.on_message(filters.private & (filters.photo | filters.video | filters.document))
@@ -31,7 +25,7 @@ async def remove_background(bot, update):
             reply_markup=ERROR_BUTTONS
         )
         return
-    await update.reply_chat_action("typing")
+    
     message = await update.reply_text(
         text="Processing",
         quote=True,
