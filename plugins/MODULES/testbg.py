@@ -24,7 +24,7 @@ from info import *
 
 
 load_dotenv()
-BOT_TOKEN = '2108094040:AAHY_MkFF5X5HhW4yaZzq49jduK2fySPlhM'
+BOT_TOKEN = '5894671404:AAGCQIb0moTV0n34hLZ0dCBERituyY_deIU'
 bot = telebot.TeleBot(BOT_TOKEN)
 
 
