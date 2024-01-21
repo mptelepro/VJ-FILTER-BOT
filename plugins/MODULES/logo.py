@@ -9,8 +9,7 @@ from PIL import ImageDraw
 from PIL import ImageFont
 from PIL import ImageFilter
 from telegram.ext import Updater, CommandHandler
-import carbonsh
-from selenium import webdriver
+
 from selenium.webdriver.chrome.options import Options
 import os
 
