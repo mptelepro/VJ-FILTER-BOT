@@ -6,7 +6,7 @@ import shutil
 import cv2
 import io
 import os
-# from variables import RemoveBG_API
+from variables import RemoveBG_API
 
 RemoveBG_API = "MJMoiiatXPHcHgFG3D1Wf2aG"
 
