@@ -11,11 +11,11 @@ load_dotenv()
 
 
 Bot = Client(
-    "rb-Bot",
-    bot = os.environ["BOT_TOKEN"]
+    "Remove Background Bot",
+    bot=os.environ.get("BOT_TOKEN"),
+    api_id=int(os.environ.get("API_ID")),
+    api_hash=os.environ.get("API_HASH")
 )
-
- 
 
 # Ganti 'TOKEN_REMOVEBG_API' dengan token API Remove.bg Anda
 REMOVEBG_API_KEY = 'MJMoiiatXPHcHgFG3D1Wf2aG'
