@@ -3,7 +3,7 @@ from pyrogram import Client, filters
 
 """Edit ചെയ്യുന്നവനോട്.. നിന്റെ തന്ത അല്ല ഈ code ഉണ്ടാക്കിയത് """
 
-@Client.on_message(filters.photo & filters.private)
+@Client.on_message(filters.photo & filters.command(["rmbg"]))
 async def photo(client: Client, message: Message):
     try:
         await client.send_message(
