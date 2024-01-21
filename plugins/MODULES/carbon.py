@@ -6,6 +6,10 @@ from io import BytesIO
 
 ai_client = ClientSession()
 
+OKDA = "olda"
+
+
+
 async def make_carbon(code, tele=False):
     url = "https://carbonara.solopov.dev/api/cook"
     async with ai_client.post(url, json={"code": code}) as resp:
@@ -26,7 +30,7 @@ async def carbon_func(b, message):
         return await message.reply_text("ʀᴇᴘʟʏ ᴛᴏ ᴀ ᴛᴇxᴛ ᴍᴇssᴀɢᴇ ᴛᴏ ᴍᴀᴋᴇ ᴄᴀʀʙᴏɴ.")
     user_id = message.from_user.id
     m = await message.reply_text("ᴘʀᴏᴄᴇssɪɴɢ...")
-    carbon = await make_carbon(message.reply_to_message.text)
+    carbon = await make_carbon(f"{message.reply_to_message.text} ഈ മൂവി ആദ്യം ഇറങ്ങിക്കോട്ടെ")
     await m.edit("ᴜᴘʟᴏᴀᴅɪɴɢ..")
     await message.reply_photo(
         photo=carbon,
