@@ -1,59 +1,106 @@
-import telebot
-import requests
-
 import os
 import requests
 from dotenv import load_dotenv
 from pyrogram import Client, filters
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
-from info import BOT_TOKEN
-from lazybot import LazyPrincessBot
-
-
-from pyrogram import Client
-from database.ia_filterdb import Media
-from info import *
-from utils import temp
-from typing import Union, Optional, AsyncGenerator
-from pyrogram import types
-from aiohttp import web
-
-from pyrogram import Client
-from info import *
-
 
 
 load_dotenv()
-BOT_TOKEN = '2108094040:AAHY_MkFF5X5HhW4yaZzq49jduK2fySPlhM'
-bot = Client(BOT_TOKEN)
-
-# Ganti 'TOKEN_REMOVEBG_API' dengan token API Remove.bg Anda
-REMOVEBG_API_KEY = 'MJMoiiatXPHcHgFG3D1Wf2aG'
 
 
+REMOVEBG_API = "MJMoiiatXPHcHgFG3D1Wf2aG"
+
+# REMOVEBG_API = os.environ.get("REMOVEBG_API", "")
+UNSCREEN_API = os.environ.get("UNSCREEN_API", "")
+
+Bot = Client(
+    "Remove Background Bot",
+    bot_token=os.environ.get("BOT_TOKEN"),
+    api_id=int(os.environ.get("API_ID")),
+    api_hash=os.environ.get("API_HASH")
+)
 
 
-@Client.on_message(filters.command(["test"]))
-async def remove_background(bot, message):
+@Client.on_message(filters.private & (filters.photo | filters.video | filters.document))
+async def remove_background(bot, update):
+    if not (REMOVEBG_API or UNSCREEN_API):
+        await update.reply_text(
+            text="Error :- API not found",
+            quote=True,
+            disable_web_page_preview=True,
+            reply_markup=ERROR_BUTTONS
+        )
+        return
+    await update.reply_chat_action("typing")
+    message = await update.reply_text(
+        text="Processing",
+        quote=True,
+        disable_web_page_preview=True
+    )
     try:
-#        if message.reply_to_message.photo:
-        file_id = message.reply_to_message.photo[-1].file_id
-        file_info = bot.get_file(file_id)
-        file_url = f"https://api.telegram.org/file/bot{BOT_TOKEN}/{file_info.file_path}"
-
-        # Kirim permintaan ke Remove.bg API untuk menghapus background gambar
-        response = requests.post('https://api.remove.bg/v1.0/removebg', data={'image_url': file_url}, headers={'X-Api-Key': REMOVEBG_API_KEY})
-
-        if response.status_code == 200:
-                # Simpan gambar hasil dan kirimkan ke pengguna
-            with open('removed_bg.png', 'wb') as f:
-                f.write(response.content)
-            await bot.send_document(chat_id, open('removed_bg.png', 'rb'))
+        new_file_name = f"./{str(update.from_user.id)}"
+        if (
+            update.photo or (
+                update.document and "image" in update.document.mime_type
+            )
+        ):
+            new_file_name += ".png"
+            file = await update.download()
+            await message.edit_text(
+                text="Photo downloaded successfully. Now removing background.",
+                disable_web_page_preview=True
+            )
+            new_document = removebg_image(file)
+        elif (
+            update.video or (
+                update.document and "video" in update.document.mime_type
+            )
+        ):
+            new_file_name += ".webm"
+            file = await update.download()
+            await message.edit_text(
+                text="Video downloaded successfully. Now removing background.",
+                disable_web_page_preview=True
+            )
+            new_document = removebg_video(file)
         else:
-            await bot.send_message("Maaf, tidak dapat menghapus background gambar.")
-
-    except Exception as e:
-        await bot.send_message("An error occurred while processing the image..")
-
-
+            await message.edit_text(
+                text="Media not supported",
+                disable_web_page_preview=True,
+                reply_markup=ERROR_BUTTONS
+            )
+        try:
+            os.remove(file)
+        except:
+            pass
+    except Exception as error:
+        await message.edit_text(
+            text=error,
+            disable_web_page_preview=True
+        )
+    try:
+        with open(new_file_name, "wb") as file:
+            file.write(new_document.content)
+        await update.reply_chat_action("upload_document")
+    except Exception as error:
+        await message.edit_text(
+           text=error,
+           reply_markup=ERROR_BUTTONS
+        )
+        return
+    try:
+        await update.reply_document(
+            document=new_file_name,
+            quote=True
+        )
+        try:
+            os.remove(new_file_name)
+        except:
+            pass
+    except Exception as error:
+        await message.edit_text(
+            text=f"Error:- `{error}`",
+            disable_web_page_preview=True,
+            reply_markup=ERROR_BUTTONS
+        )
 
