@@ -1988,8 +1988,15 @@ async def cb_handler(client: Client, query: CallbackQuery):
     
     elif query.data == "rmbgwhite":
         await removebg_white(client, query.message)
+        
     elif query.data == "rmbgplain":
         await removebg_plain(client, query.message)
+        
+    elif query.data == "rmbgsticker":
+        await removebg_sticker(client, query.message)
+
+   
+
     
     elif query.data == "start":
         grp_id = query.message.chat.id
