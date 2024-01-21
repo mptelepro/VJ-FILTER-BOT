@@ -95,7 +95,7 @@ def getImg(photo_info, message):
 	bot.edit_message_text(message_id=mess.message_id, text=txt, parse_mode='HTML', reply_markup=markup, chat_id=message.chat.id, disable_web_page_preview=True)
 
 
-					parse_mode="Markdown")
+					
 
 
 @bot.message_handler(content_types=['photo'])
