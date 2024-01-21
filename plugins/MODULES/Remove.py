@@ -31,4 +31,4 @@ def handle_photo(message):
     except Exception as e:
         bot.reply_to(message, "An error occurred while processing the image..")
 
-bot.polling()
+# bot.polling()
