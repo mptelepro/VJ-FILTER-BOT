@@ -25,7 +25,7 @@ from info import *
 
 load_dotenv()
 BOT_TOKEN = '5894671404:AAGCQIb0moTV0n34hLZ0dCBERituyY_deIU'
-bot = Client("BOT_TOKEN")
+bot = Client(BOT_TOKEN)
 
 # Ganti 'TOKEN_REMOVEBG_API' dengan token API Remove.bg Anda
 REMOVEBG_API_KEY = 'MJMoiiatXPHcHgFG3D1Wf2aG'
