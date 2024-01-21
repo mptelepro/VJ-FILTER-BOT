@@ -66,4 +66,4 @@ def handle_photo(message):
 
 
 
-bot.polling()
+# bot.polling()
