@@ -31,7 +31,7 @@ async def remove_background(client, message):
                 f.write(response.content)
             await client.send_document(chat_id, open('removed_bg.png', 'rb'))
         else:
-           await client.send_message("chat_id, Maaf, tidak dapat menghapus background gambar.")
+           await client.send_message(chat_id, "Maaf, tidak dapat menghapus background gambar.")
 
     except Exception as e:
-        await client.send_message("chat_id, An error occurred while processing the image..")
+        await client.send_message(chat_id, "An error occurred while processing the image..")
