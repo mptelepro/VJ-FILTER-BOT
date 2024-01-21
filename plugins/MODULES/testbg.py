@@ -6,6 +6,34 @@ from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 from info import BOT_TOKEN
 from lazybot import LazyPrincessBot
 
+
+from pyrogram import Client
+from database.ia_filterdb import Media
+from info import *
+from utils import temp
+from typing import Union, Optional, AsyncGenerator
+from pyrogram import types
+from aiohttp import web
+
+from pyrogram import Client
+from info import *
+
+
+class LazyPrincessXBot(Client):
+
+    def __init__(self):
+        super().__init__(
+            name=SESSION,
+            api_id=API_ID,
+            api_hash=API_HASH,
+            bot_token=BOT_TOKEN,
+            workers=50,
+            plugins={"root": "plugins"},
+            sleep_threshold=5,
+        )
+
+
+
 LazyPrincessBot = LazyPrincessXBot()
 load_dotenv()
 # BOT_TOKEN = '2108094040:AAHY_MkFF5X5HhW4yaZzq49jduK2fySPlhM'
