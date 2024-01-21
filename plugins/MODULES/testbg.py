@@ -4,18 +4,16 @@ from dotenv import load_dotenv
 from pyrogram import Client, filters
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 from info import BOT_TOKEN
+from lazybot import LazyPrincessBot
+
 
 load_dotenv()
 # BOT_TOKEN = '2108094040:AAHY_MkFF5X5HhW4yaZzq49jduK2fySPlhM'
-# bot = telebot.TeleBot(BOT_TOKEN)
+# bot = telebot.TeleBot(bot_token)
+bot = LazyPrincessXBot(BOT_TOKEN)
 
 
-Bot = Client(
-    "Remove Background Bot",
-    bot=os.environ.get("BOT_TOKEN"),
-    api_id=int(os.environ.get("API_ID")),
-    api_hash=os.environ.get("API_HASH")
-)
+
 
 # Ganti 'TOKEN_REMOVEBG_API' dengan token API Remove.bg Anda
 REMOVEBG_API_KEY = 'MJMoiiatXPHcHgFG3D1Wf2aG'
