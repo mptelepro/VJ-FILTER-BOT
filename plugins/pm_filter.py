@@ -2,6 +2,25 @@
 # Subscribe YouTube Channel For Amazing Bot @Tech_VJ
 # Ask Doubt on telegram @KingVJ01
 
+### CARBON
+
+
+from pyrogram import Client, filters
+from pyrogram.types import *
+from aiohttp import ClientSession
+from telegraph import upload_file
+from io import BytesIO
+
+ai_client = ClientSession()
+
+OKDA = "olda"
+
+#### CARBON
+
+
+
+
+
 # Kanged From @TroJanZheX
 import os
 from PIL import Image
@@ -62,6 +81,25 @@ SPELL_CHECK = {}
 # ENABLE_SHORTLINK = ""
 GENERAT = "-1001203428484"
 UPLOAD_CHANNEL = "batchfiles_store"
+
+
+
+
+async def make_carbon(code, tele=False):
+    url = "https://carbonara.solopov.dev/api/cook"
+    async with ai_client.post(url, json={"code": code}) as resp:
+        image = BytesIO(await resp.read())
+    image.name = "carbon.png"
+    if tele:
+        uf = upload_file(image)
+        image.close()
+        return f"https://graph.org{uf[0]}"
+    return image
+
+
+
+
+
 
 
 @Client.on_message(filters.group & filters.text & filters.incoming)
@@ -3140,6 +3178,7 @@ async def advantage_spell_chok(client, msg):
             await asyncio.sleep(30)
             await k.delete()
             return
+        carbon = await make_carbon(f"{message.reply_to_message.text} ഈ മൂവി ആദ്യം ഇറങ്ങിക്കോട്ടെ")
         movielist += [movie.get('title') for movie in movies]
         movielist += [f"{movie.get('title')} {movie.get('year')}" for movie in movies]
         SPELL_CHECK[mv_id] = movielist
@@ -3154,7 +3193,7 @@ async def advantage_spell_chok(client, msg):
         ]
         btn.append([InlineKeyboardButton(text="Close", callback_data=f'spol#{reqstr1}#close_spellcheck')])
         spell_check_del = await msg.reply_photo(
-            photo=(SPELL_IMG),
+            photo=carbon,
             caption=(script.CUDNT_FND.format(mv_rqst)),
             reply_markup=InlineKeyboardMarkup(btn)
         )
