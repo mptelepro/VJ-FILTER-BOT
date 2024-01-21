@@ -18,10 +18,25 @@ BOT_TOKEN = "2108094040:AAHY_MkFF5X5HhW4yaZzq49jduK2fySPlhM"
 bot = telebot.TeleBot(BOT_TOKEN)
 
 
+
+
+
+
+# @bot.message_handler(commands=["reverse"])
+# def reverse_image(message):
+#    try:
+#        if message.reply_to_message.content_type == "photo":
+            
+
+
+
+
+
+
 def getImg(photo_info, message):
 	
-	img_url = "https://api.telegram.org/file/bot%s/%s" % (BOT_TOKEN, photo_info.file_path)
-	mess = bot.reply_to(message, "🔎 *Processing...*", enums.ParseMode.MARKDOWN)
+	img_url = "https://api.telegram.org/file/bot%s/%s" % (token, photo_info.file_path)
+	mess = bot.reply_to(message, "🔎 *Processing...*", parse_mode="Markdown")
 	
 	# Get search page
 	headers = {'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_1) AppleWebKit/602.2.14 (KHTML, like Gecko) Version/10.0.1 Safari/602.2.14', 
@@ -77,25 +92,15 @@ def getImg(photo_info, message):
 		markup.add(telebot.types.InlineKeyboardButton(text="🔗 Link to similar images", url=similar))
 
 	markup.add(telebot.types.InlineKeyboardButton(text="🌐 Search page", url=response.url))
-	bot.edit_message_text(message_id=mess.message_id, text=txt, enums.ParseMode.HTML, reply_markup=markup, chat_id=message.chat.id, disable_web_page_preview=True)
+	bot.edit_message_text(message_id=mess.message_id, text=txt, parse_mode='HTML', reply_markup=markup, chat_id=message.chat.id, disable_web_page_preview=True)
 
 
-
-
-# @bot.message_handler(commands=["reverse"])
-# def reverse_image(message):
-#    try:
-#        if message.reply_to_message.content_type == "photo":
-            
-
-
-
-
+					parse_mode="Markdown")
 
 
 @bot.message_handler(content_types=['photo'])
 def photo(message):
-	photo_info = bot.get_file(message.reply_to_message.photo[0].file_id)
+	photo_info = bot.get_file(message.photo[0].file_id)
 	getImg(photo_info, message)
 
 
