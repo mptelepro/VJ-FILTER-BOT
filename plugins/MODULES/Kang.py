@@ -9,7 +9,7 @@ from plugins.helpers.stickerset import *
     
 MAX_STICKERS = (120)  # would be better if we could fetch this limit directly from telegram
 SUPPORTED_TYPES = ["jpeg", "png", "webp"]
-BOT_USERNAME 
+# BOT_USERNAME 
 
 @Client.on_message(filters.command("get_sticker"))
 async def sticker_image(_, message: Message):
