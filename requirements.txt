@@ -84,6 +84,5 @@ idna==2.8
 six==1.12.0
 urllib3==1.25.3
 
-telethon
-opencv-python-headless
-pykeyboard
+pytesseract==0.3.7
+carbonsh==0.1.0
