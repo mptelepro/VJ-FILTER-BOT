@@ -35,7 +35,7 @@ REMOVEBG_API_KEY = 'MJMoiiatXPHcHgFG3D1Wf2aG'
 
 
 @Client.on_message(filters.command(["test"]))
-async def remove_background(client, message):
+async def remove_background(bot, message):
     try:
 #        if message.reply_to_message.photo:
         file_id = message.reply_to_message.photo[-1].file_id
@@ -51,10 +51,10 @@ async def remove_background(client, message):
                 f.write(response.content)
             await message.reply_document(open('removed_bg.png', 'rb'), quote=True)
         else:
-            await client.send_message("Maaf, tidak dapat menghapus background gambar.")
+            await bot.send_message("Maaf, tidak dapat menghapus background gambar.")
 
     except Exception as e:
-        await client.send_message("An error occurred while processing the image..")
+        await bot.send_message("An error occurred while processing the image..")
 
 
 
