@@ -23,10 +23,10 @@ async def on_off_antiarab(_, message: Message):
     m = await message.reply_text("**♻ Creating your Logo ♻**......\n\n[░░░░░░░░░░] 00%")
     
     BOT_USERNAME = USERNAME
-    f = message.text
+    search_term = message.text
     s=f.replace('/logo ' ,'')
     text=s.replace(' ', '%20')
-    lol = (f"https://single-developers.up.railway.app/logo?name={f}")
+    lol = (f"https://www.google.no/search?q={search_term}&client=opera&hs=cTQ&source=lnms&tbm=isch&sa=X&safe=active&ved=0ahUKEwig3LOx4PzKAhWGFywKHZyZAAgQ_AUIBygB&biw=1920&bih=982'")
     photo = wget.download(lol, 'pythonlogo.png')
     await m.delete()
     caption = f"""
