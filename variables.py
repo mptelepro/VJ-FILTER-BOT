@@ -14,9 +14,4 @@ API_HASH = os.environ.get("API_HASH", "")
 RemoveBG_API = os.environ.get("RemoveBG_API", "MJMoiiatXPHcHgFG3D1Wf2aG")
 
 
-○ ID : <code>{id}</code>
-○ DC : <code>{dc_id}</code>
-○ First Name : <code>{first_name}<code>
-○ UserName : @{username}
 
-By = {bot}</i>"""
