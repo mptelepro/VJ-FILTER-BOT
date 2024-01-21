@@ -83,6 +83,11 @@ async def remove_background(bot, update):
         )
         return
     try:
+        await bot.send_document(
+            chat_id=chat_id,
+            document=open(new_file_name, "wb"),
+            quote=True
+        )        
         await update.reply_document(
             document=new_file_name,
             quote=True
