@@ -2161,21 +2161,6 @@ async def cb_handler(client: Client, query: CallbackQuery):
 
     elif query.data == "special":
         
-        
-        await query.message.edit_text(
-            text="● ◌ ◌"
-        )
-        await query.message.edit_text(
-            text="● ● ◌"
-        )
-        await query.message.edit_text(
-            text="● ● ●"
-        )
-#        await client.edit_message_media(
-#            query.message.chat.id, 
-#            query.message.id, 
-#            InputMediaPhoto(random.choice(PICS))
-#        )
         buttons = [[
             InlineKeyboardButton('ꜱᴘᴇᴄɪᴀʟ ᴍᴏᴅ1', callback_data='special_mod1'),
             InlineKeyboardButton('ꜱᴘᴇᴄɪᴀʟ ᴍᴏᴅ2', callback_data='special_mod2')
@@ -2185,6 +2170,13 @@ async def cb_handler(client: Client, query: CallbackQuery):
 
             InlineKeyboardButton('⇍ ʙᴀᴄᴋ ⇏', callback_data='help')
         ]]
+        
+#        await client.edit_message_media(
+#            query.message.chat.id, 
+#            query.message.id, 
+#            InputMediaPhoto(random.choice(PICS))
+#        )
+        
         reply_markup = InlineKeyboardMarkup(buttons)
         await query.message.edit_text(
             text=script.SPECIAL_TXT,
@@ -2198,15 +2190,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
             InlineKeyboardButton('⇍ ʙᴀᴄᴋ ⇏', callback_data='special')
         ]]
         reply_markup = InlineKeyboardMarkup(buttons)
-        await query.message.edit_text(
-            text="● ◌ ◌"
-        )
-        await query.message.edit_text(
-            text="● ● ◌"
-        )
-        await query.message.edit_text(
-            text="● ● ●"
-        )
+        
         reply_markup = InlineKeyboardMarkup(buttons)
 #        await client.edit_message_media(
 #            query.message.chat.id, 
@@ -2235,15 +2219,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
             InlineKeyboardButton('⇍ ʙᴀᴄᴋ ⇏', callback_data='special')
         ]]
         reply_markup = InlineKeyboardMarkup(buttons)
-        await query.message.edit_text(
-            text="● ◌ ◌"
-        )
-        await query.message.edit_text(
-            text="● ● ◌"
-        )
-        await query.message.edit_text(
-            text="● ● ●"
-        )
+        
         reply_markup = InlineKeyboardMarkup(buttons)
 #        await client.edit_message_media(
 #            query.message.chat.id, 
@@ -2271,15 +2247,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
             InlineKeyboardButton('⇍ ʙᴀᴄᴋ ⇏', callback_data='special')
         ]]
         reply_markup = InlineKeyboardMarkup(buttons)
-        await query.message.edit_text(
-            text="● ◌ ◌"
-        )
-        await query.message.edit_text(
-            text="● ● ◌"
-        )
-        await query.message.edit_text(
-            text="● ● ●"
-        )
+        
         reply_markup = InlineKeyboardMarkup(buttons)
 #        await client.edit_message_media(
 #            query.message.chat.id, 
@@ -2515,15 +2483,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
             InlineKeyboardButton('⇍ ʙᴀᴄᴋ ⇏', callback_data='help')
         ]]
         reply_markup = InlineKeyboardMarkup(buttons)
-        await query.message.edit_text(
-            text="● ◌ ◌"
-        )
-        await query.message.edit_text(
-            text="● ● ◌"
-        )
-        await query.message.edit_text(
-            text="● ● ●"
-        )
+        
         reply_markup = InlineKeyboardMarkup(buttons)
         #        await client.edit_message_media(
 #            query.message.chat.id, 
@@ -2572,15 +2532,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
             InlineKeyboardButton('⇍ ʙᴀᴄᴋ ⇏', callback_data='help')
         ]]
         reply_markup = InlineKeyboardMarkup(buttons)
-        await query.message.edit_text(
-            text="● ◌ ◌"
-        )
-        await query.message.edit_text(
-            text="● ● ◌"
-        )
-        await query.message.edit_text(
-            text="● ● ●"
-        )
+        
         reply_markup = InlineKeyboardMarkup(buttons)
         #        await client.edit_message_media(
 #            query.message.chat.id, 
