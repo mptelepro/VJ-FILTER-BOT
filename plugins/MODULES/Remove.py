@@ -1,5 +1,4 @@
-import urllib
-import json
+
 
 import telebot
 import requests
@@ -11,37 +10,13 @@ bot = telebot.TeleBot(BOT_TOKEN)
 # Ganti 'TOKEN_REMOVEBG_API' dengan token API Remove.bg Anda
 REMOVEBG_API_KEY = 'MJMoiiatXPHcHgFG3D1Wf2aG'
 
-
-
-@bot.message_handler(commands=['yt'])
-def command_youtube(m):
-    cid = m.chat.id
-    query = m.text[4:]
-    # sustituir CLAVE API por tu API    
-    link = urllib.urlopen("https://www.googleapis.com/youtube/v3/search?part=snippet&q=%s&key={CLAVE API}" % query)
-    data = json.loads(link.read())
-    """Coge un video aleatorio del primero al tercero,
-    este rango se puede modificar o incluso dejar fijo"""
-    rnd_no = random.randrange(0,3)
-    id = data['items'][rnd_no]['id']['videoId'] 
-    bot.send_message(cid, "http://www.youtube.com/watch?v=" + id)
-
-@bot.message_handler(commands=['img'])
-def command_img(m):
-            cid = m.chat.id
-            token = m.text.split(" ", 1)[1]
-            token = token.encode('utf-8') 
-            url = "https://www.googleapis.com/customsearch/v1?q=%s&cx{CXCODEHERE}&searchType=image&key={APIKEY}" % token
-            link = urllib.urlopen(url)
-            data = json.loads(link.read())
-            rnd_no = random.randrange(0,4)
-            image = urllib.URLopener()
-            image.retrieve(data['items'][rnd_no]['link'], "tmp.jpg")
-            bot.send_photo(cid, open( 'tmp.jpg', 'rb'))
+# @BOT.message_handler(commands=["check", ], chat_types=["private", ], func=_is_master)
 
 
 
-@bot.message_handler(content_types=['photo'])
+
+
+@bot.message_handler(content_types=['photo'], commands=["check", ])
 def handle_photo(message):
     try:
         file_id = message.photo[-1].file_id
