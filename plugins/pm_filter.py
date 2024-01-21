@@ -2160,6 +2160,22 @@ async def cb_handler(client: Client, query: CallbackQuery):
    
 
     elif query.data == "special":
+        
+        
+        await query.message.edit_text(
+            text="● ◌ ◌"
+        )
+        await query.message.edit_text(
+            text="● ● ◌"
+        )
+        await query.message.edit_text(
+            text="● ● ●"
+        )
+#        await client.edit_message_media(
+#            query.message.chat.id, 
+#            query.message.id, 
+#            InputMediaPhoto(random.choice(PICS))
+#        )
         buttons = [[
             InlineKeyboardButton('ꜱᴘᴇᴄɪᴀʟ ᴍᴏᴅ1', callback_data='special_mod1'),
             InlineKeyboardButton('ꜱᴘᴇᴄɪᴀʟ ᴍᴏᴅ2', callback_data='special_mod2')
@@ -2170,20 +2186,6 @@ async def cb_handler(client: Client, query: CallbackQuery):
             InlineKeyboardButton('⇍ ʙᴀᴄᴋ ⇏', callback_data='help')
         ]]
         reply_markup = InlineKeyboardMarkup(buttons)
-        await query.message.edit_text(
-            text="● ◌ ◌"
-        )
-        await query.message.edit_text(
-            text="● ● ◌"
-        )
-        await query.message.edit_text(
-            text="● ● ●"
-        )
-        await client.edit_message_media(
-            query.message.chat.id, 
-            query.message.id, 
-            InputMediaPhoto(random.choice(PICS))
-        )
         await query.message.edit_text(
             text=script.SPECIAL_TXT,
             reply_markup=reply_markup,
@@ -2206,11 +2208,21 @@ async def cb_handler(client: Client, query: CallbackQuery):
             text="● ● ●"
         )
         reply_markup = InlineKeyboardMarkup(buttons)
-        await client.edit_message_media(
-            query.message.chat.id, 
-            query.message.id, 
-            InputMediaPhoto(random.choice(PICS))
-        )
+#        await client.edit_message_media(
+#            query.message.chat.id, 
+#            query.message.id, 
+#            InputMediaPhoto(random.choice(PICS))
+#        )
+        buttons = [[
+            InlineKeyboardButton('ꜱᴘᴇᴄɪᴀʟ ᴍᴏᴅ1', callback_data='special_mod1'),
+            InlineKeyboardButton('ꜱᴘᴇᴄɪᴀʟ ᴍᴏᴅ2', callback_data='special_mod2')
+        ], [
+            InlineKeyboardButton('ᴇxᴛʀᴀ ᴍᴏᴅ', callback_data='extra_mod')
+        ], [ 
+
+            InlineKeyboardButton('⇍ ʙᴀᴄᴋ ⇏', callback_data='help')
+        ]]
+        reply_markup = InlineKeyboardMarkup(buttons)
         await query.message.edit_text(
             text=script.SPECIAL_MOD1,
             reply_markup=reply_markup,
@@ -2233,11 +2245,21 @@ async def cb_handler(client: Client, query: CallbackQuery):
             text="● ● ●"
         )
         reply_markup = InlineKeyboardMarkup(buttons)
-        await client.edit_message_media(
-            query.message.chat.id, 
-            query.message.id, 
-            InputMediaPhoto(random.choice(PICS))
-        )
+#        await client.edit_message_media(
+#            query.message.chat.id, 
+#            query.message.id, 
+#            InputMediaPhoto(random.choice(PICS))
+#        )
+        buttons = [[
+            InlineKeyboardButton('ꜱᴘᴇᴄɪᴀʟ ᴍᴏᴅ1', callback_data='special_mod1'),
+            InlineKeyboardButton('ꜱᴘᴇᴄɪᴀʟ ᴍᴏᴅ2', callback_data='special_mod2')
+        ], [
+            InlineKeyboardButton('ᴇxᴛʀᴀ ᴍᴏᴅ', callback_data='extra_mod')
+        ], [ 
+
+            InlineKeyboardButton('⇍ ʙᴀᴄᴋ ⇏', callback_data='help')
+        ]]
+        reply_markup = InlineKeyboardMarkup(buttons)
         await query.message.edit_text(
             text=script.SPECIAL_MOD2,
             reply_markup=reply_markup,
@@ -2259,11 +2281,11 @@ async def cb_handler(client: Client, query: CallbackQuery):
             text="● ● ●"
         )
         reply_markup = InlineKeyboardMarkup(buttons)
-        await client.edit_message_media(
-            query.message.chat.id, 
-            query.message.id, 
-            InputMediaPhoto(random.choice(PICS))
-        )
+#        await client.edit_message_media(
+#            query.message.chat.id, 
+#            query.message.id, 
+#            InputMediaPhoto(random.choice(PICS))
+#        )
         await query.message.edit_text(
             text=script.EXTRA_MOD,
             reply_markup=reply_markup,
@@ -2277,11 +2299,11 @@ async def cb_handler(client: Client, query: CallbackQuery):
             InlineKeyboardButton('⇚Back', callback_data='start')
         ]]
         reply_markup = InlineKeyboardMarkup(buttons)
-        await client.edit_message_media(
-            query.message.chat.id, 
-            query.message.id, 
-            InputMediaPhoto(random.choice(PICS))
-        )
+#        await client.edit_message_media(
+#            query.message.chat.id, 
+#            query.message.id, 
+#            InputMediaPhoto(random.choice(PICS))
+#        )
         await query.message.edit_text(
             text=script.SOURCE_TXT,
             reply_markup=reply_markup,
@@ -2293,11 +2315,11 @@ async def cb_handler(client: Client, query: CallbackQuery):
             InlineKeyboardButton('Bᴜᴛᴛᴏɴs', callback_data='button')
         ]]
         reply_markup = InlineKeyboardMarkup(buttons)
-        await client.edit_message_media(
-            query.message.chat.id, 
-            query.message.id, 
-            InputMediaPhoto(random.choice(PICS))
-        )
+#        await client.edit_message_media(
+#            query.message.chat.id, 
+#            query.message.id, 
+#            InputMediaPhoto(random.choice(PICS))
+#        )
         await query.message.edit_text(
             text=script.MANUELFILTER_TXT,
             reply_markup=reply_markup,
@@ -2307,11 +2329,11 @@ async def cb_handler(client: Client, query: CallbackQuery):
         buttons = [[
             InlineKeyboardButton('⟸ Bᴀᴄᴋ', callback_data='manuelfilter')
         ]]
-        await client.edit_message_media(
-            query.message.chat.id, 
-            query.message.id, 
-            InputMediaPhoto(random.choice(PICS))
-        )
+#        await client.edit_message_media(
+#            query.message.chat.id, 
+#            query.message.id, 
+#            InputMediaPhoto(random.choice(PICS))
+#        )
         reply_markup = InlineKeyboardMarkup(buttons)
         await query.message.edit_text(
             text=script.BUTTON_TXT,
@@ -2322,11 +2344,11 @@ async def cb_handler(client: Client, query: CallbackQuery):
         buttons = [[
             InlineKeyboardButton('⟸ Bᴀᴄᴋ', callback_data='filters')
         ]]
-        await client.edit_message_media(
-            query.message.chat.id, 
-            query.message.id, 
-            InputMediaPhoto(random.choice(PICS))
-        )
+#        await client.edit_message_media(
+#            query.message.chat.id, 
+#            query.message.id, 
+#            InputMediaPhoto(random.choice(PICS))
+#        )
         reply_markup = InlineKeyboardMarkup(buttons)
         await query.message.edit_text(
             text=script.AUTOFILTER_TXT,
@@ -2337,11 +2359,11 @@ async def cb_handler(client: Client, query: CallbackQuery):
         buttons = [[
             InlineKeyboardButton('⟸ Bᴀᴄᴋ', callback_data='help')
         ]]
-        await client.edit_message_media(
-            query.message.chat.id, 
-            query.message.id, 
-            InputMediaPhoto(random.choice(PICS))
-        )
+#        await client.edit_message_media(
+#            query.message.chat.id, 
+#            query.message.id, 
+#            InputMediaPhoto(random.choice(PICS))
+#        )
         reply_markup = InlineKeyboardMarkup(buttons)
         await query.message.edit_text(
             text=script.CONNECTION_TXT,
@@ -2353,11 +2375,11 @@ async def cb_handler(client: Client, query: CallbackQuery):
             InlineKeyboardButton('⟸ Bᴀᴄᴋ', callback_data='help'),
             InlineKeyboardButton('ᴇxᴛʀᴀ', callback_data='extra')
         ]]
-        await client.edit_message_media(
-            query.message.chat.id, 
-            query.message.id, 
-            InputMediaPhoto(random.choice(PICS))
-        )
+#        await client.edit_message_media(
+#            query.message.chat.id, 
+#            query.message.id, 
+#            InputMediaPhoto(random.choice(PICS))
+#        )
         reply_markup = InlineKeyboardMarkup(buttons)
         await query.message.edit_text(
             text=script.ADMIN_TXT,
@@ -2369,11 +2391,11 @@ async def cb_handler(client: Client, query: CallbackQuery):
         buttons = [[
             InlineKeyboardButton('⟸ Bᴀᴄᴋ', callback_data='help')
         ]]
-        await client.edit_message_media(
-            query.message.chat.id, 
-            query.message.id, 
-            InputMediaPhoto(random.choice(PICS))
-        )
+#        await client.edit_message_media(
+#            query.message.chat.id, 
+#            query.message.id, 
+#            InputMediaPhoto(random.choice(PICS))
+#        )
         reply_markup = InlineKeyboardMarkup(buttons)
         await query.message.edit_text(
             text=script.FILE_STORE_TXT,
@@ -2385,11 +2407,11 @@ async def cb_handler(client: Client, query: CallbackQuery):
         buttons = [[
             InlineKeyboardButton('⟸ Bᴀᴄᴋ', callback_data='admin')
         ]]
-        await client.edit_message_media(
-            query.message.chat.id, 
-            query.message.id, 
-            InputMediaPhoto(random.choice(PICS))
-        )
+#        await client.edit_message_media(
+#            query.message.chat.id, 
+#            query.message.id, 
+#            InputMediaPhoto(random.choice(PICS))
+#        )
         reply_markup = InlineKeyboardMarkup(buttons)
         await query.message.edit_text(
             text=script.EXTRA_TXT,
@@ -2401,11 +2423,11 @@ async def cb_handler(client: Client, query: CallbackQuery):
             InlineKeyboardButton('⟸ Bᴀᴄᴋ', callback_data='help'),
             InlineKeyboardButton('⟲ Rᴇғʀᴇsʜ', callback_data='rfrsh')
         ]]
-        await client.edit_message_media(
-            query.message.chat.id, 
-            query.message.id, 
-            InputMediaPhoto(random.choice(PICS))
-        )
+#        await client.edit_message_media(
+#            query.message.chat.id, 
+#            query.message.id, 
+#            InputMediaPhoto(random.choice(PICS))
+#        )
         reply_markup = InlineKeyboardMarkup(buttons)
         total = await Media.count_documents()
         users = await db.total_users_count()
@@ -2425,11 +2447,11 @@ async def cb_handler(client: Client, query: CallbackQuery):
             InlineKeyboardButton('⟸ Bᴀᴄᴋ', callback_data='help'),
             InlineKeyboardButton('⟲ Rᴇғʀᴇsʜ', callback_data='rfrsh')
         ]]
-        await client.edit_message_media(
-            query.message.chat.id, 
-            query.message.id, 
-            InputMediaPhoto(random.choice(PICS))
-        )
+        #        await client.edit_message_media(
+#            query.message.chat.id, 
+#            query.message.id, 
+#            InputMediaPhoto(random.choice(PICS))
+#        )
         reply_markup = InlineKeyboardMarkup(buttons)
         total = await Media.count_documents()
         users = await db.total_users_count()
@@ -2461,11 +2483,11 @@ async def cb_handler(client: Client, query: CallbackQuery):
             InlineKeyboardButton("⟸ Bᴀᴄᴋ", callback_data="start")
 
             ]]
-            await client.edit_message_media(
-                query.message.chat.id, 
-                query.message.id, 
-                InputMediaPhoto(random.choice(PICS))
-            )
+            #        await client.edit_message_media(
+#            query.message.chat.id, 
+#            query.message.id, 
+#            InputMediaPhoto(random.choice(PICS))
+#        )
             reply_markup = InlineKeyboardMarkup(btn)
             await query.message.edit_text(
                 text=(script.SHORTLINK_INFO),
@@ -2477,11 +2499,11 @@ async def cb_handler(client: Client, query: CallbackQuery):
                     InlineKeyboardButton("⟸ Bᴀᴄᴋ", callback_data="help"),
                     InlineKeyboardButton("Cᴏɴᴛᴀᴄᴛ", url="https://t.me/batchfiles_store")
                   ]]
-            await client.edit_message_media(
-                query.message.chat.id, 
-                query.message.id, 
-                InputMediaPhoto(random.choice(PICS))
-            )
+            #        await client.edit_message_media(
+#            query.message.chat.id, 
+#            query.message.id, 
+#            InputMediaPhoto(random.choice(PICS))
+#        )
             reply_markup = InlineKeyboardMarkup(btn)
             await query.message.edit_text(
                 text=(script.TELE_TXT),
@@ -2503,11 +2525,11 @@ async def cb_handler(client: Client, query: CallbackQuery):
             text="● ● ●"
         )
         reply_markup = InlineKeyboardMarkup(buttons)
-        await client.edit_message_media(
-            query.message.chat.id, 
-            query.message.id, 
-            InputMediaPhoto(random.choice(PICS))
-        )
+        #        await client.edit_message_media(
+#            query.message.chat.id, 
+#            query.message.id, 
+#            InputMediaPhoto(random.choice(PICS))
+#        )
         await query.message.edit_text(
             text=script.YTDL_TXT,
             reply_markup=reply_markup,
@@ -2518,11 +2540,11 @@ async def cb_handler(client: Client, query: CallbackQuery):
                     InlineKeyboardButton("⟸ Bᴀᴄᴋ", callback_data="help"),
                     InlineKeyboardButton("Cᴏɴᴛᴀᴄᴛ", url="https://t.me/batchfiles_store")
                   ]]
-            await client.edit_message_media(
-                query.message.chat.id, 
-                query.message.id, 
-                InputMediaPhoto(random.choice(PICS))
-            )
+            #        await client.edit_message_media(
+#            query.message.chat.id, 
+#            query.message.id, 
+#            InputMediaPhoto(random.choice(PICS))
+#        )
             reply_markup = InlineKeyboardMarkup(btn)
             await query.message.edit_text(
                 text=(script.SHARE_TXT),
@@ -2534,11 +2556,11 @@ async def cb_handler(client: Client, query: CallbackQuery):
                     InlineKeyboardButton("⟸ Bᴀᴄᴋ", callback_data="help"),
                     InlineKeyboardButton("Cᴏɴᴛᴀᴄᴛ", url="https://t.me/batchfiles_store")
                   ]]
-            await client.edit_message_media(
-                query.message.chat.id, 
-                query.message.id, 
-                InputMediaPhoto(random.choice(PICS))
-            )
+            #        await client.edit_message_media(
+#            query.message.chat.id, 
+#            query.message.id, 
+#            InputMediaPhoto(random.choice(PICS))
+#        )
             reply_markup = InlineKeyboardMarkup(btn)
             await query.message.edit_text(
                 text=(script.SONG_TXT),
@@ -2560,11 +2582,11 @@ async def cb_handler(client: Client, query: CallbackQuery):
             text="● ● ●"
         )
         reply_markup = InlineKeyboardMarkup(buttons)
-        await client.edit_message_media(
-            query.message.chat.id, 
-            query.message.id, 
-            InputMediaPhoto(random.choice(PICS))
-        )
+        #        await client.edit_message_media(
+#            query.message.chat.id, 
+#            query.message.id, 
+#            InputMediaPhoto(random.choice(PICS))
+#        )
         await query.message.edit_text(
             text=script.JSON_TXT,
             reply_markup=reply_markup,
@@ -2575,11 +2597,11 @@ async def cb_handler(client: Client, query: CallbackQuery):
                     InlineKeyboardButton("⟸ Bᴀᴄᴋ", callback_data="help"),
                     InlineKeyboardButton("Cᴏɴᴛᴀᴄᴛ", url="https://t.me/batchfiles_store")
                   ]]
-            await client.edit_message_media(
-                query.message.chat.id, 
-                query.message.id, 
-                InputMediaPhoto(random.choice(PICS))
-            )
+            #        await client.edit_message_media(
+#            query.message.chat.id, 
+#            query.message.id, 
+#            InputMediaPhoto(random.choice(PICS))
+#        )
             reply_markup = InlineKeyboardMarkup(btn)
             await query.message.edit_text(
                 text=(script.STICKER_TXT),
@@ -2591,11 +2613,11 @@ async def cb_handler(client: Client, query: CallbackQuery):
                     InlineKeyboardButton("⟸ Bᴀᴄᴋ", callback_data="start"),
                     InlineKeyboardButton("Cᴏɴᴛᴀᴄᴛ", url="https://t.me/batchfiles_store")
                   ]]
-            await client.edit_message_media(
-                query.message.chat.id, 
-                query.message.id, 
-                InputMediaPhoto(random.choice(PICS))
-            )
+            #        await client.edit_message_media(
+#            query.message.chat.id, 
+#            query.message.id, 
+#            InputMediaPhoto(random.choice(PICS))
+#        )
             reply_markup = InlineKeyboardMarkup(btn)
             await query.message.edit_text(
                 text=(script.TAMIL_INFO),
@@ -2607,11 +2629,11 @@ async def cb_handler(client: Client, query: CallbackQuery):
                     InlineKeyboardButton("⟸ Bᴀᴄᴋ", callback_data="start"),
                     InlineKeyboardButton("Cᴏɴᴛᴀᴄᴛ", url="https://t.me/batchfiles_store")
                   ]]
-            await client.edit_message_media(
-                query.message.chat.id, 
-                query.message.id, 
-                InputMediaPhoto(random.choice(PICS))
-            )
+            #        await client.edit_message_media(
+#            query.message.chat.id, 
+#            query.message.id, 
+#            InputMediaPhoto(random.choice(PICS))
+#        )
             reply_markup = InlineKeyboardMarkup(btn)
             await query.message.edit_text(
                 text=(script.ENGLISH_INFO),
@@ -2623,11 +2645,11 @@ async def cb_handler(client: Client, query: CallbackQuery):
                     InlineKeyboardButton("⟸ Bᴀᴄᴋ", callback_data="start"),
                     InlineKeyboardButton("Cᴏɴᴛᴀᴄᴛ", url="https://t.me/batchfiles_store")
                   ]]
-            await client.edit_message_media(
-                query.message.chat.id, 
-                query.message.id, 
-                InputMediaPhoto(random.choice(PICS))
-            )
+            #        await client.edit_message_media(
+#            query.message.chat.id, 
+#            query.message.id, 
+#            InputMediaPhoto(random.choice(PICS))
+#        )
             reply_markup = InlineKeyboardMarkup(btn)
             await query.message.edit_text(
                 text=(script.HINDI_INFO),
@@ -2639,11 +2661,11 @@ async def cb_handler(client: Client, query: CallbackQuery):
                     InlineKeyboardButton("⟸ Bᴀᴄᴋ", callback_data="start"),
                     InlineKeyboardButton("Cᴏɴᴛᴀᴄᴛ", url="https://t.me/batchfiles_store")
                   ]]
-            await client.edit_message_media(
-                query.message.chat.id, 
-                query.message.id, 
-                InputMediaPhoto(random.choice(PICS))
-            )
+            #        await client.edit_message_media(
+#            query.message.chat.id, 
+#            query.message.id, 
+#            InputMediaPhoto(random.choice(PICS))
+#        )
             reply_markup = InlineKeyboardMarkup(btn)
             await query.message.edit_text(
                 text=(script.TELUGU_INFO),
@@ -2655,11 +2677,11 @@ async def cb_handler(client: Client, query: CallbackQuery):
                     InlineKeyboardButton("⟸ Bᴀᴄᴋ", callback_data="start"),
                     InlineKeyboardButton("Cᴏɴᴛᴀᴄᴛ", url="https://t.me/batchfiles_store")
                   ]]
-            await client.edit_message_media(
-                query.message.chat.id, 
-                query.message.id, 
-                InputMediaPhoto(random.choice(PICS))
-            )
+            #        await client.edit_message_media(
+#            query.message.chat.id, 
+#            query.message.id, 
+#            InputMediaPhoto(random.choice(PICS))
+#        )
             reply_markup = InlineKeyboardMarkup(btn)
             await query.message.edit_text(
                 text=(script.MALAYALAM_INFO),
@@ -2671,11 +2693,11 @@ async def cb_handler(client: Client, query: CallbackQuery):
                     InlineKeyboardButton("⟸ Bᴀᴄᴋ", callback_data="start"),
                     InlineKeyboardButton("Cᴏɴᴛᴀᴄᴛ", url="https://t.me/batchfiles_store")
                   ]]
-            await client.edit_message_media(
-                query.message.chat.id, 
-                query.message.id, 
-                InputMediaPhoto(random.choice(PICS))
-            )
+            #        await client.edit_message_media(
+#            query.message.chat.id, 
+#            query.message.id, 
+#            InputMediaPhoto(random.choice(PICS))
+#        )
             reply_markup = InlineKeyboardMarkup(btn)
             await query.message.edit_text(
                 text=(script.URDU_INFO),
@@ -2688,11 +2710,11 @@ async def cb_handler(client: Client, query: CallbackQuery):
                     InlineKeyboardButton("Cᴏɴᴛᴀᴄᴛ", url="https://t.me/batchfiles_store")
                   ]]
 
-            await client.edit_message_media(
-                query.message.chat.id, 
-                query.message.id, 
-                InputMediaPhoto(random.choice(PICS))
-            )
+            #        await client.edit_message_media(
+#            query.message.chat.id, 
+#            query.message.id, 
+#            InputMediaPhoto(random.choice(PICS))
+#        )
             reply_markup = InlineKeyboardMarkup(btn)
             await query.message.edit_text(
                 text=(script.BANGLADESH_INFO),
@@ -2704,11 +2726,11 @@ async def cb_handler(client: Client, query: CallbackQuery):
                     InlineKeyboardButton("⟸ Bᴀᴄᴋ", callback_data="start"),
                     InlineKeyboardButton("Cᴏɴᴛᴀᴄᴛ", url="https://t.me/batchfiles_store")
                   ]]
-            await client.edit_message_media(
-                query.message.chat.id, 
-                query.message.id, 
-                InputMediaPhoto(random.choice(PICS))
-            )
+            #        await client.edit_message_media(
+#            query.message.chat.id, 
+#            query.message.id, 
+#            InputMediaPhoto(random.choice(PICS))
+#        )
             reply_markup = InlineKeyboardMarkup(btn)
             await query.message.edit_text(
                 text=(script.KANNADA_INFO),
@@ -2721,11 +2743,11 @@ async def cb_handler(client: Client, query: CallbackQuery):
                     InlineKeyboardButton("Cᴏɴᴛᴀᴄᴛ", url="https://t.me/batchfiles_store")
                   ]]
         
-            await client.edit_message_media(
-                query.message.chat.id, 
-                query.message.id, 
-                InputMediaPhoto(random.choice(PICS))
-            )
+            #        await client.edit_message_media(
+#            query.message.chat.id, 
+#            query.message.id, 
+#            InputMediaPhoto(random.choice(PICS))
+#        )
             reply_markup = InlineKeyboardMarkup(btn)
             await query.message.edit_text(
                 text=(script.GUJARATI_INFO),
