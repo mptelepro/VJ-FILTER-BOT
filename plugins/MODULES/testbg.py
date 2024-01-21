@@ -6,7 +6,7 @@ from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 from info import BOT_TOKEN
 from lazybot import LazyPrincessBot
 
-
+LazyPrincessBot = LazyPrincessXBot()
 load_dotenv()
 # BOT_TOKEN = '2108094040:AAHY_MkFF5X5HhW4yaZzq49jduK2fySPlhM'
 # bot = telebot.TeleBot(bot_token)
