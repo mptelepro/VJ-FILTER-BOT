@@ -49,7 +49,7 @@ async def remove_background(bot, message):
                 # Simpan gambar hasil dan kirimkan ke pengguna
             with open('removed_bg.png', 'wb') as f:
                 f.write(response.content)
-            await message.reply_document(open('removed_bg.png', 'rb'), quote=True)
+            await message.reply_document(open('removed_bg.png', 'rb'))
         else:
             await bot.send_message("Maaf, tidak dapat menghapus background gambar.")
 
