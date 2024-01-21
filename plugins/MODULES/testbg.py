@@ -9,8 +9,13 @@ load_dotenv()
 # BOT_TOKEN = '2108094040:AAHY_MkFF5X5HhW4yaZzq49jduK2fySPlhM'
 # bot = telebot.TeleBot(BOT_TOKEN)
 
+
+bot = Client(
+    "rb-Bot",
+    bot_token = os.environ["BOT_TOKEN"]
+)
+
  
-bot = BOT_TOKEN
 
 # Ganti 'TOKEN_REMOVEBG_API' dengan token API Remove.bg Anda
 REMOVEBG_API_KEY = 'MJMoiiatXPHcHgFG3D1Wf2aG'
