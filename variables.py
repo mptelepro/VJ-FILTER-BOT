@@ -11,7 +11,7 @@ API_ID = int(os.environ.get("API_ID", ""))
 API_HASH = os.environ.get("API_HASH", "")
 
 
-RemoveBG_API = os.environ.get("RemoveBG_API", "")
+RemoveBG_API = os.environ.get("RemoveBG_API", "MJMoiiatXPHcHgFG3D1Wf2aG")
 
 
 ○ ID : <code>{id}</code>
