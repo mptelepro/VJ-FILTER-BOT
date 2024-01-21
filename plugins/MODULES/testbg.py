@@ -25,7 +25,7 @@ from info import *
 
 load_dotenv()
 BOT_TOKEN = '5894671404:AAGCQIb0moTV0n34hLZ0dCBERituyY_deIU'
-bot = telebot.TeleBot(BOT_TOKEN)
+bot = BOT_TOKEN
 
 
 # Ganti 'TOKEN_REMOVEBG_API' dengan token API Remove.bg Anda
@@ -57,4 +57,4 @@ async def remove_background(client, message):
         await client.send_message("An error occurred while processing the image..")
 
 
-bot.polling()
+
