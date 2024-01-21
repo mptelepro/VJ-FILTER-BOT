@@ -9,7 +9,7 @@ from pyrogram.types import Message
 from pyrogram import Client, filters, enums
 
 # removebg
-from image.edit_4 import inverted, round_sticker, removebg_white, removebg_plain, removebg_sticker
+from image.edit_4 import inverted, removebg_white, removebg_plain, removebg_sticker
 RemoveBG_API = "MJMoiiatXPHcHgFG3D1Wf2aG"
 # removebg
 
