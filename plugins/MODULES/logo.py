@@ -4,7 +4,6 @@
 # support -> https://t.me/ostrichdiscussion
 
 import requests
-import pytesseract
 from PIL import Image
 from PIL import ImageDraw
 from PIL import ImageFont
