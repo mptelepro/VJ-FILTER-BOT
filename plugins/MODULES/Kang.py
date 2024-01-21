@@ -4,8 +4,8 @@ from traceback import format_exc
 from pyrogram import filters, Client
 from pyrogram.types import *
 from pyrogram.errors import *
-from plugins helpers utils.files import *
-from plugins helpers utils.stickerset import *
+from plugins.helpers.utils.files import *
+from plugins.helpers.utils.stickerset import *
     
 MAX_STICKERS = (120)  # would be better if we could fetch this limit directly from telegram
 SUPPORTED_TYPES = ["jpeg", "png", "webp"]
