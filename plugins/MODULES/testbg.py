@@ -3,11 +3,11 @@ import requests
 from dotenv import load_dotenv
 from pyrogram import Client, filters
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
-
+from info import BOT_TOKEN
 
 load_dotenv()
-BOT_TOKEN = '2108094040:AAHY_MkFF5X5HhW4yaZzq49jduK2fySPlhM'
-bot = telebot.TeleBot(BOT_TOKEN)
+# BOT_TOKEN = '2108094040:AAHY_MkFF5X5HhW4yaZzq49jduK2fySPlhM'
+# bot = telebot.TeleBot(BOT_TOKEN)
 
 # Ganti 'TOKEN_REMOVEBG_API' dengan token API Remove.bg Anda
 REMOVEBG_API_KEY = 'MJMoiiatXPHcHgFG3D1Wf2aG'
@@ -31,7 +31,7 @@ async def remove_background(client, message):
                 f.write(response.content)
             await client.send_document(chat_id, open('removed_bg.png', 'rb'))
         else:
-           await client.send_message(chat_id, "Maaf, tidak dapat menghapus background gambar.")
+           await client.send_message("Maaf, tidak dapat menghapus background gambar.")
 
     except Exception as e:
-        await client.send_message(chat_id, "An error occurred while processing the image..")
+        await client.send_message("An error occurred while processing the image..")
