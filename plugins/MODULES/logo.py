@@ -16,15 +16,17 @@ import asyncio
 from asyncio import *
 import time
 
+USERNAME = "NASRANI_BOT"
+
 @Client.on_message(filters.command("logo"))
 async def on_off_antiarab(_, message: Message):
     m = await message.reply_text("**♻ Creating your Logo ♻**......\n\n[░░░░░░░░░░] 00%")
     
-    BOT_USERNAME = _.username
-    f= message.text
+    BOT_USERNAME = USERNAME
+    f = message.text
     s=f.replace('/logo ' ,'')
     text=s.replace(' ', '%20')
-    lol = (f"https://single-developers.up.railway.app/logo?name={text}")
+    lol = (f"https://single-developers.up.railway.app/logo?name={f}")
     photo = wget.download(lol, 'pythonlogo.png')
     await m.delete()
     caption = f"""
@@ -35,9 +37,9 @@ async def on_off_antiarab(_, message: Message):
 🍀 **𝙋𝙤𝙬𝙚𝙧𝙙 𝘽𝙮**  : **[• 𝙊𝙪𝙩𝙧𝙪𝙞𝙓 • ™](https://t.me/TeamOutruix)**
 ◇───────────────◇️  
 """
-    await _.send_chat_action(message.chat.id, enums.ChatAction.UPLOAD_DOCUMENT)
-    time.sleep(3)
-    await message.reply_photo(photo=photo, caption=caption.format(message.from_user.mention),
+    # await _.send_chat_action(message.chat.id, enums.ChatAction.UPLOAD_DOCUMENT)
+   # time.sleep(3)
+    await message.reply_photo(photo=photo),
                  reply_markup=InlineKeyboardMarkup(
             [
                 [
