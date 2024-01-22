@@ -84,7 +84,7 @@ async def save_group(bot, message):
                                                                         ],[
                                                                            InlineKeyboardButton("Bᴏᴛ Oᴡɴᴇʀ", url="t.me/bigmoviesworld")
                                                                          ]]
-                                                 )
+                                                 ),
                                                  await message.delete()       
 
                 
