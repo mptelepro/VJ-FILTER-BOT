@@ -36,9 +36,9 @@ async def save_group(bot, message):
             await bot.leave_chat(message.chat.id)
             return
         buttons = [[
-            InlineKeyboardButton('🤥 Help', url=f"https://t.me/{temp.U_NAME}?start=help"),
-            InlineKeyboardButton('🔔 Updates', url='https://t.me/LazyDeveloper')
-        ]]
+                    InlineKeyboardButton('📣 Uᴘᴅᴀᴛᴇs', url='https://t.me/nasrani_update'),
+                    InlineKeyboardButton('❓ Hᴇʟᴘ', url=f"https://t.me/{temp.U_NAME}?start=help")
+                  ]]
         reply_markup=InlineKeyboardMarkup(buttons)
         await message.reply_text(
             text=f"<b>Thank you For Adding Me In {message.chat.title} ❣️\n\nIf you have any questions & doubts about using me contact support.</b>",
@@ -61,6 +61,7 @@ async def save_group(bot, message):
                             text=f"Hey babe.\n I am added forcefully to this group named **{chatTitle}** Please tell me if you like to restrict this group...",
                             reply_markup=lazy_markup)
     else:
+        count = await bot.get_chat_members_count(message.chat.id)
         settings = await get_settings(message.chat.id)
         if settings["welcome"]:
             for u in message.new_chat_members:
@@ -69,7 +70,29 @@ async def save_group(bot, message):
                         await (temp.MELCOW['welcome']).delete()
                     except:
                         pass
-                temp.MELCOW['welcome'] = await message.reply(f"<b>Hey , {u.mention}, Welcome to {message.chat.title}</b>")
+                temp.MELCOW['welcome'] = await bot.send_video(
+                                                 chat_id=message.chat.id,
+                                                 video=(MELCOW_VID),
+                                                 caption=f"𝐇𝐞𝐥𝐥𝐨: {u.mention} \n 𝐖𝐞𝐥𝐜𝐨𝐦𝐞 𝐓𝐨 {message.chat.title} \n𝐘𝐨𝐮𝐫 𝐈𝐝: {message.from_user.id} \n𝐘𝐨𝐮𝐫 𝐀𝐝𝐦𝐢𝐬𝐬𝐢𝐨𝐧 𝐍𝐨: {count}",
+#                                                 caption=f"Hello {u.mention}  {temp.U_NAME} ❤️ {message.from_user.last_name} ❤️group {message.chat.title} Count {count}",
+                                                 reply_markup=InlineKeyboardMarkup(
+                                                                         [[
+                                                                           InlineKeyboardButton('Sᴜᴘᴘᴏʀᴛ Gʀᴏᴜᴘ', url=GRP_LNK),
+                                                                           InlineKeyboardButton('Uᴘᴅᴀᴛᴇs Cʜᴀɴɴᴇʟ', url=CHNL_LNK)
+                                                                        ],[
+                                                                           InlineKeyboardButton("Bᴏᴛ Oᴡɴᴇʀ", url="t.me/bigmoviesworld")
+                                                                         ]]
+                                                 ),
+
+                
+@Client.on_message(filters.left_chat_member)
+async def end(bot, message):
+    count = await bot.get_chat_members_count(message.chat.id)
+    settings = await get_settings(message.chat.id)
+    if settings["welcome"]:    
+        await bot.send_message(chat_id=message.chat.id, text=f"𝐇𝐞𝐥𝐥𝐨: {message.from_user.mention}😞 \n 𝐁𝐲 𝐁𝐲... {message.chat.title} \n𝐘𝐨𝐮𝐫 𝐈𝐝: {message.from_user.id} \n𝐓𝐨𝐭𝐚𝐥 𝐆𝐫𝐨𝐮𝐩 𝐌𝐞𝐦𝐛𝐞𝐫𝐬: {count}")
+        await message.delete()
+
 
 @Client.on_message(filters.command('leave') & filters.user(ADMINS))
 async def leave_a_chat(bot, message):
