@@ -1038,8 +1038,8 @@ Tʜɪs ᴍᴏᴅᴜʟᴇ ɪs ᴛᴏ ғɪɴᴅ ɪɴғᴏʀᴍᴀᴛɪᴏɴ ᴀʙ�
 
 
    
-    lIMDB_TEMPLATE_TXT = """
-<b>𝐇𝐞𝐲 {message.from_user.mention}, 𝐇𝐞𝐫𝐞 𝐢𝐬 𝐭𝐡𝐞 𝐫𝐞𝐬𝐮𝐥𝐭 𝐟𝐨𝐫 𝐲𝐨𝐮𝐫 {qurey}
+    IMDB_TEMPLATE_TXTT = """
+<b>𝐇𝐞𝐲 {qurey}, 𝐇𝐞𝐫𝐞 𝐢𝐬 𝐭𝐡𝐞 𝐫𝐞𝐬𝐮𝐥𝐭 𝐟𝐨𝐫 𝐲𝐨𝐮𝐫 {qurey}
 
 🏷 𝐓𝐢𝐭𝐥𝐞 : {title}
 
