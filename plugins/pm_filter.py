@@ -1940,33 +1940,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
 
     # don't change anything without contacting me @creatorrio
 
-   
-
-   
-
-    elif lazyData.startswith("generate_id"):
-        _, file_id  = lazyData.split(":")
-        try:
-            user_id = query.from_user.id
-            username =  query.from_user.mention 
-
-#            kf = await query.message.reply_text(
-#                text=f"{file_id}",
-#                parse_mode=enums.ParseMode.HTML
-#            )
-            log_msg = await client.send_cached_media(
-                chat_id=GENERAT,
-                file_id=file_id               
-            )
-
-            fileName = {quote_plus(get_name(log_msg))}
-            lazy_stream = f"{URL}watch/{str(log_msg.id)}/{quote_plus(get_name(log_msg))}?hash={get_hash(log_msg)}"
-            lazy_download = f"{URL}{str(log_msg.id)}/{quote_plus(get_name(log_msg))}?hash={get_hash(log_msg)}"
-            xo = await query.message.reply_text(f'🔐')
-            await asyncio.sleep(1)
-            await xo.delete()
-           
-           
+                        
 
            
     elif data.startswith("notify_user_not_avail"):
