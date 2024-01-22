@@ -68,7 +68,12 @@ SPELL_CHECK = {}
 GENERAT = "-1001203428484"
 UPLOAD_CHANNEL = "batchfiles_store"
 
-
+RUN_STRINGS = (
+    "🍿",
+    "🍭",
+    "📀",
+    "🎭",    
+)
 
 
 async def make_carbon(code, tele=False):
