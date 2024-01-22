@@ -42,7 +42,9 @@ async def save_group(bot, message):
         reply_markup=InlineKeyboardMarkup(buttons)
         await message.reply_text(
             text=f"<b>Thank you For Adding Me In {message.chat.title} ❣️\n\nIf you have any questions & doubts about using me contact support.</b>",
-            reply_markup=reply_markup)
+            reply_markup=reply_markup
+        )
+        await message.delete()       
 
         # GROUP ACTIONS IN CONTROL => Coded By YT@LazyDeveloperr with love ❣️
         # Request Verification => S - 4
@@ -82,7 +84,8 @@ async def save_group(bot, message):
                                                                         ],[
                                                                            InlineKeyboardButton("Bᴏᴛ Oᴡɴᴇʀ", url="t.me/bigmoviesworld")
                                                                          ]]
-                                                 ),
+                                                 )
+                                                 await message.delete()       
 
                 
 @Client.on_message(filters.left_chat_member)
