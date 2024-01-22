@@ -76,8 +76,8 @@ RUN_STRINGS = (
 )
 
 
-@Client.on_message(filters.regex("http") | filters.regex("www") | filters.regex("t.me"))
-async def nolink(client: Client,  message):
+@Client.on_message(filters.group & filters.text & filters.incoming)
+async def give_filter(client, message):
     try:
         chatIDx = message.chat.id
         lazy_chatIDx = await db.get_chat(int(chatIDx))
