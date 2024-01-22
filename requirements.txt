@@ -25,11 +25,13 @@ youtube-search-python==1.4.6
 yt-dlp
 youtube-dl
 requests 
-  
+
+
+
+selenium==3.141.0
   
 #---others----# 
-opencv-python-headless==4.7.0.68 
-googletrans==3.1.0a0 
+opencv-python-headless==4.7.0.68  
 telegraph==2.2.0 
 python-dotenv==0.21.1 
 gTTS==2.3.1 
@@ -49,13 +51,40 @@ python-decouple
 ffmpeg-python>=0.2.0
 ytthumb
 
-jinja2
+
 apscheduler
 pyshorteners
 pyromod
 colorama
-openai==0.25.0
+openai==0.27.0
+
+#---ai----# 
+Flask==1.1.2
+gunicorn==20.1.0
+Jinja2==3.0.3
+werkzeug==2.0.2
+itsdangerous==2.0.1
 
 
 
-  
+#---sticker---#  
+Pillow==9.4.0
+ 
+
+#---python-telegram-bot==12.8---# 
+python-telegram-bot==12.8
+googletrans==4.0.0-rc1
+wget
+speedtest-cli
+aiofiles
+
+
+pyTelegramBotAPI==4.14.0
+beautifulsoup4~=4.8.2
+certifi==2019.6.16
+chardet==3.0.4
+idna==2.8
+six==1.12.0
+urllib3==1.25.3
+
+

@@ -1,3 +1,8 @@
+# Don't Remove Credit @VJ_Botz
+# Subscribe YouTube Channel For Amazing Bot @Tech_VJ
+# Ask Doubt on telegram @KingVJ01
+
+
 import re
 from os import environ,getenv
 from Script import script 
@@ -18,21 +23,19 @@ API_HASH = environ.get('API_HASH', '7bcf61fcd32b8652cd5876b02dcf57ae')
 BOT_TOKEN = environ.get('BOT_TOKEN', "")
 
 # Bot settings
-CACHE_TIME = int(environ.get('CACHE_TIME', 300))
+CACHE_TIME = int(environ.get('CACHE_TIME', 1800))
 USE_CAPTION_FILTER = bool(environ.get('USE_CAPTION_FILTER', True))
 
-PICS = (environ.get('PICS', 'https://te.legra.ph/file/cce1c345a4a752453a3a3.jpg')).split() #SAMPLE PIC
-NOR_IMG = environ.get("NOR_IMG", "https://te.legra.ph/file/a27dc8fe434e6b846b0f8.jpg")
-MELCOW_VID = environ.get("MELCOW_VID", "https://te.legra.ph/file/6f55d902f9bf2d0afd4bb.mp4")
-SPELL_IMG = environ.get("SPELL_IMG", "https://te.legra.ph/file/15c1ad448dfe472a5cbb8.jpg")
 SP = (environ.get('SP', 'https://telegra.ph/file/db018384d5d139f3844ed.jpg https://telegra.ph/file/30c736c93b5ad5c328141.jpg https://telegra.ph/file/f1565e213ec1a45a27362.jpg https://telegra.ph/file/0c53da8c1598c63e50a6e.jpg https://telegra.ph/file/360d78cf3209429ca8e66.jpg')).split()
 
-
+PICS = (environ.get('PICS', 'https://telegra.ph/file/ebad2eb29a3d2702e1531.jpg https://telegra.ph/file/5250452a1ab5364cfc4dc.jpg https://telegra.ph/file/68a707b00e8e88ed3c4a4.jpg https://telegra.ph/file/f44b3f7381cbf2e7708bb.jpg https://telegra.ph/file/4aaa6122c1fe3b71cf52c.jpg https://telegra.ph/file/486a9c2e80ed1729a345f.jpg https://telegra.ph/file/b165f958d038b903d43e1.jpg https://telegra.ph/file/989a744a60c061838444f.jpg https://telegra.ph/file/ff8f67820985179067982.jpg https://telegra.ph/file/3d8c714a3b0c04bfdec7e.jpg https://telegra.ph/file/fd0e1a19b0268c005edf8.jpg https://telegra.ph/file/8cfe0b5ceaa7b969448c4.jpg https://telegra.ph/file/5965fb86394de52b45e31.jpg https://telegra.ph/file/b826e4fabf1bf0fa72db3.jpg https://telegra.ph/file/baba127a57d74bc19e956.jpg')).split() #SAMPLE PIC
+NOR_IMG = environ.get("NOR_IMG", "https://te.legra.ph/file/a27dc8fe434e6b846b0f8.jpg")
+MELCOW_VID = environ.get("MELCOW_VID", "https://t.me/How_To_Open_Linkl")
+SPELL_IMG = environ.get("SPELL_IMG", "https://te.legra.ph/file/15c1ad448dfe472a5cbb8.jpg")
 
 # Admins, Channels & Users
-ADMIN = int(environ.get('ADMINS'))
 ADMINS = [int(admin) if id_pattern.search(admin) else admin for admin in environ.get('ADMINS', '1291970954').split()]
-CHANNELS = [int(ch) if id_pattern.search(ch) else ch for ch in environ.get('CHANNELS', '-1001595013671, -1002091197902').split()]
+CHANNELS = [int(ch) if id_pattern.search(ch) else ch for ch in environ.get('CHANNELS', '-1001595013671').split()]
 auth_users = [int(user) if id_pattern.search(user) else user for user in environ.get('AUTH_USERS', '').split()]
 AUTH_USERS = (auth_users + ADMINS) if auth_users else []
 PREMIUM_USER = [int(user) if id_pattern.search(user) else user for user in environ.get('PREMIUM_USER', '').split()]
@@ -46,39 +49,27 @@ REQST_CHANNEL = int(reqst_channel) if reqst_channel and id_pattern.search(reqst_
 SUPPORT_CHAT_ID = int(support_chat_id) if support_chat_id and id_pattern.search(support_chat_id) else None
 NO_RESULTS_MSG = bool(environ.get("NO_RESULTS_MSG", False))
 
-upload_channel = environ.get('UPLOAD_CHANNEL')
-UPLOAD_CHANNEL = int(upload_channel) if upload_channel and id_pattern.search(upload_channel) else None
-
-
-
-
 # MongoDB information
-DATABASE_URI = environ.get('DATABASE_URI', "")
+DATABASE_URI = environ.get('DATABASE_URI', "mongodb+srv://Zebhamol:Zebhamol@cluster0.eousx.mongodb.net/?retryWrites=true&w=majority")
 DATABASE_NAME = environ.get('DATABASE_NAME', "Cluster0")
 COLLECTION_NAME = environ.get('COLLECTION_NAME', 'Telegram_files')
 
 # Others
-GROUP_LOGS = int(environ.get('GROUP_LOGS', 0)) # Request Verification => S - 3
-VERIFY = bool(environ.get('VERIFY',False))
-SHORTLINK_URL = environ.get('SHORTLINK_URL', 'tnshort.net')
-SHORTLINK_API = environ.get('SHORTLINK_API', 'b2da06188bd355e103d16ab1b56db314709740df')
-SECOND_SHORTLINK_URL = environ.get('SECOND_SHORTLINK_URL', 'mplaylink.com')
-SECOND_SHORTLINK_API = environ.get('SECOND_SHORTLINK_API', '1f1da5c9df9a58058672a3c8ed8134e203b03426a1')
+VERIFY = bool(environ.get('VERIFY', False))
+SHORTLINK_URL = environ.get('SHORTLINK_URL', 'moneykamalo.com')
+SHORTLINK_API = environ.get('SHORTLINK_API', '0eefb93e1e3ce9470a7033115ceb1bad13a9d674')
 IS_SHORTLINK = bool(environ.get('IS_SHORTLINK', False))
 DELETE_CHANNELS = [int(dch) if id_pattern.search(dch) else dch for dch in environ.get('DELETE_CHANNELS', '0').split()]
 MAX_B_TN = environ.get("MAX_B_TN", "5")
 MAX_BTN = is_enabled((environ.get('MAX_BTN', "True")), True)
 PORT = environ.get("PORT", "8080")
-GRP_LNK = environ.get('GRP_LNK', 'https://t.me/nasrani_update')
-CHNL_LNK = environ.get('CHNL_LNK', 'https://t.me/+r_y-yTPhXkQwMzdl')
-TUTORIAL = environ.get('TUTORIAL', 'https://t.me/+r_y-yTPhXkQwMzdl')
+GRP_LNK = environ.get('GRP_LNK', 'https://t.me/vj_bot_disscussion')
+CHNL_LNK = environ.get('CHNL_LNK', 'https://t.me/vj_bots')
+TUTORIAL = environ.get('TUTORIAL', 'https://t.me/How_To_Open_Linkl')
 IS_TUTORIAL = bool(environ.get('IS_TUTORIAL', True))
-UPDATE = environ.get('UPDATE', 'https://t.me/nasrani_update')
-IS_UPDATE = bool(environ.get('IS_UPDATE', True))
-MAIN_CHANNEL = environ.get('MAIN_CHANNEL', 'https://t.me/+r_y-yTPhXkQwMzdl')
-MSG_ALRT = environ.get('MSG_ALRT', 'Wʜᴀᴛ Aʀᴇ Yᴏᴜ Lᴏᴏᴋɪɴɢ Aᴛ ?')
+MSG_ALRT = environ.get('MSG_ALRT', 'Hello My Dear Friends ❤️')
 LOG_CHANNEL = int(environ.get('LOG_CHANNEL', '-1001371670080'))
-SUPPORT_CHAT = environ.get('SUPPORT_CHAT', '+r_y-yTPhXkQwMzdl')
+SUPPORT_CHAT = environ.get('SUPPORT_CHAT', 'vj_bot_disscussion')
 P_TTI_SHOW_OFF = is_enabled((environ.get('P_TTI_SHOW_OFF', "False")), False)
 IMDB = is_enabled((environ.get('IMDB', "True")), True)
 AUTO_FFILTER = is_enabled((environ.get('AUTO_FFILTER', "True")), True)
@@ -93,11 +84,53 @@ MAX_LIST_ELM = environ.get("MAX_LIST_ELM", None)
 INDEX_REQ_CHANNEL = int(environ.get('INDEX_REQ_CHANNEL', LOG_CHANNEL))
 FILE_STORE_CHANNEL = [int(ch) for ch in (environ.get('FILE_STORE_CHANNEL', '')).split()]
 MELCOW_NEW_USERS = is_enabled((environ.get('MELCOW_NEW_USERS', "True")), True)
-PROTECT_CONTENT = is_enabled((environ.get('PROTECT_CONTENT', "True")), True)
+PROTECT_CONTENT = is_enabled((environ.get('PROTECT_CONTENT', "False")), False)
 PUBLIC_FILE_STORE = is_enabled((environ.get('PUBLIC_FILE_STORE', "True")), True)
 
-CUSTOM_QUERY_CAPTION = environ.get("CUSTOM_QUERY_CAPTION", f"{script.CUSTOM_QUERY_CAPTION}")
-# VERIFY = bool(environ.get('VERIFY', False))
+LANGUAGES = ["malayalam", "mal", "tamil", "tam" ,"english", "eng", "hindi", "hin", "telugu", "tel", "kannada", "kan"]
+
+SEASONS = ["season 1" , "season 2" , "season 3" , "season 4", "season 5" , "season 6" , "season 7" , "season 8" , "season 9" , "season 10"]
+
+
+                           # Don't Remove Credit @VJ_Botz
+                           # Subscribe YouTube Channel For Amazing Bot @Tech_VJ
+                           # Ask Doubt on telegram @KingVJ01
+
+
+# Online Stream and Download
+NO_PORT = bool(environ.get('NO_PORT', False))
+APP_NAME = None
+if 'DYNO' in environ:
+    ON_HEROKU = True
+    APP_NAME = environ.get('APP_NAME')
+else:
+    ON_HEROKU = False
+BIND_ADRESS = str(getenv('WEB_SERVER_BIND_ADDRESS', '0.0.0.0'))
+FQDN = str(getenv('FQDN', BIND_ADRESS)) if not ON_HEROKU or getenv('FQDN') else APP_NAME+'.herokuapp.com'
+URL = "https://azanwebsite.onrender.com".format(FQDN) if ON_HEROKU or NO_PORT else \
+    "https://azanwebsite.onrender.com/".format(FQDN, PORT)
+SLEEP_THRESHOLD = int(environ.get('SLEEP_THRESHOLD', '60'))
+WORKERS = int(environ.get('WORKERS', '4'))
+SESSION_NAME = str(environ.get('SESSION_NAME', 'LazyBot'))
+MULTI_CLIENT = False
+name = str(environ.get('name', 'LazyPrincess'))
+PING_INTERVAL = int(environ.get("PING_INTERVAL", "1200"))  # 20 minutes
+if 'DYNO' in environ:
+    ON_HEROKU = True
+    APP_NAME = str(getenv('APP_NAME'))
+
+else:
+    ON_HEROKU = False
+HAS_SSL=bool(getenv('HAS_SSL',False))
+if HAS_SSL:
+    URL = "https://azanwebsite.onrender.com/".format(FQDN)
+else:
+    URL = "https://azanwebsite.onrender.com/".format(FQDN)
+
+OPENAI = environ.get('OPENAI', '0')
+
+
+
 
 # UPLOAD_CHANNEL = environ.get('UPLOAD_CHANNEL',"https://t.me/batchfiles_store")
 #redict
@@ -121,72 +154,9 @@ SOON_CHANNEL = int(soon_channel) if soon_channel and id_pattern.search(soon_chan
 
 
 # heroku
-HRK_APP_NAME = environ.get('HRK_APP_NAME', 'mybots')
-HRK_API = environ.get('HRK_API', '0')
-OPENAI = environ.get('OPENAI', '0')
-SUPPORT_CHAT = environ.get('SUPPORT_CHAT', '0')
-
-
-
-# Online Stream and Download
-NO_PORT = bool(environ.get('NO_PORT', False))
-APP_NAME = None
-if 'DYNO' in environ:
-    ON_HEROKU = True
-    APP_NAME = environ.get('APP_NAME')
-else:
-    ON_HEROKU = False
-BIND_ADRESS = str(getenv('WEB_SERVER_BIND_ADDRESS', '0.0.0.0'))
-FQDN = str(getenv('FQDN', BIND_ADRESS)) if not ON_HEROKU or getenv('FQDN') else APP_NAME+'.herokuapp.com'
-URL = "https://minnalmurali-ahbp.onrender.com".format(FQDN) if ON_HEROKU or NO_PORT else \
-    "https://minnalmurali-ahbp.onrender.com/".format(FQDN, PORT)
-SLEEP_THRESHOLD = int(environ.get('SLEEP_THRESHOLD', '60'))
-WORKERS = int(environ.get('WORKERS', '4'))
-SESSION_NAME = str(environ.get('SESSION_NAME', 'LazyBot'))
-MULTI_CLIENT = False
-name = str(environ.get('name', 'LazyPrincess'))
-PING_INTERVAL = int(environ.get("PING_INTERVAL", "1200"))  # 20 minutes
-if 'DYNO' in environ:
-    ON_HEROKU = True
-    APP_NAME = str(getenv('APP_NAME'))
-
-else:
-    ON_HEROKU = False
-HAS_SSL=bool(getenv('HAS_SSL',False))
-if HAS_SSL:
-    URL = "https://minnalmurali-ahbp.onrender.com/".format(FQDN)
-else:
-    URL = "https://minnalmurali-ahbp.onrender.com/".format(FQDN)
-
-# UPLOAD_CHANNEL = environ.get('UPLOAD_CHANNEL',"https://t.me/batchfiles_store")
-#redict
-MAIN_CHANNEL = environ.get('MAIN_CHANNEL',"https://t.me/nasrani_update")
-FILE_FORWARD = environ.get('FILE_FORWARD',"https://t.me/+7oxSIxY4X0c2ZGVl")
-MSG_ALRT = environ.get('MSG_ALRT', '𝑪𝑯𝑬𝑪𝑲 & 𝑻𝑹𝒀 𝑨𝑳𝑳 𝑴𝒀 𝑭𝑬𝑨𝑻𝑼𝑹𝑬𝑺')
-FILE_CHANNEL = int(environ.get('FILE_CHANNEL', "-1001708959708"))
-
-BR_IMDB_TEMPLATE = environ.get("IMDB_TEMPLATE", f"{script.BR_TEMPLATE_TXT}")
-BATCH_LINK = environ.get('BATCH_LINK',"https://t.me/nasrani_update")
-PRINT = environ.get('PRINT',"https://t.me/+IpB01WFvsNplZDI9")
-
-#mute_login
-
-login_channel = environ.get('LOGIN_CHANNEL' "-1001351202807")
-LOGIN_CHANNEL = int(login_channel) if login_channel and id_pattern.search(login_channel) else None
-pm = environ.get('PM')
-PM = int(pm) if pm and id_pattern.search(pm) else None
-soon_channel = environ.get('SOON_CHANNEL')
-SOON_CHANNEL = int(soon_channel) if soon_channel and id_pattern.search(soon_channel) else None
-
-
-# heroku
 
 SUPPORT_CHAT = environ.get('SUPPORT_CHAT', '0')
 
-
-LANGUAGES = ["malayalam", "mal", "tamil", "tam" ,"english", "eng", "hindi", "hin", "telugu", "tel", "kannada", "kan"]
-
-SEASONS = ["season 1" , "season 2" , "season 3" , "season 4", "season 5" , "season 6" , "season 7" , "season 8" , "season 9" , "season 10"]
 
 LOG_STR = "Current Cusomized Configurations are:-\n"
 LOG_STR += ("IMDB Results are enabled, Bot will be showing imdb details for you queries.\n" if IMDB else "IMBD Results are disabled.\n")
@@ -197,3 +167,8 @@ LOG_STR += ("Long IMDB storyline enabled." if LONG_IMDB_DESCRIPTION else "LONG_I
 LOG_STR += ("Spell Check Mode Is Enabled, bot will be suggesting related movies if movie not found\n" if SPELL_CHECK_REPLY else "SPELL_CHECK_REPLY Mode disabled\n")
 LOG_STR += (f"MAX_LIST_ELM Found, long list will be shortened to first {MAX_LIST_ELM} elements\n" if MAX_LIST_ELM else "Full List of casts and crew will be shown in imdb template, restrict them by adding a value to MAX_LIST_ELM\n")
 LOG_STR += f"Your current IMDB template is {IMDB_TEMPLATE}"
+
+
+# Don't Remove Credit @VJ_Botz
+# Subscribe YouTube Channel For Amazing Bot @Tech_VJ
+# Ask Doubt on telegram @KingVJ01
