@@ -87,7 +87,7 @@ async def save_group(bot, message):
                                                  ),
                 )
                     
-                                                 await message.delete()       
+                await message.delete()       
 
                 
 @Client.on_message(filters.left_chat_member)
