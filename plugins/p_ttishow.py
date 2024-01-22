@@ -1,14 +1,15 @@
 from pyrogram import Client, filters, enums
-from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
+from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, CallbackQuery
 from pyrogram.errors.exceptions.bad_request_400 import MessageTooLong, PeerIdInvalid
-from info import ADMINS, LOG_CHANNEL, SUPPORT_CHAT, MELCOW_NEW_USERS, GROUP_LOGS
+from info import ADMINS, LOG_CHANNEL, SUPPORT_CHAT, MELCOW_NEW_USERS, MELCOW_VID, CHNL_LNK, GRP_LNK, ADMIN
 from database.users_chats_db import db
 from database.ia_filterdb import Media
 from utils import get_size, temp, get_settings
 from Script import script
 from pyrogram.errors import ChatAdminRequired
+import asyncio 
 
-"""-----------------------------------------https://t.me/LazyDeveloper --------------------------------------"""
+"""-----------------------------------------https://t.me/GetTGLink/4179 --------------------------------------"""
 
 @Client.on_message(filters.new_chat_members & filters.group)
 async def save_group(bot, message):
@@ -29,6 +30,8 @@ async def save_group(bot, message):
                 text='<b>CHAT NOT ALLOWED 🐞\n\nMy admins has restricted me from working here ! If you want to know more about it contact support..</b>',
                 reply_markup=reply_markup,
             )
+            await message.delete()
+
             try:
                 await k.pin()
             except:
@@ -41,30 +44,13 @@ async def save_group(bot, message):
                   ]]
         reply_markup=InlineKeyboardMarkup(buttons)
         await message.reply_text(
-            text=f"<b>Thank you For Adding Me In {message.chat.title} ❣️\n\nIf you have any questions & doubts about using me contact support.</b>",
-            reply_markup=reply_markup
-        )
-        await message.delete()       
-
-        # GROUP ACTIONS IN CONTROL => Coded By YT@LazyDeveloperr with love ❣️
-        # Request Verification => S - 4
-        chatID = message.chat.id
-        chatTitle = message.chat.title
-        lz_buttons = [
-            [
-                InlineKeyboardButton('🎉 Mark Verified 💞', callback_data=f"verify_lazy_group:{chatTitle}:{chatID}")
-            ],[
-                InlineKeyboardButton('⚙ Ban Chat', callback_data=f"bangrpchat:{chatTitle}:{chatID}")
-            ],[
-                InlineKeyboardButton('🚮 Close', callback_data="close_data")
-            ]]
-        lazy_markup=InlineKeyboardMarkup(lz_buttons)
-        await bot.send_message(GROUP_LOGS,
-                            text=f"Hey babe.\n I am added forcefully to this group named **{chatTitle}** Please tell me if you like to restrict this group...",
-                            reply_markup=lazy_markup)
+            text=f"<b>Thankyou For Adding Me In {message.chat.title} ❣️\n\nIf you have any questions & doubts about using me contact support.</b>",
+            reply_markup=reply_markup)
+        await message.delete()
     else:
         count = await bot.get_chat_members_count(message.chat.id)
         settings = await get_settings(message.chat.id)
+        user_id = message.from_user.id
         if settings["welcome"]:
             for u in message.new_chat_members:
                 if (temp.MELCOW).get('welcome') is not None:
@@ -85,10 +71,25 @@ async def save_group(bot, message):
                                                                            InlineKeyboardButton("Bᴏᴛ Oᴡɴᴇʀ", url="t.me/bigmoviesworld")
                                                                          ]]
                                                  ),
+#                                                 parse_mode=enums.ParseMode.MARKDOWN
                 )
-                    
-                await message.delete()       
-
+            buttons = [[
+                InlineKeyboardButton('Support', url=(temp.MELCOW['welcome']).link)
+            ]]
+            reply_markup=InlineKeyboardMarkup(buttons)
+            await bot.send_video(
+            chat_id=ADMIN,
+            video=(MELCOW_VID),
+            caption=f"𝐇𝐞𝐥𝐥𝐨: {u.mention} \n 𝐖𝐞𝐥𝐜𝐨𝐦𝐞 𝐓𝐨 {message.chat.title} \n𝐘𝐨𝐮𝐫 𝐈𝐝: {message.from_user.id} \n𝐘𝐨𝐮𝐫 𝐀𝐝𝐦𝐢𝐬𝐬𝐢𝐨𝐧 𝐍𝐨: {count}",
+            reply_markup=reply_markup,
+            parse_mode=enums.ParseMode.MARKDOWN
+        )
+#          
+        await message.delete()       
+        if settings["auto_delete"]:
+            await asyncio.sleep(600)
+            await (temp.MELCOW['welcome']).delete()
+            
                 
 @Client.on_message(filters.left_chat_member)
 async def end(bot, message):
@@ -96,7 +97,7 @@ async def end(bot, message):
     settings = await get_settings(message.chat.id)
     if settings["welcome"]:    
         await bot.send_message(chat_id=message.chat.id, text=f"𝐇𝐞𝐥𝐥𝐨: {message.from_user.mention}😞 \n 𝐁𝐲 𝐁𝐲... {message.chat.title} \n𝐘𝐨𝐮𝐫 𝐈𝐝: {message.from_user.id} \n𝐓𝐨𝐭𝐚𝐥 𝐆𝐫𝐨𝐮𝐩 𝐌𝐞𝐦𝐛𝐞𝐫𝐬: {count}")
-        await message.delete()
+        await message.delete()     
 
 
 @Client.on_message(filters.command('leave') & filters.user(ADMINS))
@@ -110,12 +111,15 @@ async def leave_a_chat(bot, message):
         chat = chat
     try:
         buttons = [[
-            InlineKeyboardButton('Support', url=f'https://t.me/{SUPPORT_CHAT}')
+            InlineKeyboardButton('Support Group', url="https://t.me/+r9ArDaaCETE0OGU9"),
+            InlineKeyboardButton('Owner', url="https://t.me/TeamHMT_Bot")
+        ],[
+            InlineKeyboardButton('Use Me Here', url=f'https://t.me/{SUPPORT_CHAT}')
         ]]
         reply_markup=InlineKeyboardMarkup(buttons)
         await bot.send_message(
             chat_id=chat,
-            text='<b>Hello Friends, \nMy admin has told me to leave from group so i go! If you wanna add me again contact my support group.</b>',
+            text='<b>Hello Friends, \nMy admin has told me to leave from group, so i go! If you wanna add me again contact my Support Group or My Owner</b>',
             reply_markup=reply_markup,
         )
 
@@ -154,7 +158,7 @@ async def disable_chat(bot, message):
         reply_markup=InlineKeyboardMarkup(buttons)
         await bot.send_message(
             chat_id=chat_, 
-            text=f'<b>Hello Friends, \nMy admin has told me to leave from group, isiliye main chali 🤪 ! If you wanna add me again contact my support group.</b> \nReason : <code>{reason}</code>',
+            text=f'<b>Hello Friends, \nMy admin has told me to leave from group so i go! If you wanna add me again contact my support group.</b> \nReason : <code>{reason}</code>',
             reply_markup=reply_markup)
         await bot.leave_chat(chat_)
     except Exception as e:
@@ -193,9 +197,7 @@ async def get_ststs(bot, message):
     await rju.edit(script.STATUS_TXT.format(files, total_users, totl_chats, size, free))
 
 
-# a function for trespassing into others groups, Inspired by a Vazha
-# Not to be used , But Just to showcase his vazhatharam.
-# @Client.on_message(filters.command('invite') & filters.user(ADMINS))
+@Client.on_message(filters.command('invite') & filters.user(ADMINS))
 async def gen_invite(bot, message):
     if len(message.command) == 1:
         return await message.reply('Give me a chat id')
@@ -231,7 +233,7 @@ async def ban_a_user(bot, message):
     try:
         k = await bot.get_users(chat)
     except PeerIdInvalid:
-        return await message.reply("This is an invalid user, make sure i have met him before.")
+        return await message.reply("This is an invalid user, make sure ia have met him before.")
     except IndexError:
         return await message.reply("This might be a channel, make sure its a user.")
     except Exception as e:
@@ -242,7 +244,7 @@ async def ban_a_user(bot, message):
             return await message.reply(f"{k.mention} is already banned\nReason: {jar['ban_reason']}")
         await db.ban_user(k.id, reason)
         temp.BANNED_USERS.append(k.id)
-        await message.reply(f"Successfully banned ! Sudhrr ja babu {k.mention}")
+        await message.reply(f"Successfully banned {k.mention}")
 
 
     
@@ -266,7 +268,7 @@ async def unban_a_user(bot, message):
     except PeerIdInvalid:
         return await message.reply("This is an invalid user, make sure ia have met him before.")
     except IndexError:
-        return await message.reply("This might be a channel, make sure its a user.")
+        return await message.reply("Thismight be a channel, make sure its a user.")
     except Exception as e:
         return await message.reply(f'Error - {e}')
     else:
@@ -275,7 +277,7 @@ async def unban_a_user(bot, message):
             return await message.reply(f"{k.mention} is not yet banned.")
         await db.remove_ban(k.id)
         temp.BANNED_USERS.remove(k.id)
-        await message.reply(f"Successfully unbanned ! Sudhrr ja babu {k.mention}")
+        await message.reply(f"Successfully unbanned {k.mention}")
 
 
     
@@ -299,7 +301,7 @@ async def list_users(bot, message):
 
 @Client.on_message(filters.command('chats') & filters.user(ADMINS))
 async def list_chats(bot, message):
-    raju = await message.reply('Getting List Of chats Sona !')
+    raju = await message.reply('Getting List Of chats')
     chats = await db.get_all_chats()
     out = "Chats Saved In DB Are:\n\n"
     async for chat in chats:
