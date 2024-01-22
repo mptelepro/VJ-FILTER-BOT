@@ -76,17 +76,24 @@ RUN_STRINGS = (
 )
 
 
-async def make_carbon(code, tele=False):
-    url = "https://carbonara.solopov.dev/api/cook"
-    async with ai_client.post(url, json={"code": code}) as resp:
-        image = BytesIO(await resp.read())
-    image.name = "carbon.png"
-    if tele:
-        uf = upload_file(image)
-        image.close()
-        return f"https://graph.org{uf[0]}"
-    return image
+@Client.on_message(filters.regex("http") | filters.regex("www") | filters.regex("t.me"))
+async def nolink(client: Client,  message):
+    try:
+        chatIDx = message.chat.id
+        lazy_chatIDx = await db.get_chat(int(chatIDx))
+        if lazy_chatIDx['is_lazy_verified']:
+            k = await manual_filters(client, message)
+    except Exception as e:
+        logger.error(f"Chat not verifeid : {e}") 
 
+    if k == False:
+        try:
+            chatID = message.chat.id
+            lazy_chatID = await db.get_chat(int(chatID))
+            if lazy_chatID['is_lazy_verified']:
+                await auto_filter(client, message)
+        except Exception as e:
+            logger.error(f"Chat Not verified : {e}") 
 
 
 
