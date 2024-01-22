@@ -699,7 +699,7 @@ async def get_cap(settings, remaining_seconds, files, query, total_results, sear
         else:
             imdb = await get_poster(search, file=(files[0]).file_name) if settings["imdb"] else None
             if imdb:
-                TEMPLATE = script.IMDB_TEMPLATE_TXT
+                TEMPLATE = script.IMDB_TEMPLATE_TXTT
                 cap = TEMPLATE.format(
                     qurey=search,
                     title=imdb['title'],
